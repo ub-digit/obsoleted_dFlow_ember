@@ -1,0 +1,27 @@
+{{#if breadcrumb}}
+<ul class="breadcrumb">
+  {{#each parent in breadcrumb}}
+    {{#if parent.id}}
+      <li>{{link-to parent.name 'node.show' parent.id}}</li>
+    {{else}}
+      <li>{{parent.name}}</li>
+    {{/if}}
+  {{/each}}
+</ul>
+{{/if}}
+{{#if children}}
+<table class="table">
+  <tr>
+    <th>{{t 'nodes.id'}}</th>
+    <th>{{t 'nodes.name'}}</th>
+  </tr>
+  {{#each child in children}}
+    <tr>
+      <td>{{child.id}}</td>
+      <td>{{link-to child.name 'node.show' child.id}}</td>
+    </tr>
+  {{/each}}
+</table>
+{{/if}}
+
+{{outlet}}

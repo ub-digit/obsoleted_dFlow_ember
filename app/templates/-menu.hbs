@@ -1,17 +1,20 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
+  <div class="navbar-header">
+  {{#link-to 'index' class="navbar-brand"}}{{t 'main.title'}}{{/link-to}}
+  </div>
     <ul class="nav navbar-nav">
-      <li>{{#link-to 'index'}}Home{{/link-to}}</li>
+      <li>{{#link-to 'node.show' 'root'}}{{t 'menu.nodes'}}{{/link-to}}
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {{#if session.isAuthenticated}}
-        <p class="navbar-text">Logged in as {{session.name}}</p>
+        <p class="navbar-text">{{t 'menu.logged_in_as'}} {{session.name}}</p>
         <li>
           <a href="javascript:void(0)" {{action 'invalidateSession'}}>Logout</a>
         </li>
       {{else}}
         <li>
-	  {{link-to "Login" 'login'}}
+	  {{#link-to 'login'}}{{t 'menu.login'}}{{/link-to}}
         </li>
       {{/if}}
     </ul>

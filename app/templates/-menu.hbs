@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li>{{#link-to 'index'}}Home{{/link-to}}</li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      {{#if session.isAuthenticated}}
+        <p class="navbar-text">Logged in as {{session.name}}</p>
+        <li>
+          <a href="javascript:void(0)" {{action 'invalidateSession'}}>Logout</a>
+        </li>
+      {{else}}
+        <li>
+	  {{link-to "Login" 'login'}}
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+</nav>

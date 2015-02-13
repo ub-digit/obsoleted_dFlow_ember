@@ -2,7 +2,9 @@ import Ember from 'ember';
 import ENV from 'd-flow-ember/config/environment';
 export default Ember.Object.extend({
   endpoints: {
-    treenode:  { path: 'api/treenodes'  }
+    treenode:  { path: 'api/treenodes'  },
+    user: { path: 'api/users'},
+    role: { path: 'api/config/role_list'}
   },
   sessionHeaders: function() {
     var session = this.container.lookup('simple-auth-session:main');

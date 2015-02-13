@@ -30,6 +30,15 @@ var TRANSLATIONS = {
       name: "Namn",
       new: "Skapa ny",
       create: "Skapa"
+    },
+    users: {
+      id: "ID",
+      name: "Namn",
+      username: "Användarnamn",
+      role: "Roll",
+      email: "E-post",
+      new: "Skapa ny",
+      create: "Skapa användare"
     }
   }
 };

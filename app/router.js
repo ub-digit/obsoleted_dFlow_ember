@@ -12,6 +12,11 @@ Router.map(function() {
     });
   });
   this.resource('login');
+  this.resource('users', function(){
+    this.route('index', {path: '/'}, function(){
+      this.route('new');
+    });
+  });
 });
 
 export default Router;

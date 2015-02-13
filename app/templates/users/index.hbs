@@ -1,0 +1,14 @@
+{{#link-to 'users.index.new' class="btn btn-primary pull-right"}}{{t 'users.new'}}{{/link-to}}
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+  </tr>
+  {{#each user in model}}
+    <tr>
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+    </tr>
+  {{/each}}
+</table>
+{{outlet}}

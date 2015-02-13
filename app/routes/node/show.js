@@ -10,4 +10,10 @@ export default Ember.Route.extend({
     };
     controller.set('model', model);
   },
+  actions: {
+    // Refresh model to be called from other nested routes/controllers
+    refreshModel: function(modelId) {
+      this.refresh(modelId);
+    }
+  }
 });

@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    // Return 
     var parent = this.modelFor('node.show');
     return {parent_id: parent.id};
   },
@@ -12,10 +11,13 @@ export default Ember.Route.extend({
       this.store.save('treenode', model).then(
         // Success function
         function(model) {
-          console.log("DEBUG", model);
+          that.send('refreshModel', model.parent_id); // Refresh children of current model
           that.transitionTo('node.show', model.parent_id);
-      }
+        },
       // Failed function
+        function(errorObject) {
+          that.controller.set('error', errorObject.error);
+        }
       );
     }
   }

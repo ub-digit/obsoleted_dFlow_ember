@@ -98,7 +98,7 @@ export default Ember.Object.extend({
     if(data.meta) {
       data[singularName].meta = data.meta;
     }
-    data[singularName].errors = this.extractErrors(data);
+    data[singularName].error = this.extractErrors(data);
     return data[singularName];
   },
   extractMany: function(name, data) {
@@ -107,17 +107,17 @@ export default Ember.Object.extend({
     if(data.meta) {
       list.meta = data.meta;
     }
-    list.errors = this.extractErrors(data);
+    list.error = this.extractErrors(data);
     return list;
   },
   extractErrors: function(reason_or_data) {
     if(reason_or_data.responseJSON) {
       return {
-        errors: reason_or_data.responseJSON.errors,
+        error: reason_or_data.responseJSON.error,
         status: reason_or_data.status
       };
     } else {
-      return reason_or_data.errors;
+      return reason_or_data.error;
     }
     return undefined;
   },

@@ -27,10 +27,14 @@ var TRANSLATIONS = {
     },
     nodes: {
       id: "ID",
-      name: "Namn"
+      name: "Namn",
+      new: "Skapa ny",
+      create: "Skapa"
     }
   }
 };
+
+// Initializes language support
 var i18nInitializer = {
   name: 'i18n',
   initialize: function() {

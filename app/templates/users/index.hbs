@@ -3,11 +3,13 @@
   <tr>
     <th>ID</th>
     <th>Username</th>
+    <th></th>
   </tr>
   {{#each user in model}}
     <tr>
       <td>{{user.id}}</td>
       <td>{{user.username}}</td>
+      <td>{{#link-to 'users.index.edit' user.id}}{{t 'users.edit'}}{{/link-to}}</td>
     </tr>
   {{/each}}
 </table>

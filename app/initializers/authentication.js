@@ -34,8 +34,8 @@ var CustomAuthenticator = Base.extend({
 						token: token,
 						username: response.user.username,
 						name: response.user.name,
-						can_view_tree : Ember.$.inArray('view_tree', response.user.role.rights) !== -1,
-						can_view_users : Ember.$.inArray('view_users', response.user.role.rights) !== -1
+						can_view_users : Ember.$.inArray('view_users', response.user.role.rights) !== -1,
+						can_manage_tree_root : Ember.$.inArray('manage_tree_root', response.user.role.rights) !== -1
 					});
 				});
 			}, function(xhr) {

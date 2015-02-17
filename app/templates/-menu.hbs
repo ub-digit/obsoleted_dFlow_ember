@@ -3,11 +3,9 @@
     <div class="navbar-header">
       {{#link-to 'index' class="navbar-brand"}}{{t 'main.title'}}{{/link-to}}
     </div>
-    {{#if session.can_view_tree}}
     <ul class="nav navbar-nav">
       <li>{{#link-to 'node.show' 'root'}}{{t 'menu.nodes'}}{{/link-to}}</li>
     </ul>
-    {{/if}}
     <ul class="nav navbar-nav navbar-right">
       {{#if session.can_view_users}}
       <ul class="nav navbar-nav">

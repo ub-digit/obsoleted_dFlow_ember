@@ -10,6 +10,10 @@
 </ul>
 {{#link-to 'node.show.new' class="btn btn-primary pull-right"}}{{t 'nodes.new'}}{{/link-to}}
 {{#link-to 'node.show.jobs.source' class="btn btn-primary pull-right"}}{{t 'jobs.new'}}{{/link-to}}
+{{else}}
+{{#if session.can_manage_tree_root}}
+{{#link-to 'node.show.new' class="btn btn-primary pull-right"}}{{t 'nodes.new'}}{{/link-to}}
+{{/if}}
 {{/if}}
 {{#if children}}
 <table class="table">

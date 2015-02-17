@@ -19,7 +19,8 @@ var TRANSLATIONS = {
       logout: "Logga ut",
       nodes: "Träd",
       logged_in_as: "Inloggad som:",
-      users: "Användare"
+      users: "Användare",
+      jobs: "Jobblista"
     },
     login: {
       password: "Lösenord",
@@ -64,7 +65,8 @@ var TRANSLATIONS = {
       objectinfo: "Objektinformation",
       id: "ID",
       name: "Namn",
-      edit: "Redigera"
+      edit: "Redigera",
+      breadcrumb: "Placering"
     }
   }
 };

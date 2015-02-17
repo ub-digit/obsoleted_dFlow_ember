@@ -5,12 +5,14 @@
     <th>{{t 'jobs.id'}}</th>
     <th>{{t 'jobs.name'}}</th>
     <th></th>
+    <th>{{t 'jobs.breadcrumb'}}</th>
   </tr>
   {{#each job in model}}
     <tr>
       <td>{{job.id}}</td>
       <td>{{link-to job.display 'jobs.show' job.id}}</td>
       <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
+      <td>{{#link-to 'node.show' job.treenode_id}}{{job.breadcrumb_string}}{{/link-to}}</td>
     </tr>
   {{/each}}
 </table>

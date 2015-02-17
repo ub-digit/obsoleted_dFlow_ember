@@ -4,7 +4,8 @@ export default Ember.Object.extend({
   endpoints: {
     treenode:  { path: 'api/treenodes'  },
     user: { path: 'api/users'},
-    role: { path: 'api/config/role_list'}
+    role: { path: 'api/config/role_list'},
+    source: { path: 'api/sources'}
   },
   sessionHeaders: function() {
     var session = this.container.lookup('simple-auth-session:main');

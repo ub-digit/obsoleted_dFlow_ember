@@ -1,0 +1,33 @@
+<div class="col-xs-12 pages-center pages">
+  {{#each page in pageArray}}
+  {{#if page.spacer}}
+  <div class="disabled spacer"><a class="btn"><span>...</span></a></div>
+  {{else}}
+  <div {{bind-attr class="page.active:active :page"}}>
+    {{#link-to 'jobs.index' (query-params page=page.page.page) class="btn btn-default"}}{{page.page}}{{/link-to}}
+  </div>
+  {{/if}}
+  {{/each}}
+</div>
+<div class="page-button page-button-left">
+  {{#if pagination.previous}}
+  {{#link-to 'jobs.index' (query-params page=pagination.previous) class="btn btn-primary"}}
+  <span>Previous</gspan>
+    {{/link-to}}
+    {{else}}
+    <button class="btn btn-primary disabled">
+      <span>Previous</span>
+    </button>
+    {{/if}}
+  </div>
+  <div class="page-button page-button-right">
+    {{#if pagination.next}}
+    {{#link-to 'jobs.index' (query-params page=pagination.next) class="btn btn-primary"}}
+    <span>Next</span>
+    {{/link-to}}
+    {{else}}
+    <button class="btn btn-primary disabled">
+      <span>Next</span>
+    </button>
+    {{/if}}
+  </div>

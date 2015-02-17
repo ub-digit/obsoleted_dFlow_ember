@@ -1,0 +1,28 @@
+{{#if breadcrumb}}
+<ul class="breadcrumb">
+  {{#each parent in breadcrumb}}
+    {{#if parent.id}}
+      <li>{{link-to parent.name 'node.show' parent.id}}</li>
+    {{else}}
+      <li>{{parent.name}}</li>
+    {{/if}}
+  {{/each}}
+</ul>
+{{/if}}
+<h1>{{id}}</h1>
+{{display}}<br/>
+<strong>Kalla:</strong> {{source}} {{catalog_id}}<br/>
+{{#if title}}
+<strong>Titel:</strong> {{title}}<br/>
+{{/if}}
+{{#if author}}
+<strong>Forfattare:</strong> {{author}}
+{{/if}}
+{{#if object_info}}
+<div class="clearfix"></div>
+<strong>Objektinformation:</strong> {{object_info}}
+{{/if}}
+{{#if comment}}
+<div class="clearfix"></div>
+<strong>Objektinformation:</strong> {{comment}}
+{{/if}}

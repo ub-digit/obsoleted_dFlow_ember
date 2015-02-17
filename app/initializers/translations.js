@@ -29,7 +29,7 @@ var TRANSLATIONS = {
     nodes: {
       id: "ID",
       name: "Namn",
-      new: "Skapa ny",
+      new: "Skapa ny nod",
       create: "Skapa",
       edit: "Redigera",
       update: "Spara ändringar"
@@ -40,7 +40,7 @@ var TRANSLATIONS = {
       username: "Användarnamn",
       role: "Roll",
       email: "E-post",
-      new: "Skapa ny",
+      new: "Skapa ny användare",
       create: "Skapa användare",
       edit: "Redigera",
       update: "Spara ändringar"
@@ -53,6 +53,7 @@ var TRANSLATIONS = {
       fetch: "Hämta"
     },
     jobs: {
+      header: "Jobb",
       new: "Skapa jobb",
       createsubmit: "Skapa jobb",
       title: "Titel",
@@ -60,7 +61,10 @@ var TRANSLATIONS = {
       jobname: "Jobnamn",
       copyrithgt: "Copyright",
       comments: "Kommentarer",
-      objectinfo: "Objektinformation"
+      objectinfo: "Objektinformation",
+      id: "ID",
+      name: "Namn",
+      edit: "Redigera"
     }
   }
 };

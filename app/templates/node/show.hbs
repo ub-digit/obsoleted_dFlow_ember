@@ -32,4 +32,22 @@
 </table>
 {{/if}}
 
+{{#if jobs}}
+<h2>{{t 'jobs.header'}}</h2>
+<table class="table">
+  <tr>
+    <th>{{t 'jobs.id'}}</th>
+    <th>{{t 'jobs.name'}}</th>
+    <th></th>
+  </tr>
+  {{#each job in jobs}}
+    <tr>
+      <td>{{job.id}}</td>
+      <td>{{link-to job.display 'jobs.show' job.id}}</td>
+      <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
+    </tr>
+  {{/each}}
+</table>
+{{/if}}
+
 {{outlet}}

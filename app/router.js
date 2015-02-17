@@ -11,6 +11,7 @@ Router.map(function() {
       this.route('new');
       this.route('edit', {path: '/edit/:id'});
       this.route('jobs', function() {
+        this.route('edit', {path: '/edit/:id'});
         this.route('source', function() {
           this.route('new');
         });
@@ -23,6 +24,9 @@ Router.map(function() {
       this.route('new');
       this.route('edit', {path: '/edit/:id'});
     });
+  });
+  this.resource('jobs', function() {
+    this.route('show', {path: '/:id'});
   });
 });
 

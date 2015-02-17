@@ -39,6 +39,23 @@ var TRANSLATIONS = {
       email: "E-post",
       new: "Skapa ny",
       create: "Skapa användare"
+    },
+    sources: {
+      formlabel: "Källa",
+      id: "ID",
+      name: "Namn",
+      label: "etikett",
+      fetch: "Hämta"
+    },
+    jobs: {
+      new: "Skapa jobb",
+      createsubmit: "Skapa jobb",
+      title: "Titel",
+      author: "Författare",
+      jobname: "Jobnamn",
+      copyrithgt: "Copyright",
+      comments: "Kommentarer",
+      objectinfo: "Objektinformation"
     }
   }
 };

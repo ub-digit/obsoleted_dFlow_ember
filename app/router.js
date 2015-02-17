@@ -9,6 +9,11 @@ Router.map(function() {
   this.resource('node', function() {
     this.route('show', {path: '/:id' }, function(){
       this.route('new');
+      this.route('jobs', function() {
+        this.route('source', function() {
+          this.route('new');
+        });
+      });
     });
   });
   this.resource('login');

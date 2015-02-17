@@ -16,11 +16,13 @@
   <tr>
     <th>{{t 'nodes.id'}}</th>
     <th>{{t 'nodes.name'}}</th>
+    <th></th>
   </tr>
   {{#each child in children}}
     <tr>
       <td>{{child.id}}</td>
       <td>{{link-to child.name 'node.show' child.id}}</td>
+      <td>{{#link-to 'node.show.edit' child.id}}{{t 'nodes.edit'}}{{/link-to}}</td>
     </tr>
   {{/each}}
 </table>

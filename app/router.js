@@ -9,6 +9,7 @@ Router.map(function() {
   this.resource('node', function() {
     this.route('show', {path: '/:id' }, function(){
       this.route('new');
+      this.route('edit', {path: '/edit/:id'});
       this.route('jobs', function() {
         this.route('source', function() {
           this.route('new');
@@ -20,6 +21,7 @@ Router.map(function() {
   this.resource('users', function(){
     this.route('index', {path: '/'}, function(){
       this.route('new');
+      this.route('edit', {path: '/edit/:id'});
     });
   });
 });

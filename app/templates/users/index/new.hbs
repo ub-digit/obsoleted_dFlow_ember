@@ -1,46 +1,5 @@
-<div class="min-sidebar">
-  <div class="form-group col-xs-12">
-    
-    <div class="col-xs-6 col-md-8">
-      {{#if error}}
-      {{error.msg}}
-      {{/if}}
-    </div>
-    <div class="col-xs-6 col-md-4">
-      <label>{{t 'users.username'}}</label>
-    </div>
-
-    <div class="col-xs-12">
-      {{input type="text" classBinding=":form-control :col-xs-6" value=model.username}}
-    </div>
-
-    <div class="col-xs-6 col-md-4">
-      <label>{{t 'users.name'}}</label>
-    </div>
-
-    <div class="col-xs-12">
-      {{input type="text" classBinding=":form-control :col-xs-6" value=model.name}}
-    </div>
-
-    <div class="col-xs-6 col-md-4">
-      <label>{{t 'users.email'}}</label>
-    </div>
-
-    <div class="col-xs-12">
-      {{input type="text" classBinding=":form-control :col-xs-6" value=model.email}}
-    </div>
-
-    <div class="col-xs-6 col-md-4">
-      <label>{{t 'users.role'}}</label>
-    </div>
-
-    <div class="col-xs-12">
-      {{view 'select' content=roleSelection
-      value=model.role
-      optionValuePath="content.name"
-      optionLabelPath="content.name"}}
-    </div>
+  <div class="min-sidebar">
+  {{partial 'users/index/userform'}}
+    <button class="btn btn-primary" {{action 'createUser' model}}>{{t 'users.create'}}</button>
+    <div class="clearfix"></div>
   </div>
-  <button class="btn btn-primary" {{action 'createUser' model}}>{{t 'users.create'}}</button>
-  <div class="clearfix"></div>
-</div>

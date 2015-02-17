@@ -18,7 +18,8 @@ var TRANSLATIONS = {
       login: "Logga in",
       logout: "Logga ut",
       nodes: "Träd",
-      logged_in_as: "Inloggad som:"
+      logged_in_as: "Inloggad som:",
+      users: "Användare"
     },
     login: {
       password: "Lösenord",
@@ -29,7 +30,9 @@ var TRANSLATIONS = {
       id: "ID",
       name: "Namn",
       new: "Skapa ny",
-      create: "Skapa"
+      create: "Skapa",
+      edit: "Redigera",
+      update: "Spara ändringar"
     },
     users: {
       id: "ID",
@@ -38,7 +41,9 @@ var TRANSLATIONS = {
       role: "Roll",
       email: "E-post",
       new: "Skapa ny",
-      create: "Skapa användare"
+      create: "Skapa användare",
+      edit: "Redigera",
+      update: "Spara ändringar"
     },
     sources: {
       formlabel: "Källa",

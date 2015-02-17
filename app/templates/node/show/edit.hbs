@@ -12,7 +12,6 @@
       {{input type="text" classBinding=":form-control :col-xs-6" value=model.name}}
     </div>
   </div>
-  <button class="btn btn-primary" {{action 'createNode' model}}>{{t 'nodes.create'}}</button>
+  <button class="btn btn-primary" {{action 'saveNode' model}}>{{t 'nodes.update'}}</button>
   <div class="clearfix"></div>
 </div>
-{{partial 'user_form'}}

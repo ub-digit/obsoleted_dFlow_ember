@@ -1,22 +1,30 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-  <div class="navbar-header">
-  {{#link-to 'index' class="navbar-brand"}}{{t 'main.title'}}{{/link-to}}
-  </div>
+    <div class="navbar-header">
+      {{#link-to 'index' class="navbar-brand"}}{{t 'main.title'}}{{/link-to}}
+    </div>
+    {{#if session.can_view_tree}}
     <ul class="nav navbar-nav">
-      <li>{{#link-to 'node.show' 'root'}}{{t 'menu.nodes'}}{{/link-to}}
+      <li>{{#link-to 'node.show' 'root'}}{{t 'menu.nodes'}}{{/link-to}}</li>
     </ul>
+    {{/if}}
     <ul class="nav navbar-nav navbar-right">
-      {{#if session.isAuthenticated}}
-        <p class="navbar-text">{{t 'menu.logged_in_as'}} {{session.name}}</p>
-        <li>
-          <a href="javascript:void(0)" {{action 'invalidateSession'}}>Logout</a>
-        </li>
-      {{else}}
-        <li>
-	  {{#link-to 'login'}}{{t 'menu.login'}}{{/link-to}}
-        </li>
+      {{#if session.can_view_users}}
+      <ul class="nav navbar-nav">
+        <li>{{#link-to 'users.index'}}{{t 'menu.users'}}{{/link-to}}</li>
+      </ul>
       {{/if}}
-    </ul>
-  </div>
+      {{#if session.isAuthenticated}}
+      
+      <p class="navbar-text">{{t 'menu.logged_in_as'}} {{session.name}}</p>
+      <li>
+        <a href="javascript:void(0)" {{action 'invalidateSession'}}>Logout</a>
+      </li>
+      {{else}}
+      <li>
+       {{#link-to 'login'}}{{t 'menu.login'}}{{/link-to}}
+     </li>
+     {{/if}}
+   </ul>
+ </div>
 </nav>

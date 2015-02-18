@@ -1,16 +1,34 @@
-{{#link-to 'users.index.new' class="btn btn-primary pull-right"}}{{t 'users.new'}}{{/link-to}}
-<table class="table">
-  <tr>
-    <th>ID</th>
-    <th>Username</th>
-    <th></th>
-  </tr>
-  {{#each user in model}}
-    <tr>
-      <td>{{user.id}}</td>
-      <td>{{user.username}}</td>
-      <td>{{#link-to 'users.index.edit' user.id}}{{t 'users.edit'}}{{/link-to}}</td>
-    </tr>
-  {{/each}}
-</table>
+<div class="navbar navbar-default sub-navbar">
+  <ul class="navbar-nav nav navbar-right">
+    {{#if session.can_view_users}}
+      {{#link-to 'users.index.new' class="btn btn-default navbar-btn pull-right"}}{{t 'users.new'}}{{/link-to}}
+    {{/if}}
+  </ul>
+</div>
 {{outlet}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'users.header'}}</div>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each user in model}}
+          <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{#link-to 'users.index.edit' user.id}}{{t 'users.edit'}}{{/link-to}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+

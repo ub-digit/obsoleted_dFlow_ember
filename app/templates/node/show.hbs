@@ -1,53 +1,93 @@
 {{#if breadcrumb}}
-<ul class="breadcrumb">
-  {{#each parent in breadcrumb}}
-    {{#if parent.id}}
-      <li>{{link-to parent.name 'node.show' parent.id}}</li>
+  <ul class="breadcrumb">
+    <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
+    {{#each parent in breadcrumb}}
+      {{#if parent.id}}
+        <li>{{link-to parent.name 'node.show' parent.id}}</li>
+      {{else}}
+        <li>{{parent.name}}</li>
+      {{/if}}
+    {{/each}}
+  </ul>
+{{/if}}
+
+<div class="navbar navbar-default sub-navbar">
+  <div class="navbar-header">
+    {{#if isRoot}}
+      <a href="javascript:void(0)" class="navbar-brand">{{t 'nodes.root'}}</a>
     {{else}}
-      <li>{{parent.name}}</li>
+      <a href="javascript:void(0)" class="navbar-brand">{{name}}</a>
     {{/if}}
-  {{/each}}
-</ul>
-{{#link-to 'node.show.new' class="btn btn-primary pull-right"}}{{t 'nodes.new'}}{{/link-to}}
-{{#link-to 'node.show.jobs.source' class="btn btn-primary pull-right"}}{{t 'jobs.new'}}{{/link-to}}
-{{else}}
-{{#if session.can_manage_tree_root}}
-{{#link-to 'node.show.new' class="btn btn-primary pull-right"}}{{t 'nodes.new'}}{{/link-to}}
-{{/if}}
-{{/if}}
+  </div>
+  <ul class="navbar-nav nav navbar-right">
+    {{#unless isRoot}}
+      {{#if session.can_manage_tree}}
+        {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
+        {{#link-to 'node.show.jobs.source' class="btn btn-default navbar-btn"}}{{t 'jobs.new'}}{{/link-to}}
+      {{/if}}
+    {{/unless}}
+    {{#if isRoot}}
+      {{#if session.can_manage_tree_root}}
+        {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
+      {{/if}}
+    {{/if}}
+  </ul>
+</div>
+
+{{outlet}}
+
 {{#if children}}
-<table class="table">
-  <tr>
-    <th>{{t 'nodes.id'}}</th>
-    <th>{{t 'nodes.name'}}</th>
-    <th></th>
-  </tr>
-  {{#each child in children}}
-    <tr>
-      <td>{{child.id}}</td>
-      <td>{{link-to child.name 'node.show' child.id}}</td>
-      <td>{{#link-to 'node.show.edit' child.id}}{{t 'nodes.edit'}}{{/link-to}}</td>
-    </tr>
-  {{/each}}
-</table>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">{{t 'nodes.children.header'}}</div>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{{t 'nodes.id'}}</th>
+            <th>{{t 'nodes.name'}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each child in children}}
+            <tr>
+              <td>{{child.id}}</td>
+              <td>{{link-to child.name 'node.show' child.id}}</td>
+              <td>{{#link-to 'node.show.edit' child.id}}{{t 'nodes.edit'}}{{/link-to}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
 {{/if}}
 
 {{#if jobs}}
-<h2>{{t 'jobs.header'}}</h2>
-<table class="table">
-  <tr>
-    <th>{{t 'jobs.id'}}</th>
-    <th>{{t 'jobs.name'}}</th>
-    <th></th>
-  </tr>
-  {{#each job in jobs}}
-    <tr>
-      <td>{{job.id}}</td>
-      <td>{{link-to job.display 'jobs.show' job.id}}</td>
-      <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
-    </tr>
-  {{/each}}
-</table>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">{{t 'jobs.header'}}</div>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{{t 'jobs.id'}}</th>
+            <th>{{t 'jobs.name'}}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each job in jobs}}
+            <tr>
+              <td>{{job.id}}</td>
+              <td>{{link-to job.display 'jobs.show' job.id}}</td>
+              <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
 {{/if}}
-
-{{outlet}}

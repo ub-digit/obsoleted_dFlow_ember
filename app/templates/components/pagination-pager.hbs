@@ -1,33 +1,33 @@
-<div class="col-xs-12 pages-center pages">
-  {{#each page in pageArray}}
-  {{#if page.spacer}}
-  <div class="disabled spacer"><a class="btn"><span>...</span></a></div>
-  {{else}}
-  <div {{bind-attr class="page.active:active :page"}}>
-    {{#link-to 'jobs.index' (query-params page=page.page.page) class="btn btn-default"}}{{page.page}}{{/link-to}}
-  </div>
-  {{/if}}
-  {{/each}}
-</div>
-<div class="page-button page-button-left">
+<ul class="col-xs-12 pagination">
   {{#if pagination.previous}}
-  {{#link-to 'jobs.index' (query-params page=pagination.previous) class="btn btn-primary"}}
-  <span>Previous</gspan>
-    {{/link-to}}
-    {{else}}
-    <button class="btn btn-primary disabled">
+    <li>
+      {{#link-to 'jobs.index' (query-params page=pagination.previous) class=""}}
       <span>Previous</span>
-    </button>
-    {{/if}}
-  </div>
-  <div class="page-button page-button-right">
-    {{#if pagination.next}}
-    {{#link-to 'jobs.index' (query-params page=pagination.next) class="btn btn-primary"}}
-    <span>Next</span>
-    {{/link-to}}
+      {{/link-to}}
+    </li>
+  {{else}}
+    <li class="disabled">
+      <a href="javascript:void(0)"><span>Previous</span></a>
+    </li>
+  {{/if}}
+  {{#each page in pageArray}}
+    {{#if page.spacer}}
+      <li class="disabled spacer"><span>...</span></li>
     {{else}}
-    <button class="btn btn-primary disabled">
-      <span>Next</span>
-    </button>
+      <li {{bind-attr class="page.active:active"}}>
+        {{#link-to 'jobs.index' (query-params page=page.page.page) class="btn btn-default"}}{{page.page}}{{/link-to}}
+      </li>
     {{/if}}
-  </div>
+  {{/each}}
+  {{#if pagination.next}}
+    <li>
+      {{#link-to 'jobs.index' (query-params page=pagination.next) class="btn btn-primary"}}
+      <span>Next</span>
+      {{/link-to}}
+    </li>
+  {{else}}
+    <li class="disabled">
+      <a href="javascript:void(0)"><span>Next</span></a>
+    </li>
+  {{/if}}
+</ul>

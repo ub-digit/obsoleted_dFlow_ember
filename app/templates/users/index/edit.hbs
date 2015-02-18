@@ -1,5 +1,15 @@
-<div class="min-sidebar">
-  {{partial 'users/index/userform'}}
-  <button class="btn btn-primary" {{action 'saveUser' model}}>{{t 'users.update'}}</button>
-  <div class="clearfix"></div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'users.edit'}}</div>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      {{partial 'users/index/userform'}}
+      <div class="col-xs-12">
+        <button class="btn btn-primary" {{action 'saveUser' model}}>{{t 'users.update'}}</button>
+        {{#link-to 'users.index' class="btn btn-default"}}{{t 'users.cancel'}}{{/link-to}}
+      </div>
+    </div>
+  </div>
 </div>
+

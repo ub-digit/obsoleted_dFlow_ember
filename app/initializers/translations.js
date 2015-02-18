@@ -33,10 +33,16 @@ var TRANSLATIONS = {
       new: "Skapa ny nod",
       create: "Skapa",
       edit: "Redigera",
-      update: "Spara ändringar"
+      update: "Spara ändringar",
+      cancel: "Avbryt",
+      children: {
+        header: "Noder"
+      },
+      root: "Topp"
     },
     users: {
       id: "ID",
+      header: "Användare",
       name: "Namn",
       username: "Användarnamn",
       role: "Roll",
@@ -44,7 +50,8 @@ var TRANSLATIONS = {
       new: "Skapa ny användare",
       create: "Skapa användare",
       edit: "Redigera",
-      update: "Spara ändringar"
+      update: "Spara ändringar",
+      cancel: "Avbryt"
     },
     sources: {
       formlabel: "Källa",
@@ -59,8 +66,8 @@ var TRANSLATIONS = {
       createsubmit: "Skapa jobb",
       title: "Titel",
       author: "Författare",
-      jobname: "Jobbnamn",
-      copyright: "Copyright",
+      jobname: "Jobnamn",
+      copyrithgt: "Copyright",
       comments: "Kommentarer",
       objectinfo: "Objektinformation",
       id: "ID",

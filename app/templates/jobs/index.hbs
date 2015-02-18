@@ -1,18 +1,30 @@
-<h2>{{t 'jobs.header'}}</h2>
- {{pagination-pager pagination=model.meta.pagination}}
-<table class="table">
-  <tr>
-    <th>{{t 'jobs.id'}}</th>
-    <th>{{t 'jobs.name'}}</th>
-    <th></th>
-    <th>{{t 'jobs.breadcrumb'}}</th>
-  </tr>
-  {{#each job in model}}
-    <tr>
-      <td>{{job.id}}</td>
-      <td>{{link-to job.display 'jobs.show' job.id}}</td>
-      <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
-      <td>{{#link-to 'node.show' job.treenode_id}}{{job.breadcrumb_string}}{{/link-to}}</td>
-    </tr>
-  {{/each}}
-</table>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'jobs.header'}}</div>
+  </div>
+  <div class="panel-body">
+    {{pagination-pager pagination=model.meta.pagination}}
+  </div>
+  <div class="panel-body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{t 'jobs.id'}}</th>
+        <th>{{t 'jobs.name'}}</th>
+        <th></th>
+        <th>{{t 'jobs.breadcrumb'}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each job in model}}
+        <tr>
+          <td>{{job.id}}</td>
+          <td>{{link-to job.display 'jobs.show' job.id}}</td>
+          <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
+          <td>{{#link-to 'node.show' job.treenode_id}}{{job.breadcrumb_string}}{{/link-to}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  </div>
+</div>

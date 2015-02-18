@@ -55,7 +55,13 @@
             <tr>
               <td>{{child.id}}</td>
               <td>{{link-to child.name 'node.show' child.id}}</td>
-              <td>{{#link-to 'node.show.edit' id child.id}}{{t 'nodes.edit'}}{{/link-to}}</td>
+              <td>
+                {{#if isRoot}}
+                  {{#link-to 'node.show.edit' 'root' child.id}}{{t 'nodes.edit'}}{{/link-to}}
+                {{else}}
+                  {{#link-to 'node.show.edit' id child.id}}{{t 'nodes.edit'}}{{/link-to}}
+                {{/if}}
+              </td>
             </tr>
           {{/each}}
         </tbody>

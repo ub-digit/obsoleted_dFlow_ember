@@ -1,4 +1,13 @@
-<h3>This is in new.hbs</h3>
-<div>
-{{outlet}}
+<h3>Form for create job (new.hbs)</h3>
+<div class="min-sidebar">
+  <div class="form-group col-xs-12">
+    <div class="col-xs-6 col-md-8">
+      {{#if error}}
+      {{error.msg}}
+      {{/if}}
+    </div>
+    {{partial 'node/show/jobs/source/jobform'}}
+  </div>
+  <button class="btn btn-primary" {{action 'createJob' model}}>{{t 'jobs.createsubmit'}}</button>
+  <div class="clearfix"></div>
 </div>

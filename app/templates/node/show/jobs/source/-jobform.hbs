@@ -1,0 +1,50 @@
+<div class="form-group col-xs-12">
+    <div class="col-xs-6 col-md-8">
+      {{#if error}}
+      {{error.msg}}
+      {{/if}}
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <label>{{t 'jobs.title'}}</label>
+    </div>
+    <div class="col-xs-12">
+      {{input type="text" classBinding=":form-control :col-xs-6" value=model.title}}
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <label>{{t 'jobs.author'}}</label>
+    </div>
+    <div class="col-xs-12">
+      {{input type="text" classBinding=":form-control :col-xs-6" value=model.author}}
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <label>{{t 'jobs.jobname'}}</label>
+    </div>
+    <div class="col-xs-12">
+      {{input type="text" classBinding=":form-control :col-xs-6" value=model.jobname}}
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <label>{{t 'jobs.copyright'}}</label>
+    </div>
+    <div class="col-xs-12">
+      {{input type="text" classBinding=":form-control :col-xs-6" value=model.copyright}}
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <label>{{t 'jobs.comments'}}</label>
+    </div>
+    <div class="col-xs-12">
+      {{input type="text" classBinding=":form-control :col-xs-6" value=model.comments}}
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <label>{{t 'jobs.objectinfo'}}</label>
+    </div>
+    <div class="col-xs-12">
+      {{input type="text" classBinding=":form-control :col-xs-6" value=model.object_info}}
+    </div>
+
+  </div>
+

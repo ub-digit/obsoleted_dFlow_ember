@@ -26,3 +26,8 @@
 <div class="clearfix"></div>
 <strong>Objektinformation:</strong> {{comment}}
 {{/if}}
+{{#if activities}}
+{{#each activity in activities}}
+{{activity.created_at}} {{activity.event}} {{activity.username}} {{activity.message}}
+{{/each}}
+{{/if}}

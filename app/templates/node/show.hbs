@@ -55,7 +55,7 @@
             <tr>
               <td>{{child.id}}</td>
               <td>{{link-to child.name 'node.show' child.id}}</td>
-              <td>{{#link-to 'node.show.edit' child.id}}{{t 'nodes.edit'}}{{/link-to}}</td>
+              <td>{{#link-to 'node.show.edit' id child.id}}{{t 'nodes.edit'}}{{/link-to}}</td>
             </tr>
           {{/each}}
         </tbody>

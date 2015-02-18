@@ -34,6 +34,7 @@ var TRANSLATIONS = {
 			create: "Skapa",
 			edit: "Redigera",
 			update: "Spara ändringar",
+			cancel: "Avbryt",
 			children: {
 				header: "Noder"
 			},
@@ -49,7 +50,8 @@ var TRANSLATIONS = {
 			new: "Skapa ny användare",
 			create: "Skapa användare",
 			edit: "Redigera",
-			update: "Spara ändringar"
+			update: "Spara ändringar",
+			cancel: "Avbryt"
 		},
 		sources: {
 			formlabel: "Källa",

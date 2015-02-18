@@ -12,8 +12,9 @@
       <label class="col-xs-12">{{t 'nodes.name'}}
         {{input type="text" classBinding=":form-control :col-xs-6" value=model.name}}
       </label>
-      <div class="col-xs-2">
+      <div class="col-xs-12">
         <button class="btn btn-primary" {{action 'saveNode' model}}>{{t 'nodes.update'}}</button>
+        {{#link-to 'node.show' class="btn btn-default"}}{{t 'nodes.cancel'}}{{/link-to}}
       </div>
     </div>
   </div>

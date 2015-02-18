@@ -5,8 +5,9 @@
   <div class="panel-body">
     <div class="form-group">
       {{partial 'users/index/userform'}}
-      <div class="col-xs-2">
-        <button class="btn btn-primary form-control" {{action 'createUser' model}}>{{t 'users.create'}}</button>
+      <div class="col-xs-12">
+        <button class="btn btn-primary" {{action 'createUser' model}}>{{t 'users.create'}}</button>
+        {{#link-to 'users.index' class="btn btn-default"}}{{t 'users.cancel'}}{{/link-to}}
       </div>
     </div>
   </div>

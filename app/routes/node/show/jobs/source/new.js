@@ -12,7 +12,7 @@ export default Ember.Route.extend({
         // callback function for store to use in case of success
         function(model) {
           that.send('refreshModel'); // Refresh children of current model
-          that.transitionTo('node.show.jobs');
+          that.transitionTo('node.show');
         },
         // callback function for store to use in case of failure
         function(errorObject) {

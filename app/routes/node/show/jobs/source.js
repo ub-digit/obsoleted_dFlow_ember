@@ -24,6 +24,9 @@ export default Ember.Route.extend({
           that.controller.set('model.xml', source_data.xml);
           that.controller.set('model.metadata', source_data.metadata);
           that.transitionTo('node.show.jobs.source.new');
+        },
+        function(errorObject) {
+          that.controller.set('error', errorObject.error);
         }
       );
     }

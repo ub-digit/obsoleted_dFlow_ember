@@ -1,13 +1,14 @@
-<h3>Form for create job (new.hbs)</h3>
-<div class="min-sidebar">
-  <div class="form-group col-xs-12">
-    <div class="col-xs-6 col-md-8">
-      {{#if error}}
-      {{error.msg}}
-      {{/if}}
-    </div>
-    {{partial 'node/show/jobs/source/jobform'}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'jobs.new'}}</div>
   </div>
-  <button class="btn btn-primary" {{action 'createJob' model}}>{{t 'jobs.createsubmit'}}</button>
-  <div class="clearfix"></div>
+  <div class="panel-body">
+    <div class="form-group">
+      {{partial 'node/show/jobs/source/jobform'}}
+      <div class="col-xs-12">
+        <button class="btn btn-primary" {{action 'createJob' model}}>{{t 'jobs.createsubmit'}}</button>
+        {{#link-to 'node.show' class="btn btn-default"}}{{t 'nodes.cancel'}}{{/link-to}}
+      </div>
+    </div>
+  </div>
 </div>

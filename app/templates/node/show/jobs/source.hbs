@@ -1,30 +1,25 @@
-<h3>This is in source.hbs</h3>
-<div class="min-sidebar">
-  <h3>{{t 'sources.formlabel'}}</h3>
-  <div class="form-group col-xs-12">
-    <div class="col-xs-6 col-md-4">
-    <label>{{t 'sources.formlabel'}}</label>
-    </div>
-    <div class="col-xs-6 col-md-8">
-      {{#if error}}
-      {{error.msg}}
-      {{/if}}
-    </div>
-    <div class="col-xs-12">
-      {{view 'select' content=sourceSelection
-        value=model.source
-        optionValuePath="content.name"
-        optionLabelPath="content.label"
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'sources.formlabel'}}</div>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <label class="col-xs-12">{{t 'jobs.source'}}
+        {{view 'select' content=sourceSelection
+          value=model.source
+          optionValuePath="content.name"
+          optionLabelPath="content.label"
         }}
-      {{input type="text" classBinding=":form-control :col-xs-6" value=model.catalog_id}}
+      </label>
+      <label class="col-xs-12">{{t 'jobs.catalog_id'}}
+        {{input type="text" classBinding=":form-control :col-xs-6" value=model.catalog_id}}
+      </label>
+
+      <div class="col-xs-12">
+        <button class="btn btn-primary" {{action 'fetchSource' model}}>{{t 'sources.fetch'}}</button>
+        {{#link-to 'node.show' class="btn btn-default"}}{{t 'nodes.cancel'}}{{/link-to}}
+      </div>
     </div>
   </div>
-  <button class="btn btn-primary" {{action 'fetchSource' model}}>{{t 'sources.fetch'}}</button>
-  <div class="clearfix"></div>
 </div>
-
-
-<div>
 {{outlet}}
-
-</div>

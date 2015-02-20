@@ -10,6 +10,18 @@
     {{/each}}
   </ul>
 {{/if}}
+
+<div class="navbar navbar-default sub-navbar">
+  <div class="navbar-header">
+    <a href="javascript:void(0)" class="navbar-brand">{{id}}</a>
+  </div>
+  <ul class="navbar-nav nav navbar-right">
+    {{#if session.can_manage_jobs}}
+      <a {{bind-attr href=printURL}} class="btn btn-default navbar-btn" target="_blank">Utskrift</a>
+    {{/if}}
+  </ul>
+</div>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="panel-title">{{id}}. {{display}}</div>
@@ -35,5 +47,6 @@
         {{activity.created_at}} {{activity.event}} {{activity.username}} {{activity.message}}
       {{/each}}
     {{/if}}
+    
   </div>
 </div>

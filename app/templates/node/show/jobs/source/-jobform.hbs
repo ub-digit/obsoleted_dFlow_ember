@@ -25,5 +25,9 @@
 </label>
 
 <label class="col-xs-12">{{t 'jobs.copyright'}}
-  {{input type="text" classBinding=":form-control :col-xs-6" value=model.copyright}}
+  {{view 'select' content=copyrightSelection
+    value=model.copyright
+    optionValuePath="content.value"
+    optionLabelPath="content.label"
+  }}
 </label>

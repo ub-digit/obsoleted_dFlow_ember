@@ -78,7 +78,12 @@ var TRANSLATIONS = {
       object_info: "Objektinformation",
       id: "ID",
       edit: "Redigera",
-      breadcrumb: "Placering"
+      breadcrumb: "Placering",
+      copyright_values: {
+        'unselected': "Välj",
+        'true': "Ja",
+        'false': "Nej"
+      }
     }
   }
 };

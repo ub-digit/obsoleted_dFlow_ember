@@ -1,8 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  queryParams: {
+    page: { refreshModel: true }
+  },
   model: function(params) {
-    return this.store.find('treenode', params.node_id, {show_children: true, show_breadcrumb: true, show_jobs: true});
+    if(!params.page) {
+      params.page = 1;
+    }
+    return this.store.find('treenode', params.node_id, {
+	  show_children: true,
+	  show_breadcrumb: true,
+	  show_jobs: true,
+	  page: params.page
+	});
   },
   setupController: function(controller, model) {
     if (model.id) {

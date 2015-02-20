@@ -83,7 +83,13 @@ var TRANSLATIONS = {
         'unselected': "Välj",
         'true': "Ja",
         'false': "Nej"
-      }
+      },
+      print: "Utskrift",
+      start: "Starta digitalisering"
+    },
+    activityevent: {
+      STATUS: 'Byte av status',
+      CREATE: 'Jobb skapat'
     }
   }
 };

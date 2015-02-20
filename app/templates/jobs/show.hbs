@@ -17,7 +17,7 @@
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
-      <a {{bind-attr href=printURL}} class="btn btn-default navbar-btn" target="_blank">Utskrift</a>
+      {{print-link id=model.id type="button"}}
       {{#if startable}}
         <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
       {{/if}}
@@ -36,26 +36,34 @@
     <div class="panel-title">{{id}}. {{display}}</div>
   </div>
   <div class="panel-body">
-    <strong>Kalla:</strong> {{source}} {{catalog_id}}<br/>
-    {{#if title}}
-      <strong>Titel:</strong> {{title}}<br/>
-    {{/if}}
-    {{#if author}}
-      <strong>Forfattare:</strong> {{author}}
-    {{/if}}
-    {{#if object_info}}
-      <div class="clearfix"></div>
-      <strong>Objektinformation:</strong> {{object_info}}
-    {{/if}}
-    {{#if comment}}
-      <div class="clearfix"></div>
-      <strong>Objektinformation:</strong> {{comment}}
-    {{/if}}
-    {{#if activities}}
-      {{#each activity in activities}}
-        {{activity.created_at}} {{activity.event}} {{activity.username}} {{activity.message}}
-      {{/each}}
-    {{/if}}
+    <div class="col-xs-6">
+      <strong>{{t 'jobs.source'}}</strong> {{source}} {{catalog_id}}<br/>
+      {{#if title}}
+        <strong>{{t 'jobs.title'}}</strong> {{title}}<br/>
+      {{/if}}
+      {{#if author}}
+        <strong>{{t 'jobs.author'}}</strong> {{author}}
+      {{/if}}
+    </div>
+    <div class="col-xs-6">
+      {{#if object_info}}
+        <div class="clearfix"></div>
+        <strong>{{t 'jobs.object_info'}}</strong> <pre>{{object_info}}</pre>
+      {{/if}}
+      {{#if comment}}
+        <div class="clearfix"></div>
+        <strong>{{t 'jobs.comment'}}</strong> <pre>{{comment}}</pre>
+      {{/if}}
+      {{#if activities}}
+      <table class="table">
+      <tr></tr>
+        {{#each activity in activities}}
+          {{job-activity activity=activity}}
+        {{/each}}
+      {{/if}}
+      </table>
+
+    </div>
     
   </div>
 </div>

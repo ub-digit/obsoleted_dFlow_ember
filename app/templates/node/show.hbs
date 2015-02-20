@@ -57,9 +57,9 @@
               <td>{{link-to child.name 'node.show' child.id}}</td>
               <td>
                 {{#if isRoot}}
-                  {{#link-to 'node.show.edit' 'root' child.id}}{{t 'nodes.edit'}}{{/link-to}}
+                  {{#link-to 'node.show.edit' 'root' child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
                 {{else}}
-                  {{#link-to 'node.show.edit' id child.id}}{{t 'nodes.edit'}}{{/link-to}}
+                  {{#link-to 'node.show.edit' id child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
                 {{/if}}
               </td>
             </tr>
@@ -92,7 +92,12 @@
             <tr>
               <td>{{job.id}}</td>
               <td>{{link-to job.display 'jobs.show' job.id}}</td>
-              <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
+              <td>
+                {{#if session.can_manage_jobs}}
+                  {{#link-to 'node.show.jobs.edit' id job.id }}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
+                  {{print-link id=job.id type="icon"}}
+                {{/if}}
+                </td>
             </tr>
           {{/each}}
         </tbody>

@@ -18,9 +18,18 @@
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
       <a {{bind-attr href=printURL}} class="btn btn-default navbar-btn" target="_blank">Utskrift</a>
+      {{#if startable}}
+        <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
+      {{/if}}
     {{/if}}
   </ul>
 </div>
+
+{{#if error}}
+  <div class="alert alert-danger">
+    {{error.msg}}
+  </div>
+{{/if}}
 
 <div class="panel panel-default">
   <div class="panel-heading">

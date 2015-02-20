@@ -38,7 +38,11 @@ var TRANSLATIONS = {
       children: {
         header: "Noder"
       },
-      root: "Topp"
+      root: "Topp",
+	  new_parent_id: "ID på ny förälder",
+	  move_confirm_root: "Är du säker på att du vill flytta nod till toppnivå?",
+	  move_root_denied: "Du har inte rätt att flytta noder till toppnivå!",
+	  move_confirm: "Är du säker på att du vill flytta nod till"
     },
     users: {
       id: "ID",

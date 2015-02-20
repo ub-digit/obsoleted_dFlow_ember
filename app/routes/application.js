@@ -23,8 +23,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     ]);
   },
   actions: {
-   sessionAuthenticationFailed: function(error) {
-     this.controllerFor('login').set('error', error);
-   }
- }
+	sessionAuthenticationFailed: function(error) {
+      this.controllerFor('login').set('error', error);
+	},
+	showJob: function(job_id) {
+	  this.controller.set('job_id', '');
+	  this.transitionTo('jobs.show', job_id);
+	}
+  }
 });

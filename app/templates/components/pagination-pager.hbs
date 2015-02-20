@@ -1,7 +1,7 @@
 <ul class="col-xs-12 pagination">
   {{#if pagination.previous}}
     <li>
-      {{#link-to 'jobs.index' (query-params page=pagination.previous) class=""}}
+      {{#link-to (query-params page=pagination.previous) class=""}}
       <span>Previous</span>
       {{/link-to}}
     </li>
@@ -15,13 +15,13 @@
       <li class="disabled spacer"><span>...</span></li>
     {{else}}
       <li {{bind-attr class="page.active:active"}}>
-        {{#link-to 'jobs.index' (query-params page=page.page.page) class="btn btn-default"}}{{page.page}}{{/link-to}}
+        {{#link-to (query-params page=page.page.page) class="btn btn-default"}}{{page.page}}{{/link-to}}
       </li>
     {{/if}}
   {{/each}}
   {{#if pagination.next}}
     <li>
-      {{#link-to 'jobs.index' (query-params page=pagination.next) class="btn btn-primary"}}
+      {{#link-to (query-params page=pagination.next) class="btn btn-primary"}}
       <span>Next</span>
       {{/link-to}}
     </li>

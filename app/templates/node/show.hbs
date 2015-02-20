@@ -73,7 +73,10 @@
 {{#if jobs}}
   <div class="panel panel-info">
     <div class="panel-heading">
-      <div class="panel-title">{{t 'jobs.header'}} ({{jobs.length}})</div>
+      <div class="panel-title">{{t 'jobs.header'}} ({{model.meta.query.total}})</div>
+    </div>
+    <div class="panel-body">
+      {{pagination-pager pagination=model.meta.pagination}}
     </div>
     <div class="panel-body">
       <table class="table">

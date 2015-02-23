@@ -1,7 +1,7 @@
-{{#if breadcrumb}}
+{{#if model.breadcrumb}}
   <ul class="breadcrumb">
     <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
-    {{#each parent in breadcrumb}}
+    {{#each parent in model.breadcrumb}}
       {{#if parent.id}}
         <li>{{link-to parent.name 'node.show' parent.id}}</li>
       {{else}}
@@ -16,7 +16,7 @@
     {{#if isRoot}}
       <a href="javascript:void(0)" class="navbar-brand">{{t 'nodes.root'}}</a>
     {{else}}
-      <a href="javascript:void(0)" class="navbar-brand">{{name}} (ID: {{id}})</a>
+      <a href="javascript:void(0)" class="navbar-brand">{{model.name}} (ID: {{model.id}})</a>
     {{/if}}
   </div>
   <ul class="navbar-nav nav navbar-right">
@@ -36,7 +36,7 @@
 
 {{outlet}}
 
-{{#if children}}
+{{#if model.children}}
   <div class="panel panel-default">
     <div class="panel-heading">
       <div class="panel-title">{{t 'nodes.children.header'}}</div>
@@ -51,7 +51,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each child in children}}
+          {{#each child in model.children}}
             <tr>
               <td>{{child.id}}</td>
               <td>{{link-to child.name 'node.show' child.id}}</td>
@@ -70,7 +70,7 @@
   </div>
 {{/if}}
 
-{{#if jobs}}
+{{#if model.jobs}}
   <div class="panel panel-info">
     <div class="panel-heading">
       <div class="panel-title">{{t 'jobs.header'}} ({{model.meta.query.total}})</div>
@@ -88,7 +88,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each job in jobs}}
+          {{#each job in model.jobs}}
             <tr>
               <td>{{job.id}}</td>
               <td>{{link-to job.display 'jobs.show' job.id}}</td>

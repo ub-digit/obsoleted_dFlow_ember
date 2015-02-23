@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
-  content: {},
+export default Ember.Controller.extend({
   queryParams: ['page'],
-  isRoot: Ember.computed.empty('id')
+  isRoot: Ember.computed.empty('model.id')
 });
 

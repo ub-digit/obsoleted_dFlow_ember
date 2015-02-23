@@ -10,7 +10,7 @@ export default Ember.Route.extend({
       var that = this;
       this.store.save('job', model).then(
         // callback function for store to use in case of success
-        function(model) {
+        function() {
           that.send('refreshModel'); // Refresh children of current model
           that.transitionTo('node.show');
         },

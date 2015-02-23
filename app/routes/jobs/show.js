@@ -9,7 +9,7 @@ export default Ember.Route.extend({
       var that = this;
       this.store.find('job', id + '/digitizing_begin').then(
         // Success function
-        function(model) {
+        function() {
           that.refresh(id); // Refresh children of current model
           //that.transitionTo('jobs.show');
         },

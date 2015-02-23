@@ -9,7 +9,7 @@ export default Ember.Route.extend({
       var that = this; // To be used in nested functions
       this.store.save('user', model).then(
         // Success function
-        function(model) {
+        function() {
           that.send('refreshModel'); // Refresh children of current model
           that.transitionTo('users.index');
         },

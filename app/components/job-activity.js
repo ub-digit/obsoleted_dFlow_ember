@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ENV from 'd-flow-ember/config/environment';
 
 export default Ember.Component.extend({
   tagName: 'tr',

@@ -14,8 +14,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Username</th>
+          <th>{{t 'users.id'}}</th>
+          <th>{{t 'users.username'}}</th>
+          <th>{{t 'users.name'}}</th>
+          <th>{{t 'users.role'}}</th>
           <th></th>
         </tr>
       </thead>
@@ -24,6 +26,8 @@
           <tr>
             <td>{{user.id}}</td>
             <td>{{user.username}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.role}}</td>
             <td>{{#link-to 'users.index.edit' user.id}}{{t 'users.edit'}}{{/link-to}}</td>
           </tr>
         {{/each}}

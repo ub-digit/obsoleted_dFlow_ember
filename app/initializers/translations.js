@@ -40,9 +40,10 @@ var TRANSLATIONS = {
       },
       root: "Topp",
 	  new_parent_id: "ID på ny förälder",
-	  move_confirm_root: "Är du säker på att du vill flytta nod till toppnivå?",
+	  move_confirm_root: "Är du säker på att du vill flytta noden till toppnivå?",
 	  move_root_denied: "Du har inte rätt att flytta noder till toppnivå!",
-	  move_confirm: "Är du säker på att du vill flytta nod till"
+	  move_confirm: "Är du säker på att du vill flytta noden till",
+	  move_parent_not_found: "Kunde inte hitta destinationsnoden"
     },
     users: {
       id: "ID",

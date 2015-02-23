@@ -32,6 +32,10 @@ export default Ember.Route.extend({
 				delete model.new_parent_id;
 				that.send('saveNode', model);
 			  }
+			},
+			// Failed to fetch parent (no such node?)
+			function() {
+			  alert(Ember.I18n.t("nodes.move_parent_not_found"));
 			}
 		  );
 		}

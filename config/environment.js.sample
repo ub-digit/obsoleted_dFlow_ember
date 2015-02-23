@@ -47,5 +47,10 @@ module.exports = function(environment) {
 	ENV.APP.serviceURL = 'http://production-server.example.com';
     }
 
+    if (environment === 'production-test') {
+  ENV.APP.authenticationBaseURL = 'http://production-server.example.com/session';
+  ENV.APP.serviceURL = 'http://production-server.example.com';
+    }
+
     return ENV;
 };

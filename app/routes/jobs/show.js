@@ -6,16 +6,12 @@ export default Ember.Route.extend({
   },
   actions: {
     startJob: function(id){
-      var that = this;
       this.store.find('job', id + '/digitizing_begin').then(
-        // Success function
-        function() {
-          that.refresh(id); // Refresh children of current model
-          //that.transitionTo('jobs.show');
+        () => {
+          this.refresh(id); // Refresh children of current model
         },
-      // Failed function
-        function(errorObject) {
-          that.controller.set('error', errorObject.error);
+        (errorObject) => {
+          this.controller.set('error', errorObject.error);
         }
       );
     }

@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     return this.store.find('job', params.id);
   },
   actions: {
-    startJob: function(id){
+    startJob(id){
       this.store.find('job', id + '/digitizing_begin').then(
         () => {
           this.refresh(id); // Refresh children of current model

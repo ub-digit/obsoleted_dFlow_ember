@@ -18,6 +18,22 @@ export default Ember.Route.extend({
           that.controller.set('error', errorObject.error);
         }
       );
+    },
+    deleteUser: function(id) {
+      var that = this;
+      // Send confirmation box before delete
+      var should_delete = confirm(Ember.I18n.t("users.confirm_delete"));
+      if (should_delete){
+        this.store.destroy('user', id).then(
+          function() {
+            that.send('refreshModel');
+            that.transitionTo('users.index');
+          },
+          function(errorObject) {
+            that.controller.set('error', errorObject.error);
+          }
+          );
+      }
     }
   }
 });

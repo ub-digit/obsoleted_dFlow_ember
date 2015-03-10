@@ -7,7 +7,10 @@
       {{partial 'users/index/userform'}}
       <div class="col-xs-12">
         <button class="btn btn-primary" {{action 'saveUser' model}}>{{t 'users.update'}}</button>
-        {{#link-to 'users.index' class="btn btn-default"}}{{t 'users.cancel'}}{{/link-to}}
+        {{#link-to 'users.index' class="btn btn-warning offset3 span2"}}{{t 'users.cancel'}}{{/link-to}}
+        <div class="pull-right">
+        <button class="btn btn-danger" {{action 'deleteUser' model.id}}>{{t 'users.delete'}}</button>
+        </div>
       </div>
     </div>
   </div>

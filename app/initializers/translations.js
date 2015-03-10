@@ -56,7 +56,9 @@ var TRANSLATIONS = {
       create: "Skapa användare",
       edit: "Redigera",
       update: "Spara ändringar",
-      cancel: "Avbryt"
+      cancel: "Avbryt",
+      delete: "Radera användare",
+      confirm_delete: "Är du säker på att du vill radera användaren från systemet?"
     },
     sources: {
       formlabel: "Källa",

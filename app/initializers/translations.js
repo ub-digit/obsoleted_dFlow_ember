@@ -88,7 +88,9 @@ var TRANSLATIONS = {
         'false': "Nej"
       },
       print: "Utskrift",
-      start: "Starta digitalisering"
+      start: "Starta digitalisering",
+      delete: "Radera jobb",
+      confirm_delete: "Är du säker på att du vill radera jobbet från systemet?"
     },
     activityevent: {
       STATUS: 'Byte av status',

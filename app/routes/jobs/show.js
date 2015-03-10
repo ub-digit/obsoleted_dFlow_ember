@@ -14,6 +14,20 @@ export default Ember.Route.extend({
           this.controller.set('error', errorObject.error);
         }
       );
+    },
+    deleteJob(id) {
+      // Send confirmation box before delete
+      var should_delete = confirm(Ember.I18n.t("jobs.confirm_delete"));
+      if (should_delete){
+        this.store.destroy('job', id).then(
+          () => {
+            this.transitionTo('index');
+          },
+          (errorObject) => {
+            this.controller.set('error', errorObject.error);
+          }
+          );
+      }
     }
   }
 });

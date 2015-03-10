@@ -5,6 +5,20 @@ export default Ember.Route.extend({
     return this.store.find('treenode', params.id);
   },
   actions: {
+    deleteNode: function(id) {
+      var that = this;
+      var should_delete = confirm(Ember.I18n.t("nodes.confirm_delete"));
+      if (should_delete){
+        this.store.destroy('treenode', id).then(
+          () => {
+            this.transitionTo('index');
+          },
+          (errorObject) => {
+            this.controller.set('error', errorObject.error);
+          }
+          );
+      }
+    },
     updateNode: function(model) {
      var that = this;
 	  // If we have a new_parent_id, ask user if it actually should be moved

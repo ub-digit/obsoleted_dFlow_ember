@@ -18,6 +18,9 @@
       <div class="col-xs-12">
         <button class="btn btn-primary" {{action 'updateNode' model}}>{{t 'nodes.update'}}</button>
         {{#link-to 'node.show' class="btn btn-default"}}{{t 'nodes.cancel'}}{{/link-to}}
+        <div class="pull-right">
+        <button class="btn btn-danger" {{action 'deleteNode' model.id}}>{{t 'nodes.delete'}}</button>
+        </div>
       </div>
     </div>
   </div>

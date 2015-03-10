@@ -39,11 +39,13 @@ var TRANSLATIONS = {
         header: "Noder"
       },
       root: "Topp",
-	  new_parent_id: "ID på ny förälder",
-	  move_confirm_root: "Är du säker på att du vill flytta noden till toppnivå?",
-	  move_root_denied: "Du har inte rätt att flytta noder till toppnivå!",
-	  move_confirm: "Är du säker på att du vill flytta noden till",
-	  move_parent_not_found: "Kunde inte hitta destinationsnoden"
+  	  new_parent_id: "ID på ny förälder",
+  	  move_confirm_root: "Är du säker på att du vill flytta noden till toppnivå?",
+  	  move_root_denied: "Du har inte rätt att flytta noder till toppnivå!",
+  	  move_confirm: "Är du säker på att du vill flytta noden till",
+  	  move_parent_not_found: "Kunde inte hitta destinationsnoden",
+      delete: "Radera nod",
+      confirm_delete: "Är du säker på att du vill radera noden och ALLA dess barn från systemet?"
     },
     users: {
       id: "ID",

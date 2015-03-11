@@ -94,7 +94,8 @@ var TRANSLATIONS = {
       delete: "Radera jobb",
       confirm_delete: "Är du säker på att du vill radera jobbet från systemet?",
       type_of_record: {
-        am: "Monografi"
+        am: "Monografi",
+        as: "Periodika"
       },
       statuses: {
         waiting_for_digitizing: "Väntar på digitalisering",

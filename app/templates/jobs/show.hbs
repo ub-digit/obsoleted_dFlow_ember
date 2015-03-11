@@ -37,28 +37,92 @@
     <div class="panel-title"><strong>{{id}}</strong> {{display}}</div>
   </div>
   <div class="panel-body">
-  <div class="alert alert-success">
+    <div class="alert alert-success">
       <strong>Status:</strong> {{status_string}}
-      </div>
+    </div>
     <div class="col-xs-6">
-      <strong>{{t 'jobs.source'}}</strong> {{source}} {{catalog_id}}<br/>
+      <div class="row">
+        <div class="col-xs-3">
+          <strong>{{t 'jobs.source'}}</strong> 
+        </div>
+        <div class="col-xs-9">
+          {{source_label}} ( 
+          {{#if source_link}}
+            <a {{bind-attr href=source_link}} target="_blank">{{catalog_id}}</a>
+          {{else}}
+            {{catalog_id}}
+          {{/if}}
+           )
+        </div>
+      </div>
+      
       {{#if title}}
-      <strong>{{t 'jobs.title'}}</strong> {{title}}<br/>
+      <div class="row">
+        <div class="col-xs-3">
+          <strong>{{t 'jobs.title'}}</strong>
+        </div>
+        <div class="col-xs-9">
+          {{title}}
+        </div>
+      </div>
       {{/if}}
+      
       {{#if author}}
-      <strong>{{t 'jobs.author'}}</strong> {{author}}<br/>
+      <div class="row">
+        <div class="col-xs-3">
+          <strong>{{t 'jobs.author'}}</strong>
+        </div>
+        <div class="col-xs-9">
+          {{author}}
+        </div>
+      </div>
       {{/if}}
+      
       {{#if type_of_record_string}}
-      <strong>Typ:</strong> {{type_of_record_string}}<br/>
+      <div class="row">
+        <div class="col-xs-3">
+          <strong>Typ:</strong>
+        </div>
+        <div class="col-xs-9">
+          {{type_of_record_string}}
+        </div>
+      </div>
       {{/if}}
 
-      <strong>Copyright</strong>
-      {{#if copyright}}
-      <button class="btn btn-danger active">{{copyright_string}}</button>
-      {{else}}
-      <button class="btn btn-success active">{{copyright_string}}</button>
+      {{#if chronology_string}}
+        <div class="row">
+          <div class="col-xs-3">
+             -Kronologi
+          </div>
+          <div class="col-xs-9">
+          {{chronology_string}}
+          </div>
+        </div>
       {{/if}}
-      <br/>
+
+      {{#if ordinality_string}}
+        <div class="row">
+          <div class="col-xs-3">
+             -Ordinalitet
+          </div>
+          <div class="col-xs-9">
+          {{ordinality_string}}
+          </div>
+        </div>
+      {{/if}}
+
+      <div class="row">
+        <div class="col-xs-3">
+          <strong>Copyright</strong>
+        </div>
+        <div class="col-xs-9">
+          {{#if copyright}}
+          <button class="btn btn-danger active btn-xs">{{copyright_string}}</button>
+          {{else}}
+          <button class="btn btn-success active btn-xs">{{copyright_string}}</button>
+          {{/if}}
+        </div>
+      </div>
     </div>
     <div class="col-xs-6">
       {{#if object_info}}
@@ -73,41 +137,41 @@
     </div>
 
     <div class="col-xs-12" style="margin-top:20px">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Historik
-            </a>
-          </h4>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Historik
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <table class="table">
+                <tr></tr>
+                {{#each activity in activities}}
+                {{job-activity activity=activity}}
+                {{/each}}
+              </table>
+            </div>
+          </div>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            <table class="table">
-              <tr></tr>
-              {{#each activity in activities}}
-              {{job-activity activity=activity}}
-              {{/each}}
-            </table>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                XML
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              {{xml}}
+            </div>
           </div>
         </div>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingTwo">
-          <h4 class="panel-title">
-            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              XML
-            </a>
-          </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-          {{xml}}
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
     
   </div>

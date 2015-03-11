@@ -1,8 +1,12 @@
 import Ember from 'ember';
+import Job from './../../models/job';
 
 export default Ember.Route.extend({
   model: function(params) {
     return this.store.find('job', params.id);
+  },
+  setupController: function(controller, model) {
+    controller.set('model', Job.create(model));
   },
   actions: {
     startJob(id){

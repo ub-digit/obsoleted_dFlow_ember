@@ -86,13 +86,20 @@ var TRANSLATIONS = {
       breadcrumb: "Placering",
       copyright_values: {
         'unselected': "Välj",
-        'true': "Ja",
-        'false': "Nej"
+        'true': "Får EJ publiceras",
+        'false': "Får publiceras"
       },
       print: "Utskrift",
       start: "Starta digitalisering",
       delete: "Radera jobb",
-      confirm_delete: "Är du säker på att du vill radera jobbet från systemet?"
+      confirm_delete: "Är du säker på att du vill radera jobbet från systemet?",
+      type_of_record: {
+        am: "Monografi"
+      },
+      statuses: {
+        waiting_for_digitizing: "Väntar på digitalisering",
+        digitizing: "Digitalisering pågår"
+      }
     },
     activityevent: {
       STATUS: 'Byte av status',

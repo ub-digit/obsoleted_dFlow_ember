@@ -1,14 +1,14 @@
 {{#if breadcrumb}}
-  <ul class="breadcrumb">
-    <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
-    {{#each parent in breadcrumb}}
-      {{#if parent.id}}
-        <li>{{link-to parent.name 'node.show' parent.id}}</li>
-      {{else}}
-        <li>{{parent.name}}</li>
-      {{/if}}
-    {{/each}}
-  </ul>
+<ul class="breadcrumb">
+  <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
+  {{#each parent in breadcrumb}}
+  {{#if parent.id}}
+  <li>{{link-to parent.name 'node.show' parent.id}}</li>
+  {{else}}
+  <li>{{parent.name}}</li>
+  {{/if}}
+  {{/each}}
+</ul>
 {{/if}}
 
 <div class="navbar navbar-default sub-navbar">
@@ -17,53 +17,97 @@
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
-      <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
-      {{print-link id=model.id type="button"}}
-      {{#if startable}}
-        <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
-      {{/if}}
+    <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
+    {{print-link id=model.id type="button"}}
+    {{#if startable}}
+    <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
+    {{/if}}
     {{/if}}
   </ul>
 </div>
 
 {{#if error}}
-  <div class="alert alert-danger">
-    {{error.msg}}
-  </div>
+<div class="alert alert-danger">
+  {{error.msg}}
+</div>
 {{/if}}
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">{{id}}. {{display}}</div>
+    <div class="panel-title"><strong>{{id}}</strong> {{display}}</div>
   </div>
   <div class="panel-body">
+  <div class="alert alert-success">
+      <strong>Status:</strong> {{status_string}}
+      </div>
     <div class="col-xs-6">
       <strong>{{t 'jobs.source'}}</strong> {{source}} {{catalog_id}}<br/>
       {{#if title}}
-        <strong>{{t 'jobs.title'}}</strong> {{title}}<br/>
+      <strong>{{t 'jobs.title'}}</strong> {{title}}<br/>
       {{/if}}
       {{#if author}}
-        <strong>{{t 'jobs.author'}}</strong> {{author}}
+      <strong>{{t 'jobs.author'}}</strong> {{author}}<br/>
       {{/if}}
+      {{#if type_of_record_string}}
+      <strong>Typ:</strong> {{type_of_record_string}}<br/>
+      {{/if}}
+
+      <strong>Copyright</strong>
+      {{#if copyright}}
+      <button class="btn btn-danger active">{{copyright_string}}</button>
+      {{else}}
+      <button class="btn btn-success active">{{copyright_string}}</button>
+      {{/if}}
+      <br/>
     </div>
     <div class="col-xs-6">
       {{#if object_info}}
-        <div class="clearfix"></div>
-        <strong>{{t 'jobs.object_info'}}</strong> <pre>{{object_info}}</pre>
+      <div class="clearfix"></div>
+      <strong>{{t 'jobs.object_info'}}</strong> <pre>{{object_info}}</pre>
       {{/if}}
       {{#if comment}}
-        <div class="clearfix"></div>
-        <strong>{{t 'jobs.comment'}}</strong> <pre>{{comment}}</pre>
+      <div class="clearfix"></div>
+      <strong>{{t 'jobs.comment'}}</strong> <pre>{{comment}}</pre>
       {{/if}}
-      {{#if activities}}
-      <table class="table">
-      <tr></tr>
-        {{#each activity in activities}}
-          {{job-activity activity=activity}}
-        {{/each}}
-      {{/if}}
-      </table>
 
+    </div>
+
+    <div class="col-xs-12" style="margin-top:20px">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Historik
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <table class="table">
+              <tr></tr>
+              {{#each activity in activities}}
+              {{job-activity activity=activity}}
+              {{/each}}
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              XML
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+          {{xml}}
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
     
   </div>

@@ -37,8 +37,10 @@
     <div class="panel-title"><strong>{{id}}</strong> {{display}}</div>
   </div>
   <div class="panel-body">
-    <div class="alert alert-success">
-      <strong>Status:</strong> {{status_string}}
+    <div class="col-xs-12">
+      <div class="alert alert-success">
+        <strong>Status:</strong> {{status_string}}
+      </div>
     </div>
     <div class="col-xs-6">
       <div class="row">
@@ -52,7 +54,7 @@
           {{else}}
             {{catalog_id}}
           {{/if}}
-           )
+          )
         </div>
       </div>
       
@@ -81,7 +83,7 @@
       {{#if type_of_record_string}}
       <div class="row">
         <div class="col-xs-3">
-          <strong>Typ:</strong>
+          <strong>{{t 'jobs.type_of_record.label'}}</strong>
         </div>
         <div class="col-xs-9">
           {{type_of_record_string}}
@@ -90,89 +92,89 @@
       {{/if}}
 
       {{#if chronology_string}}
-        <div class="row">
-          <div class="col-xs-3">
-             -Kronologi
-          </div>
-          <div class="col-xs-9">
-          {{chronology_string}}
-          </div>
-        </div>
-      {{/if}}
-
-      {{#if ordinality_string}}
-        <div class="row">
-          <div class="col-xs-3">
-             -Ordinalitet
-          </div>
-          <div class="col-xs-9">
-          {{ordinality_string}}
-          </div>
-        </div>
-      {{/if}}
-
       <div class="row">
         <div class="col-xs-3">
-          <strong>Copyright</strong>
-        </div>
-        <div class="col-xs-9">
-          {{#if copyright}}
-          <button class="btn btn-danger active btn-xs">{{copyright_string}}</button>
-          {{else}}
-          <button class="btn btn-success active btn-xs">{{copyright_string}}</button>
-          {{/if}}
-        </div>
+         {{t 'jobs.chronology'}}
+       </div>
+       <div class="col-xs-9">
+        {{chronology_string}}
       </div>
     </div>
-    <div class="col-xs-6">
-      {{#if object_info}}
-      <div class="clearfix"></div>
-      <strong>{{t 'jobs.object_info'}}</strong> <pre>{{object_info}}</pre>
-      {{/if}}
-      {{#if comment}}
-      <div class="clearfix"></div>
-      <strong>{{t 'jobs.comment'}}</strong> <pre>{{comment}}</pre>
-      {{/if}}
+    {{/if}}
 
+    {{#if ordinality_string}}
+    <div class="row">
+      <div class="col-xs-3">
+       {{t 'jobs.ordinality'}}
+     </div>
+     <div class="col-xs-9">
+      {{ordinality_string}}
     </div>
-
-    <div class="col-xs-12" style="margin-top:20px">
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Historik
-              </a>
-            </h4>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <table class="table">
-                <tr></tr>
-                {{#each activity in activities}}
-                {{job-activity activity=activity}}
-                {{/each}}
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                XML
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              {{xml}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
   </div>
+  {{/if}}
+
+  <div class="row">
+    <div class="col-xs-3">
+      <strong>{{t 'jobs.copyright'}}</strong>
+    </div>
+    <div class="col-xs-9">
+      {{#if copyright}}
+      <button class="btn btn-danger active btn-xs">{{copyright_string}}</button>
+      {{else}}
+      <button class="btn btn-success active btn-xs">{{copyright_string}}</button>
+      {{/if}}
+    </div>
+  </div>
+</div>
+<div class="col-xs-6">
+  {{#if object_info}}
+  <div class="clearfix"></div>
+  <strong>{{t 'jobs.object_info'}}</strong> <pre>{{object_info}}</pre>
+  {{/if}}
+  {{#if comment}}
+  <div class="clearfix"></div>
+  <strong>{{t 'jobs.comment'}}</strong> <pre>{{comment}}</pre>
+  {{/if}}
+
+</div>
+
+<div class="col-xs-12" style="margin-top:20px">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            {{t jobs.history}}
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <table class="table">
+            <tr></tr>
+            {{#each activity in activities}}
+            {{job-activity activity=activity}}
+            {{/each}}
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            {{t jobs.xml}}
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          <pre>{{xml}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
 </div>

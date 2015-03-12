@@ -94,13 +94,18 @@ var TRANSLATIONS = {
       delete: "Radera jobb",
       confirm_delete: "Är du säker på att du vill radera jobbet från systemet?",
       type_of_record: {
+        label: "Typ",
         am: "Monografi",
         as: "Periodika"
       },
       statuses: {
         waiting_for_digitizing: "Väntar på digitalisering",
         digitizing: "Digitalisering pågår"
-      }
+      },
+      history: "Historik",
+      xml: "XML",
+      ordinality: "Ordinalitet",
+      chronology: "Kronologi"
     },
     activityevent: {
       STATUS: 'Byte av status',

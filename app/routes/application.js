@@ -12,8 +12,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   },
   setupController: function(controller, model) {
     // To be able to access from specific controllers
-    controller.set('content', {});
-    console.log(model.roles);
+    controller.set('model', {});
+    //console.log(model.roles);
     controller.set('roleSelection', model.roles);
     controller.set('sourceSelection', model.sources);
     controller.set('copyrightSelection', [

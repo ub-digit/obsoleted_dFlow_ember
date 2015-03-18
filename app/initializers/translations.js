@@ -100,7 +100,8 @@ var TRANSLATIONS = {
       },
       statuses: {
         waiting_for_digitizing: "Väntar på digitalisering",
-        digitizing: "Digitalisering pågår"
+        digitizing: "Digitalisering pågår",
+        done: "Klar!"
       },
       history: "Historik",
       xml: "XML",

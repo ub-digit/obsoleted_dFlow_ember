@@ -1,0 +1,66 @@
+#!/bin/bash
+set -e # Makes sure that script exits on any error
+# Script for deploying an Ember application securely to a server
+appname='myApp' # Name used in directories
+app_domain_name='myapp' # Name used in dns
+local_app_location='/my/local/path/to/app' # Local app location on your machine
+version=$(date +"%Y%m%d%H%M%S") # Format for versioning
+environment=$1 # Environment given by user
+valid_environments="production test demo" # Possible environments to choose from
+remote_user='remote-user' # User used for deploy to remote server
+top_domain='my.domain.com' # Top domain name, ie 'my.domain.com'
+
+# Sets the remote domain and location based on the following standards:
+# Location: production: /apps/appName/, test: /apps/test/appName
+# Domain name: production: appName.topDomain, test: appName-test.topDomain
+if ! $environment == 'production'; then
+  remote_app_location="/apps/$environment/$appname"
+  app_domain_name="$app_domain_name-$environment.$top_domain"
+else
+  remote_app_location="/apps/$appname"
+  app_domain_name="$app_domain_name.$top_domain"
+fi
+
+# Checks if $2 exists in list $1
+contains() {
+    [[ $1 =~ $2 ]] && return 0 || return 1
+}
+
+# Check if environment is a valid value
+if contains "$valid_environments" $environment; then
+  echo "starting deployment for environment $environment";
+else
+  echo "$environment is not a valid environment value, pick one of: [$valid_environments]";
+  exit;
+fi
+
+# Check if application directory exists
+if ! [ -d "$local_app_location" ]; then
+  echo "$local_app_location is not a valid application directory - exiting"
+  exit
+fi 
+
+# Delete dist folder if it exists
+if [ -d "$local_app_location/dist" ]; then
+  echo "Found existing dist folder - deleting it"
+  rm -r $local_app_location/dist
+fi 
+
+# Rebuild dist folder
+ember build environment="production-$environment"
+
+if [ -d "$local_app_location/dist" ]; then
+  echo "Done building dist!"
+else
+  echo "Something went wrong with the build - exiting"
+  exit
+fi 
+
+# Copy dist files to version on remote server
+scp -rp "$local_app_location/dist/" "$remote_user@$app_domain_name:$remote_app_location/releases/$version/"
+echo "Files successfully copied to $app_domain_name:$remote_app_location/releases/$version/"
+
+# Create symlink between newest version and current release
+ssh $remote_user@$app_domain_name "ln -sfnv $remote_app_location/releases/$version $remote_app_location/current"
+echo "Created symlink successfully"
+

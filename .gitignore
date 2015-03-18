@@ -16,6 +16,8 @@
 npm-debug.log
 testem.log
 
+deployscript.sh
+
 config/environment.js
 
 *~

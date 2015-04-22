@@ -10,7 +10,14 @@
        <span class="input-group-btn">
         <button class="btn btn-default" type="button" {{action 'searchJobs' query}}>{{t 'jobs.search'}}</button>
       </span>
+      
     </div>
+    Status:
+        {{view "select"
+         content=statusSelection
+         optionValuePath="content.value"
+         optionLabelPath="content.label"
+         value=status}}
   </div>
   <div class="panel-body">
     {{pagination-pager pagination=model.meta.pagination}}

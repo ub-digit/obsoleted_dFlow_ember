@@ -22,6 +22,11 @@
     {{#if startable}}
     <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
     {{/if}}
+    {{#if quarantined}}
+    <button class="btn btn-primary navbar-btn" {{action 'unQuarantineJob' model}}>{{t 'jobs.unQuarantine'}}</button>
+    {{else}}
+    <button class="btn btn-primary navbar-btn" {{action 'quarantineJob' model}}>{{t 'jobs.quarantine'}}</button>
+    {{/if}}
     {{/if}}
   </ul>
 </div>

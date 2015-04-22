@@ -106,7 +106,9 @@ var TRANSLATIONS = {
       history: "Historik",
       xml: "XML",
       ordinality: "Ordinalitet",
-      chronology: "Kronologi"
+      chronology: "Kronologi",
+      quarantine: "Sätt i karantän",
+      unQuarantine: "Ta ur karantän"
     },
     activityevent: {
       STATUS: 'Byte av status',

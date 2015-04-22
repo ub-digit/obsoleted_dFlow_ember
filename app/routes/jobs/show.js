@@ -40,6 +40,7 @@ export default Ember.Route.extend({
           this.refresh(job.id); // Refresh children of current model
         },
         (errorObject) => {
+          job.set('quarantined', false);
           this.controller.set('error', errorObject.error);
         }
       );
@@ -51,6 +52,7 @@ export default Ember.Route.extend({
           this.refresh(job.id); // Refresh children of current model
         },
         (errorObject) => {
+          job.set('quarantined', true);
           this.controller.set('error', errorObject.error);
         }
       );

@@ -89,6 +89,7 @@ var TRANSLATIONS = {
         'true': "Får EJ publiceras",
         'false': "Får publiceras"
       },
+			search: "Sök",
       print: "Utskrift",
       start: "Starta digitalisering",
       delete: "Radera jobb",
@@ -114,6 +115,9 @@ var TRANSLATIONS = {
     }
   }
 };
+
+// Adds support for translatable properties, i.e. placeholderTranslation='key'
+Ember.View.reopen(Ember.I18n.TranslateableAttributes);
 
 // Initializes language support
 var i18nInitializer = {

@@ -3,6 +3,16 @@
     <div class="panel-title">{{t 'jobs.header'}}</div>
   </div>
   <div class="panel-body">
+    <div class="input-group col-xs-6">
+      {{input value=query class="form-control"
+              action='searchJobs'
+              placeholderTranslation="jobs.search"}}
+       <span class="input-group-btn">
+        <button class="btn btn-default" type="button" {{action 'searchJobs' query}}>{{t 'jobs.search'}}</button>
+      </span>
+    </div>
+  </div>
+  <div class="panel-body">
     {{pagination-pager pagination=model.meta.pagination}}
   </div>
   <div class="panel-body">

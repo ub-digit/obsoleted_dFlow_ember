@@ -201,7 +201,12 @@
         <h4 class="modal-title" id="myModalLabel">{{t 'jobs.unQuarantine'}}</h4>
       </div>
       <div class="modal-body">
-        ...
+        Ny status:
+        {{view "select"
+         content=statusSelection
+         optionValuePath="content.value"
+         optionLabelPath="content.label"
+         value=model.status}}
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'unQuarantineJob' model}}>{{t 'jobs.unQuarantine'}}</button>

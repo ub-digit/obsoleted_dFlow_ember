@@ -20,7 +20,8 @@ var TRANSLATIONS = {
       nodes: "Träd",
       logged_in_as: "Inloggad som:",
       users: "Användare",
-      jobs: "Jobblista"
+      jobs: "Jobblista",
+      quarantine: "Karantän"
     },
     login: {
       password: "Lösenord",

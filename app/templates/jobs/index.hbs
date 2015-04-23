@@ -44,7 +44,7 @@
         {{#each job in model}}
         <tr>
           <td>{{job.id}}</td>
-          <td>{{link-to job.display 'jobs.show' job.id}}</td>
+          <td>{{#if job.quarantined}}<span class="badge">{{t 'menu.quarantine'}}</span> {{/if}}{{link-to job.display 'jobs.show' job.id}}</td>
           <td>{{#link-to 'node.show' job.treenode_id}}{{job.breadcrumb_string}}{{/link-to}}</td>
         </tr>
         {{/each}}

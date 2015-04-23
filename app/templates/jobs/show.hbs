@@ -17,11 +17,22 @@
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
-    <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
-    {{print-link id=model.id type="button"}}
-    {{#if startable}}
-    <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
-    {{/if}}
+      <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
+      {{print-link id=model.id type="button"}}
+      {{#if startable}}
+      <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
+      {{/if}}
+      {{#if quarantined}}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#unQuarantineModal">
+        {{t 'jobs.unQuarantine'}}
+      </button>
+      {{else}}
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#quarantineModal">
+        {{t 'jobs.quarantine'}}
+      </button>
+      {{/if}}
     {{/if}}
   </ul>
 </div>
@@ -177,4 +188,56 @@
 </div>
 
 </div>
+</div>
+
+
+
+<!-- UnQuarantine Modal -->
+<div class="modal fade" id="unQuarantineModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{t 'jobs.unQuarantine'}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+        <span class="input-group-addon" id="status-text">{{t 'jobs.status'}}
+          </span>
+          {{view "select"
+          classNames='form-control' 
+          content=statusSelection
+          optionValuePath="content.value"
+          optionLabelPath="content.label"
+          value=model.status
+          }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'unQuarantineJob' model}}>{{t 'jobs.unQuarantine'}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quarantine Modal -->
+<div class="modal fade" id="quarantineModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{t 'jobs.quarantine'}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+        <span class="input-group-addon" id="status-text">{{t 'jobs.message'}}
+          </span>
+        {{input value=model.message classNames='form-control'}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'quarantineJob' model}}>{{t 'jobs.quarantine'}}</button>
+      </div>
+    </div>
+  </div>
 </div>

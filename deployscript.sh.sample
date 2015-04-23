@@ -47,7 +47,7 @@ if [ -d "$local_app_location/dist" ]; then
 fi 
 
 # Rebuild dist folder
-ember build environment="production-$environment"
+ember build --environment "production-$environment"
 
 if [ -d "$local_app_location/dist" ]; then
   echo "Done building dist!"

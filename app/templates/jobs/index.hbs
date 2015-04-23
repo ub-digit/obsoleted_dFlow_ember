@@ -3,28 +3,53 @@
     <div class="panel-title">{{t 'jobs.header'}}</div>
   </div>
   <div class="panel-body">
-    {{pagination-pager pagination=model.meta.pagination}}
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <div class="input-group">
+          {{input value=query class="form-control"
+          action='searchJobs'
+          placeholderTranslation="jobs.search"}}
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" {{action 'searchJobs' query}}>{{t 'jobs.search'}}</button>
+          </span>
+
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <div class="input-group">
+        <span class="input-group-addon" id="status-text">Status
+          </span>
+          {{view "select"
+          classNames='form-control' 
+          content=statusSelection
+          optionValuePath="content.value"
+          optionLabelPath="content.label"
+          value=status
+          prompt="---"}}
+        </div>
+      </div>
+    </div>
   </div>
+  
   <div class="panel-body">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>{{t 'jobs.id'}}</th>
-        <th>{{t 'jobs.name'}}</th>
-        <th></th>
-        <th>{{t 'jobs.breadcrumb'}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each job in model}}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>{{t 'jobs.id'}}</th>
+          <th>{{t 'jobs.name'}}</th>
+          <th>{{t 'jobs.breadcrumb'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each job in model}}
         <tr>
           <td>{{job.id}}</td>
           <td>{{link-to job.display 'jobs.show' job.id}}</td>
-          <td>{{#link-to 'node.show.jobs.edit' id job.id}}{{t 'jobs.edit'}}{{/link-to}}</td>
           <td>{{#link-to 'node.show' job.treenode_id}}{{job.breadcrumb_string}}{{/link-to}}</td>
         </tr>
-      {{/each}}
-    </tbody>
-  </table>
+        {{/each}}
+      </tbody>
+    </table>
+    {{pagination-pager pagination=model.meta.pagination}}
   </div>
 </div>

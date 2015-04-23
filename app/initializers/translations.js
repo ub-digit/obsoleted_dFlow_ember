@@ -20,7 +20,8 @@ var TRANSLATIONS = {
       nodes: "Träd",
       logged_in_as: "Inloggad som:",
       users: "Användare",
-      jobs: "Jobblista"
+      jobs: "Jobblista",
+      quarantine: "Karantän"
     },
     login: {
       password: "Lösenord",
@@ -89,6 +90,7 @@ var TRANSLATIONS = {
         'true': "Får EJ publiceras",
         'false': "Får publiceras"
       },
+			search: "Sök",
       print: "Utskrift",
       start: "Starta digitalisering",
       delete: "Radera jobb",
@@ -98,22 +100,41 @@ var TRANSLATIONS = {
         am: "Monografi",
         as: "Periodika"
       },
+      status: "Status",
+      message: "Meddelande",
       statuses: {
         waiting_for_digitizing: "Väntar på digitalisering",
         digitizing: "Digitalisering pågår",
+        post_processing: "Efterbearbetning",
+        post_processing_user_input: "Manuell efterbearbetning",
+        quality_control: "Kvalitetskontroll",
+        mets_control: "Metskontroll",
+        mets_production: "Metsproduktion",
+        waiting_for_mets_control: "Väntar på metskontroll",
         done: "Klar!"
       },
       history: "Historik",
       xml: "XML",
       ordinality: "Ordinalitet",
-      chronology: "Kronologi"
+      chronology: "Kronologi",
+      quarantine: "Sätt i karantän",
+      unQuarantine: "Ta ur karantän"
     },
     activityevent: {
       STATUS: 'Byte av status',
-      CREATE: 'Jobb skapat'
+      CREATE: 'Jobb skapat',
+      QUARANTINE: 'Satt i karantän',
+      UNQUARANTINE: 'Plockats ur karantän'
+    },
+    activitymessage: {
+      UNQUARANTINED: '',
+      ACTIVITY_CREATED: ''
     }
   }
 };
+
+// Adds support for translatable properties, i.e. placeholderTranslation='key'
+Ember.View.reopen(Ember.I18n.TranslateableAttributes);
 
 // Initializes language support
 var i18nInitializer = {
@@ -125,6 +146,7 @@ var i18nInitializer = {
     Ember.I18n.allTranslations = TRANSLATIONS;
     Ember.FEATURES.I18N_TRANSLATE_HELPER_SPAN = false;
     Ember.ENV.I18N_COMPILE_WITHOUT_HANDLEBARS = true;
+    moment.locale(lang);
   }
 };
 export default i18nInitializer;

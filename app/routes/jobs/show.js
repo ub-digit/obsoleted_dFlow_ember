@@ -32,6 +32,30 @@ export default Ember.Route.extend({
           }
           );
       }
-    }
+    },
+    quarantineJob(job){
+      job.set('quarantined', true);
+      this.store.save('job', job).then(
+        () => {
+          this.refresh(job.id); // Refresh children of current model
+        },
+        (errorObject) => {
+          job.set('quarantined', false);
+          this.controller.set('error', errorObject.error);
+        }
+      );
+    },
+    unQuarantineJob(job){
+      job.set('quarantined', false);
+      this.store.save('job', job).then(
+        () => {
+          this.refresh(job.id); // Refresh children of current model
+        },
+        (errorObject) => {
+          job.set('quarantined', true);
+          this.controller.set('error', errorObject.error);
+        }
+      );
+    },
   }
 });

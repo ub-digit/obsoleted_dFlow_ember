@@ -5,6 +5,7 @@ export default Ember.Object.extend({
     treenode:  { path: 'api/treenodes'  },
     user: { path: 'api/users'},
     role: { path: 'api/config/role_list'},
+    status: { path: 'api/config/status_list'},
     source: { path: 'api/sources'},
     job: { path: 'api/jobs'}
   },
@@ -47,8 +48,9 @@ export default Ember.Object.extend({
       method: method,
       crossDomain: true,
       type: 'json',
-      data: data,
-      headers: that.sessionHeaders()
+      data: JSON.stringify(data),
+      headers: that.sessionHeaders(),
+      contentType: 'application/json'
     });
   },
   sendDelete: function(url) {

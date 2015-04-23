@@ -7,7 +7,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     // Used to load data that will not be changed during runtime
     return Ember.RSVP.hash({
       roles: that.store.find('role'),
-      sources: that.store.find('source')
+      sources: that.store.find('source'),
+      statuses: that.store.find('status')
     });
   },
   setupController: function(controller, model) {
@@ -21,6 +22,13 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       {label: Ember.I18n.t('jobs.copyright_values.true'), value: 'true'},
       {label: Ember.I18n.t('jobs.copyright_values.false'), value: 'false'}
     ]);
+    var statusItems = [];
+    for(var i = 0 ; i < model.statuses.length ; i++ ){
+      var status = model.statuses[i];
+      var item = {label: Ember.I18n.t('jobs.statuses.' + status), value: status}
+      statusItems.pushObject(item);
+    }
+    controller.set('statusSelection', statusItems);
   },
   actions: {
 	sessionAuthenticationFailed: function(error) {

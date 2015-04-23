@@ -19,6 +19,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "glob": "4.0.5",
+    "rimraf": "2.2.8",
     "broccoli-asset-rev": "^2.0.0",
     "broccoli-ember-hbs-template-compiler": "^1.6.1",
     "ember-cli": "0.1.12",
@@ -32,7 +34,6 @@
     "ember-cli-simple-auth": "0.7.3",
     "ember-cli-uglify": "1.0.1",
     "ember-export-application-global": "^1.0.0",
-    "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "express": "^4.8.5"
   }
 }

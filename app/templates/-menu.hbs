@@ -23,9 +23,9 @@
       {{/if}}
       {{#if session.isAuthenticated}}
       
-      <p class="navbar-text">{{t 'menu.logged_in_as'}} {{session.name}}</p>
+      <p class="navbar-text"><i class="fa fa-user"></i><strong> {{session.name}}</strong></p>
       <li>
-        <a href="javascript:void(0)" {{action 'invalidateSession'}}>Logout</a>
+        <a href="javascript:void(0)" {{action 'invalidateSession'}}>{{t 'menu.logout'}}</a>
       </li>
       {{else}}
       <li>

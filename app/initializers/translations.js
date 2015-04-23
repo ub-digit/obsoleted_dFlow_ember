@@ -100,9 +100,17 @@ var TRANSLATIONS = {
         am: "Monografi",
         as: "Periodika"
       },
+      status: "Status",
+      message: "Meddelande",
       statuses: {
         waiting_for_digitizing: "Väntar på digitalisering",
         digitizing: "Digitalisering pågår",
+        post_processing: "Efterbearbetning",
+        post_processing_user_input: "Manuell efterbearbetning",
+        quality_control: "Kvalitetskontroll",
+        mets_control: "Metskontroll",
+        mets_production: "Metsproduktion",
+        waiting_for_mets_control: "Väntar på metskontroll",
         done: "Klar!"
       },
       history: "Historik",
@@ -114,7 +122,13 @@ var TRANSLATIONS = {
     },
     activityevent: {
       STATUS: 'Byte av status',
-      CREATE: 'Jobb skapat'
+      CREATE: 'Jobb skapat',
+      QUARANTINE: 'Satt i karantän',
+      UNQUARANTINE: 'Plockats ur karantän'
+    },
+    activitymessage: {
+      UNQUARANTINED: '',
+      ACTIVITY_CREATED: ''
     }
   }
 };
@@ -132,6 +146,7 @@ var i18nInitializer = {
     Ember.I18n.allTranslations = TRANSLATIONS;
     Ember.FEATURES.I18N_TRANSLATE_HELPER_SPAN = false;
     Ember.ENV.I18N_COMPILE_WITHOUT_HANDLEBARS = true;
+    moment.locale(lang);
   }
 };
 export default i18nInitializer;

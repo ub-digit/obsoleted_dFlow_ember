@@ -201,12 +201,17 @@
         <h4 class="modal-title" id="myModalLabel">{{t 'jobs.unQuarantine'}}</h4>
       </div>
       <div class="modal-body">
-        Ny status:
-        {{view "select"
-         content=statusSelection
-         optionValuePath="content.value"
-         optionLabelPath="content.label"
-         value=model.status}}
+        <div class="input-group">
+        <span class="input-group-addon" id="status-text">{{t 'jobs.status'}}
+          </span>
+          {{view "select"
+          classNames='form-control' 
+          content=statusSelection
+          optionValuePath="content.value"
+          optionLabelPath="content.label"
+          value=model.status
+          }}
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'unQuarantineJob' model}}>{{t 'jobs.unQuarantine'}}</button>
@@ -224,8 +229,11 @@
         <h4 class="modal-title" id="myModalLabel">{{t 'jobs.quarantine'}}</h4>
       </div>
       <div class="modal-body">
-        Meddelande:
-        {{input value=model.message}}
+        <div class="input-group">
+        <span class="input-group-addon" id="status-text">{{t 'jobs.message'}}
+          </span>
+        {{input value=model.message classNames='form-control'}}
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'quarantineJob' model}}>{{t 'jobs.quarantine'}}</button>

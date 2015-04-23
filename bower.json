@@ -16,6 +16,7 @@
     "qunit": "~1.17.1",
     "bootstrap": "~3.3.0",
     "ember-i18n": "~2.2.2",
-    "ember-simple-auth": "0.7.3"
+    "ember-simple-auth": "0.7.3",
+    "moment": "~2.9.0"
   }
 }

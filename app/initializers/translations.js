@@ -114,6 +114,7 @@ var TRANSLATIONS = {
         done: "Klar!"
       },
       history: "Historik",
+			other: "Övrigt",
       xml: "XML",
       ordinality: "Ordinalitet",
       chronology: "Kronologi",

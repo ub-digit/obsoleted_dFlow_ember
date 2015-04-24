@@ -39,7 +39,13 @@
       </label>
 
       <div class="col-xs-12">
-        <button class="btn btn-primary" {{action 'create' model}}>{{t 'jobs.createsubmit'}}</button>
+        <button class="btn btn-primary" {{action 'create' model}}>
+          {{#if model.id}}
+            {{t 'jobs.save'}}
+          {{else}}
+            {{t 'jobs.createsubmit'}}
+          {{/if}}
+        </button>
         <button class="btn btn-default" {{action 'abort'}}>{{t 'jobs.cancel'}}</button>
       </div>
     </div>

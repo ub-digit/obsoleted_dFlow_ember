@@ -17,6 +17,7 @@
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
+      {{#link-to 'jobs.show.edit' model class="btn btn-primary navbar-btn"}}{{t 'jobs.edit'}}{{/link-to}}
       <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
       {{print-link id=model.id type="button"}}
       {{#if startable}}
@@ -36,6 +37,8 @@
     {{/if}}
   </ul>
 </div>
+
+{{outlet}}
 
 {{#if error}}
 <div class="alert alert-danger">

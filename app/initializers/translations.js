@@ -85,6 +85,7 @@ var TRANSLATIONS = {
       object_info: "Objektinformation",
       id: "ID",
       edit: "Redigera",
+      save: "Spara",
       breadcrumb: "Placering",
       copyright_values: {
         'unselected': "Välj",

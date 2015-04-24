@@ -74,6 +74,7 @@ var TRANSLATIONS = {
       header: "Jobb",
       new: "Skapa jobb",
       createsubmit: "Skapa jobb",
+			cancel: "Avbryt",
       source: "Källa",
       catalog_id: "ID",
       name: "Namn",
@@ -84,6 +85,7 @@ var TRANSLATIONS = {
       object_info: "Objektinformation",
       id: "ID",
       edit: "Redigera",
+      save: "Spara",
       breadcrumb: "Placering",
       copyright_values: {
         'unselected': "Välj",
@@ -116,6 +118,7 @@ var TRANSLATIONS = {
         done: "Klar!"
       },
       history: "Historik",
+			other: "Övrigt",
       xml: "XML",
       ordinality: "Ordinalitet",
       chronology: "Kronologi",

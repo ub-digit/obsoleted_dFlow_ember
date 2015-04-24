@@ -57,5 +57,8 @@ export default Ember.Route.extend({
         }
       );
     },
+    refreshModel: function() {
+      this.refresh();
+    }
   }
 });

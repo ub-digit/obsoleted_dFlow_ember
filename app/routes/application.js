@@ -19,8 +19,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     controller.set('sourceSelection', model.sources);
     controller.set('copyrightSelection', [
       {label: Ember.I18n.t('jobs.copyright_values.unselected'), value: null},
-      {label: Ember.I18n.t('jobs.copyright_values.true'), value: 'true'},
-      {label: Ember.I18n.t('jobs.copyright_values.false'), value: 'false'}
+      {label: Ember.I18n.t('jobs.copyright_values.true'), value: true},
+      {label: Ember.I18n.t('jobs.copyright_values.false'), value: false}
     ]);
     var statusItems = [];
     for(var i = 0 ; i < model.statuses.length ; i++ ){

@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'jobs.new'}}</div>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      {{#if error}}
+        <div class="alert alert-danger">
+          {{error.msg}}
+        </div>
+      {{/if}}
+
+      <label class="col-xs-12">{{t 'jobs.name'}}
+        {{input type="text" classBinding=":form-control :col-xs-6" value=model.name}}
+      </label>
+
+      <label class="col-xs-12">{{t 'jobs.title'}}
+        {{input type="text" classBinding=":form-control :col-xs-6" value=model.title}}
+      </label>
+
+      <label class="col-xs-12">{{t 'jobs.author'}}
+        {{input type="text" classBinding=":form-control :col-xs-6" value=model.author}}
+      </label>
+
+      <label class="col-xs-12">{{t 'jobs.comment'}}
+        {{input type="text" classBinding=":form-control :col-xs-6" value=model.comment}}
+      </label>
+
+      <label class="col-xs-12">{{t 'jobs.object_info'}}
+        {{input type="text" classBinding=":form-control :col-xs-6" value=model.object_info}}
+      </label>
+
+      <label class="col-xs-12">{{t 'jobs.copyright'}}
+        {{view 'select' content=copyrightSelection
+        value=model.copyright
+        optionValuePath="content.value"
+        optionLabelPath="content.label"
+        }}
+      </label>
+
+      <div class="col-xs-12">
+        <button class="btn btn-primary" {{action 'create' model}}>
+          {{#if model.id}}
+            {{t 'jobs.save'}}
+          {{else}}
+            {{t 'jobs.createsubmit'}}
+          {{/if}}
+        </button>
+        <button class="btn btn-default" {{action 'abort'}}>{{t 'jobs.cancel'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

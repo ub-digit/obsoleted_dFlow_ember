@@ -59,7 +59,7 @@
                 {{#if isRoot}}
                   {{#link-to 'node.show.edit' 'root' child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
                 {{else}}
-                  {{#link-to 'node.show.edit' id child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
+                  {{#link-to 'node.show.edit' model.id child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
                 {{/if}}
               </td>
             </tr>
@@ -94,7 +94,6 @@
               <td>{{link-to job.display 'jobs.show' job.id}}</td>
               <td>
                 {{#if session.can_manage_jobs}}
-                  {{#link-to 'node.show.jobs.edit' id job.id }}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
                   {{print-link id=job.id type="icon"}}
                 {{/if}}
                 </td>

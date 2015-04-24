@@ -1,14 +1,1 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title">{{t 'jobs.new'}}</div>
-  </div>
-  <div class="panel-body">
-    <div class="form-group">
-      {{partial 'node/show/jobs/source/jobform'}}
-      <div class="col-xs-12">
-        <button class="btn btn-primary" {{action 'createJob' model}}>{{t 'jobs.createsubmit'}}</button>
-        {{#link-to 'node.show' class="btn btn-default"}}{{t 'nodes.cancel'}}{{/link-to}}
-      </div>
-    </div>
-  </div>
-</div>
+{{job-form copyrightSelection=copyrightSelection model=model}}

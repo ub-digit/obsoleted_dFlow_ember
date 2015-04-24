@@ -74,6 +74,7 @@ var TRANSLATIONS = {
       header: "Jobb",
       new: "Skapa jobb",
       createsubmit: "Skapa jobb",
+			cancel: "Avbryt",
       source: "Källa",
       catalog_id: "ID",
       name: "Namn",

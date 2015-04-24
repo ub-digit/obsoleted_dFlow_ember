@@ -5,5 +5,6 @@ export default {
     app.register('store:main', Store);
     app.inject('route', 'store', 'store:main');
     app.inject('controller', 'store', 'store:main');
+    app.inject('component', 'store', 'store:main');
   }
 };

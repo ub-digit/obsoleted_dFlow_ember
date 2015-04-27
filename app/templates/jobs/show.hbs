@@ -17,6 +17,9 @@
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
+      {{#if has_pdf}}
+        <a class="btn navbar-btn" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+      {{/if}}
       {{#link-to 'jobs.show.edit' model class="btn btn-primary navbar-btn"}}{{t 'jobs.edit'}}{{/link-to}}
       <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
       {{print-link id=model.id type="button"}}

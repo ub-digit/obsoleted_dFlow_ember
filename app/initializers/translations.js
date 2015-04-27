@@ -110,8 +110,8 @@ var TRANSLATIONS = {
         post_processing: "Efterbearbetning",
         post_processing_user_input: "Manuell efterbearbetning",
         quality_control: "Kvalitetskontroll",
-        waiting_for_package_metadata_import: "Väntar på metadataimport"
-        package_metadata_import: "Importerar metadata"
+        waiting_for_package_metadata_import: "Väntar på metadataimport",
+        package_metadata_import: "Importerar metadata",
         mets_control: "Metskontroll",
         mets_production: "Metsproduktion",
         waiting_for_mets_control: "Väntar på metskontroll",

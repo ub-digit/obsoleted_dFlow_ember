@@ -1,9 +1,6 @@
 import Ember from 'ember';
-import ENV from 'd-flow-ember/config/environment';
 
 export default Ember.Object.extend({
-  init: function() {
-  },
   type_of_record_string: function() {
     return Ember.I18n.t('jobs.type_of_record.' + this.get('metadata.type_of_record'));
   }.property('metadata'),
@@ -42,9 +39,5 @@ export default Ember.Object.extend({
       string += ', ' + this.get('metadata.ordinal_3_key') + ' ' + this.get('metadata.ordinal_3_value');
     }
     return string;
-  }.property('metadata'),
-
-  pdfUrl: Ember.computed('id', function() {
-    return ENV.APP.serviceURL + '/assets/job_pdf/' + this.get('id') + '.pdf';
-  })
+  }.property('metadata')
 });

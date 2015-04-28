@@ -21,7 +21,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       {label: Ember.I18n.t('jobs.copyright_values.unselected'), value: null},
       {label: Ember.I18n.t('jobs.copyright_values.true'), value: true},
       {label: Ember.I18n.t('jobs.copyright_values.false'), value: false}
-    ]);
+      ]);
     var statusItems = [];
     for(var i = 0 ; i < model.statuses.length ; i++ ){
       var status = model.statuses[i];
@@ -31,12 +31,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     controller.set('statusSelection', statusItems);
   },
   actions: {
-	sessionAuthenticationFailed: function(error) {
-      this.controllerFor('login').set('error', error);
-	},
-	showJob: function(job_id) {
-	  this.controller.set('job_id', '');
-	  this.transitionTo('jobs.show', job_id);
-	}
-  }
+   sessionAuthenticationFailed: function(error) {
+    this.controllerFor('login').set('error', error);
+  },
+  showJob: function(job_id) {
+   this.controller.set('job_id', '');
+   this.transitionTo('jobs.show', job_id);
+ }
+}
 });

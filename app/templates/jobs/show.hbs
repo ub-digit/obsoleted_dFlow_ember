@@ -1,7 +1,7 @@
 {{#if breadcrumb}}
 <ul class="breadcrumb">
   <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
-  {{#each parent in breadcrumb}}
+  {{#each parent in model.breadcrumb}}
   {{#if parent.id}}
   <li>{{link-to parent.name 'node.show' parent.id}}</li>
   {{else}}
@@ -17,16 +17,16 @@
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
-      {{#if has_pdf}}
+      {{#if model.has_pdf}}
         <a class="btn navbar-btn" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
       {{/if}}
       {{#link-to 'jobs.show.edit' model class="btn btn-primary navbar-btn"}}{{t 'jobs.edit'}}{{/link-to}}
       <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
-      {{print-link id=model.id type="button"}}
+      {{print-link jobId=model.id type="button"}}
       {{#if startable}}
       <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
       {{/if}}
-      {{#if quarantined}}
+      {{#if model.quarantined}}
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#unQuarantineModal">
         {{t 'jobs.unQuarantine'}}
@@ -43,20 +43,20 @@
 
 {{outlet}}
 
-{{#if error}}
+{{#if model.error}}
 <div class="alert alert-danger">
-  {{error.msg}}
+  {{model.error.msg}}
 </div>
 {{/if}}
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title"><strong>{{id}}</strong> {{display}}</div>
+    <div class="panel-title"><strong>{{model.id}}</strong> {{model.display}}</div>
   </div>
   <div class="panel-body">
     <div class="col-xs-12">
       <div class="alert alert-success">
-        <strong>Status:</strong> {{status_string}}
+        <strong>Status:</strong> {{model.status_string}}
       </div>
     </div>
     <div class="col-xs-6">
@@ -65,39 +65,39 @@
           <strong>{{t 'jobs.source'}}</strong> 
         </div>
         <div class="col-xs-9">
-          {{source_label}} ( 
-          {{#if source_link}}
-            <a {{bind-attr href=source_link}} target="_blank">{{catalog_id}}</a>
+          {{model.source_label}} ( 
+          {{#if model.source_link}}
+            <a {{bind-attr href=source_link}} target="_blank">{{model.catalog_id}}</a>
           {{else}}
-            {{catalog_id}}
+            {{model.catalog_id}}
           {{/if}}
           )
         </div>
       </div>
       
-      {{#if title}}
+      {{#if model.title}}
       <div class="row">
         <div class="col-xs-3">
           <strong>{{t 'jobs.title'}}</strong>
         </div>
         <div class="col-xs-9">
-          {{title}}
+          {{model.title}}
         </div>
       </div>
       {{/if}}
       
-      {{#if author}}
+      {{#if model.author}}
       <div class="row">
         <div class="col-xs-3">
           <strong>{{t 'jobs.author'}}</strong>
         </div>
         <div class="col-xs-9">
-          {{author}}
+          {{model.author}}
         </div>
       </div>
       {{/if}}
       
-      {{#if type_of_record_string}}
+      {{#if model.type_of_record_string}}
       <div class="row">
         <div class="col-xs-3">
           <strong>{{t 'jobs.type_of_record.label'}}</strong>
@@ -108,24 +108,24 @@
       </div>
       {{/if}}
 
-      {{#if chronology_string}}
+      {{#if model.chronology_string}}
       <div class="row">
         <div class="col-xs-3">
          {{t 'jobs.chronology'}}
        </div>
        <div class="col-xs-9">
-        {{chronology_string}}
+        {{model.chronology_string}}
       </div>
     </div>
     {{/if}}
 
-    {{#if ordinality_string}}
+    {{#if model.ordinality_string}}
     <div class="row">
       <div class="col-xs-3">
        {{t 'jobs.ordinality'}}
      </div>
      <div class="col-xs-9">
-      {{ordinality_string}}
+      {{model.ordinality_string}}
     </div>
   </div>
   {{/if}}
@@ -136,23 +136,22 @@
     </div>
     <div class="col-xs-9">
       {{#if copyright}}
-      <button class="btn btn-danger active btn-xs">{{copyright_string}}</button>
+      <button class="btn btn-danger active btn-xs">{{model.copyright_string}}</button>
       {{else}}
-      <button class="btn btn-success active btn-xs">{{copyright_string}}</button>
+      <button class="btn btn-success active btn-xs">{{model.copyright_string}}</button>
       {{/if}}
     </div>
   </div>
 </div>
 <div class="col-xs-6">
-  {{#if object_info}}
+  {{#if model.object_info}}
   <div class="clearfix"></div>
-  <strong>{{t 'jobs.object_info'}}</strong> <pre>{{object_info}}</pre>
+  <strong>{{t 'jobs.object_info'}}</strong> <pre>{{model.object_info}}</pre>
   {{/if}}
-  {{#if comment}}
+  {{#if model.comment}}
   <div class="clearfix"></div>
-  <strong>{{t 'jobs.comment'}}</strong> <pre>{{comment}}</pre>
+  <strong>{{t 'jobs.comment'}}</strong> <pre>{{model.comment}}</pre>
   {{/if}}
-
 </div>
 
 <div class="col-xs-12" style="margin-top:20px">
@@ -169,7 +168,7 @@
         <div class="panel-body">
           <table class="table">
             <tr></tr>
-            {{#each activity in activities}}
+            {{#each activity in model.activities}}
             {{job-activity activity=activity}}
             {{/each}}
           </table>
@@ -186,7 +185,7 @@
       </div>
       <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
         <div class="panel-body">
-          {{xml-link id=model.id}}
+          {{xml-link jobId=model.id}}
         </div>
       </div>
     </div>

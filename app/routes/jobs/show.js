@@ -33,8 +33,10 @@ export default Ember.Route.extend({
           );
       }
     },
-    quarantineJob(job){
+    quarantineJob(job, message){
       job.set('quarantined', true);
+      job.set('message', message);
+      console.log('message', message);
       this.store.save('job', job).then(
         () => {
           this.refresh(job.id); // Refresh children of current model

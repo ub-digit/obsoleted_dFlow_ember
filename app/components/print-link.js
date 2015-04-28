@@ -13,6 +13,6 @@ export default Ember.Component.extend({
     return this.get('type') === 'icon';
   }.property('type'),
   href: function(){
-    return ENV.APP.serviceURL + '/assets/work_order/' + this.get('id') + '.pdf';
-  }.property('id')
+    return ENV.APP.serviceURL + '/assets/work_order/' + this.get('jobId') + '.pdf';
+  }.property('jobId')
 });

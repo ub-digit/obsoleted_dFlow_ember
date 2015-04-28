@@ -6,6 +6,6 @@ export default Ember.Component.extend({
   attributeBindings: ['target', 'href'],
   target: '_blank',
   href: function(){
-    return ENV.APP.serviceURL + '/api/jobs/' + this.get('id') + '.xml';
-  }.property('id')
+    return ENV.APP.serviceURL + '/api/jobs/' + this.get('jobId') + '.xml';
+  }.property('jobId')
 });

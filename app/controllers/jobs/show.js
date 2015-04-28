@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ENV from 'd-flow-ember/config/environment';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   needs: ['application'],
   statusSelectionBinding: 'controllers.application.statusSelection',
   

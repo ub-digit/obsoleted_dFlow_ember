@@ -36,13 +36,13 @@
       </div>
       <div class="modal-body">
         <div class="input-group">
-        <span class="input-group-addon" id="status-text">{{t 'jobs.message'}}
+        <span class="input-group-addon" id="message-text">{{t 'jobs.message'}}
           </span>
-        {{input value=model.message classNames='form-control'}}
+        {{input value=message classNames='form-control'}}
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'quarantineJob' model}}>{{t 'jobs.quarantine'}}</button>
+        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'quarantineJob' model message}}>{{t 'jobs.quarantine'}}</button>
       </div>
     </div>
   </div>

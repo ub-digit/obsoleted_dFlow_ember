@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
-  init: function() {
-  },
   type_of_record_string: function() {
     return Ember.I18n.t('jobs.type_of_record.' + this.get('metadata.type_of_record'));
   }.property('metadata'),

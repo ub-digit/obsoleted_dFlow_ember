@@ -68,7 +68,24 @@ var TRANSLATIONS = {
       id: "ID",
       name: "Namn",
       label: "etikett",
-      fetch: "Hämta"
+      fetch: "Hämta",
+      dc: {
+        title: "DC Title",
+        creator: "DC Creator",
+        subject: "DC Subject",
+        description: "DC Description",
+        publisher: "DC Publisher",
+        contributor: "DC Contributor",
+        date: "DC Date",
+        type: "DC Type",
+        format: "DC Format",
+        identifier: "DC Identifier",
+        source: "DC Source",
+        language: "DC Language",
+        relation: "DC Relation",
+        coverage: "DC Coverage",
+        rights: "DC Rights"
+      }
     },
     jobs: {
       header: "Jobb",

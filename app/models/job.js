@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ENV from 'd-flow-ember/config/environment';
 
 export default Ember.Object.extend({
   init: function() {
@@ -42,9 +41,5 @@ export default Ember.Object.extend({
       string += ', ' + this.get('metadata.ordinal_3_key') + ' ' + this.get('metadata.ordinal_3_value');
     }
     return string;
-  }.property('metadata'),
-
-  pdfUrl: Ember.computed('id', function() {
-    return ENV.APP.serviceURL + '/assets/job_pdf/' + this.get('id') + '.pdf';
-  })
+  }.property('metadata')
 });

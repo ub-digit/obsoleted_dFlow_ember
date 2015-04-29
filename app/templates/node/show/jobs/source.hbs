@@ -4,6 +4,12 @@
   </div>
   <div class="panel-body">
     <div class="form-group">
+      {{#if error}}
+        <div class="alert alert-danger">
+          {{error.msg}}
+        </div>
+      {{/if}}
+
       <label class="col-xs-12">{{t 'jobs.source'}}
         {{view 'select' content=sourceSelection
           value=model.source

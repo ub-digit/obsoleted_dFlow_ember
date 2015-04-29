@@ -22,16 +22,13 @@ export default Ember.Route.extend({
   actions: {
     fetchSource: function(model) {
       var that = this;
-      if (model.source === 'dc') {
-        model.catalog_id = 'dc';
-      }
-      this.store.find('source', model.catalog_id, {name: model.source, dc: model.dc}).then(
-      //this.store.find('source', model.catalog_id, {name: model.source}).then(
+      this.store.find('source', model.source, {catalog_id: model.catalog_id, dc: model.dc}).then(
         function(source_data){
           that.controller.set('model.title', source_data.title);
           that.controller.set('model.author', source_data.author);
           that.controller.set('model.xml', source_data.xml);
           that.controller.set('model.metadata', source_data.metadata);
+          that.controller.set('error', null);
           that.transitionTo('node.show.jobs.source.new');
         },
         function(errorObject) {

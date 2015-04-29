@@ -1,4 +1,4 @@
-{{#if breadcrumb}}
+{{#if model.breadcrumb}}
 <ul class="breadcrumb">
   <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
   {{#each parent in model.breadcrumb}}
@@ -13,7 +13,7 @@
 
 <div class="navbar navbar-default sub-navbar">
   <div class="navbar-header">
-    <a href="javascript:void(0)" class="navbar-brand">{{id}}{{#if quarantined}} <span class="badge"> {{t 'menu.quarantine'}}</span>{{/if}}</a>
+    <a href="javascript:void(0)" class="navbar-brand">{{model.id}}{{#if model.quarantined}} <span class="badge"> {{t 'menu.quarantine'}}</span>{{/if}}</a>
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}

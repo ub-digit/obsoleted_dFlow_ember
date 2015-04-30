@@ -67,7 +67,7 @@
         <div class="col-xs-9">
           {{model.source_label}} ( 
           {{#if model.source_link}}
-            <a {{bind-attr href=source_link}} target="_blank">{{model.catalog_id}}</a>
+            <a {{bind-attr href=model.source_link}} target="_blank">{{model.catalog_id}}</a>
           {{else}}
             {{model.catalog_id}}
           {{/if}}

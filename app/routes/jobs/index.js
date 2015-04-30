@@ -17,7 +17,7 @@ export default Ember.Route.extend({
     controller.set('model', model);
 
     if(controller.get('page') > controller.get('model.meta.pagination.pages')) {
-      controller.transitionToRoute('comp.index', {queryParams: {page: 1}});
+      controller.transitionToRoute('jobs.index', {queryParams: {page: 1}});
       controller.set('page', 1);
     }
   }

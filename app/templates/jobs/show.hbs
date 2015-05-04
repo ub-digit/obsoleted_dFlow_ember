@@ -11,32 +11,39 @@
 </ul>
 {{/if}}
 
-<div class="navbar navbar-default sub-navbar">
+<div class="navbar navbar-default sub-navbar" id="job-navbar">
   <div class="navbar-header">
-    <a href="javascript:void(0)" class="navbar-brand">{{model.id}}{{#if model.quarantined}} <span class="badge"> {{t 'menu.quarantine'}}</span>{{/if}}</a>
+    <a href="javascript:void(0)" class="navbar-brand">{{model.id}}{{#if model.quarantined}} <span class="label label-danger"> {{t 'menu.quarantine'}}</span>{{/if}}</a>
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#if session.can_manage_jobs}}
-      {{#if model.has_pdf}}
-        <a class="btn navbar-btn" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
-      {{/if}}
-      {{#link-to 'jobs.show.edit' model class="btn btn-primary navbar-btn"}}{{t 'jobs.edit'}}{{/link-to}}
-      <button class="btn btn-danger navbar-btn" {{action 'deleteJob' id}}>{{t 'jobs.delete'}}</button>
-      {{print-link jobId=model.id type="button"}}
-      {{#if startable}}
-      <button class="btn btn-primary navbar-btn" {{action 'startJob' id}}>{{t 'jobs.start'}}</button>
-      {{/if}}
-      {{#if model.quarantined}}
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#unQuarantineModal">
-        {{t 'jobs.unQuarantine'}}
-      </button>
-      {{else}}
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#quarantineModal">
-        {{t 'jobs.quarantine'}}
-      </button>
-      {{/if}}
+    {{#if model.has_pdf}}
+    <a class="btn navbar-btn" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+    {{/if}}
+    {{#link-to 'jobs.show.edit' model class="btn navbar-btn"}}<i class="fa fa-2x fa-pencil-square-o"></i>{{/link-to}}
+    <a class="btn navbar-btn" {{action 'deleteJob' model.id}}><i class="fa fa-2x fa-trash-o"></i></a>
+    {{print-link jobId=model.id type="button"}}
+
+    {{#if model.quarantined}}
+    <!-- Button trigger modal -->
+    <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#unQuarantineModal">
+      <span class="fa-stack fa-lg">
+      <i class="fa fa-exclamation-triangle fa-stack-1x"></i>
+        <i class="fa fa-ban fa-stack-2x" style="color:black;"></i>
+      </span>
+    </a>
+    {{else}}
+    <!-- Button trigger modal -->
+    <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#quarantineModal">
+      <i class="fa fa-2x fa-exclamation-triangle" ></i>
+    </a>
+    {{/if}}
+    {{#if model.startable}}
+    <button class="btn btn-primary navbar-btn" {{action 'startJob' model.id}}>{{t 'jobs.start'}}</button>
+    {{/if}}
+    {{#if model.qualityControl}}
+    <button class="btn btn-primary navbar-btn" {{action 'qualityControlJob' model.id}}>{{t 'jobs.qualityControl'}}</button>
+    {{/if}}
     {{/if}}
   </ul>
 </div>
@@ -67,9 +74,9 @@
         <div class="col-xs-9">
           {{model.source_label}} ( 
           {{#if model.source_link}}
-            <a {{bind-attr href=model.source_link}} target="_blank">{{model.catalog_id}}</a>
+          <a {{bind-attr href=model.source_link}} target="_blank">{{model.catalog_id}}</a>
           {{else}}
-            {{model.catalog_id}}
+          {{model.catalog_id}}
           {{/if}}
           )
         </div>

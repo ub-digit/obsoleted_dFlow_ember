@@ -140,7 +140,8 @@ var TRANSLATIONS = {
       ordinality: "Ordinalitet",
       chronology: "Kronologi",
       quarantine: "Sätt i karantän",
-      unQuarantine: "Ta ur karantän"
+      unQuarantine: "Ta ur karantän",
+      qualityControl: "Kvalitetskontroll OK"
     },
     activityevent: {
       STATUS: 'Byte av status',

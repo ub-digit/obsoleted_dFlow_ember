@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   tagName: 'a',
   attributeBindings: ['target', 'href'],
   target: '_blank',
-  classNameBindings: ['isButton:btn', 'isButton:btn-default', 'isButton:navbar-btn'],
+  classNameBindings: ['isButton:btn', 'isButton:navbar-btn'],
   isButton: function(){
     return this.get('type') === 'button';
   }.property('type'),

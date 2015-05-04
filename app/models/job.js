@@ -13,6 +13,10 @@ export default Ember.Object.extend({
     return this.get('status') === 'waiting_for_digitizing';
   }.property('status'),
 
+  qualityControl: function(){
+    return this.get('status') === 'quality_control';
+  }.property('status'),
+
   copyright_string: function() {
     return Ember.I18n.t('jobs.copyright_values.'+this.get('copyright'));
   }.property('copyright'),

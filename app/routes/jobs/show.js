@@ -19,6 +19,16 @@ export default Ember.Route.extend({
         }
       );
     },
+    qualityControlJob(id){
+      this.store.find('job', id + '/quality_control_end').then(
+        () => {
+          this.refresh(id); // Refresh children of current model
+        },
+        (errorObject) => {
+          this.controller.set('error', errorObject.error);
+        }
+      );
+    },
     deleteJob(id) {
       // Send confirmation box before delete
       var should_delete = confirm(Ember.I18n.t("jobs.confirm_delete"));
@@ -59,6 +69,7 @@ export default Ember.Route.extend({
         }
       );
     },
+
     refreshModel: function() {
       this.refresh();
     }

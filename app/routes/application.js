@@ -25,7 +25,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     var statusItems = [];
     for(var i = 0 ; i < model.statuses.length ; i++ ){
       var status = model.statuses[i];
-      var item = {label: Ember.I18n.t('jobs.statuses.' + status), value: status}
+      var item = {label: Ember.I18n.t('jobs.statuses.' + status), value: status};
       statusItems.pushObject(item);
     }
     controller.set('statusSelection', statusItems);

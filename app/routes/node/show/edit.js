@@ -6,7 +6,6 @@ export default Ember.Route.extend({
   },
   actions: {
     deleteNode: function(id) {
-      var that = this;
       var should_delete = confirm(Ember.I18n.t("nodes.confirm_delete"));
       if (should_delete){
         this.store.destroy('treenode', id).then(

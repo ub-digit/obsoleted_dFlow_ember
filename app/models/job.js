@@ -47,5 +47,18 @@ export default Ember.Object.extend({
       string += ', ' + this.get('metadata.ordinal_3_key') + ' ' + this.get('metadata.ordinal_3_value');
     }
     return string;
-  }.property('metadata')
+  }.property('metadata'),
+
+  isDone: Ember.computed('main_status', function(){
+    return this.get('main_status') === 'DONE';
+  }),
+  isError: Ember.computed('main_status', function(){
+    return this.get('main_status') === 'ERROR';
+  }),
+  isProcessing: Ember.computed('main_status', function(){
+    return this.get('main_status') === 'PROCESSING';
+  }),
+  isWaitingForAction: Ember.computed('main_status', function(){
+    return this.get('main_status') === 'WAITING_FOR_ACTION' || this.get('main_status') === 'NOT_STARTED';
+  })
 });

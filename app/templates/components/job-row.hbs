@@ -1,0 +1,12 @@
+<td>{{job.id}}</td>
+<td>{{#if job.quarantined}}<span class="badge">{{t 'menu.quarantine'}}</span> {{/if}}{{link-to job.display 'jobs.show' job.id}}</td><td>
+{{#if session.can_manage_jobs}}
+{{#if showWorkOrder}}
+<td>
+{{print-link jobId=job.id type="icon"}}
+</td>
+{{/if}}
+{{/if}}
+{{#if showTree}}
+<td>{{#link-to 'node.show' job.treenode_id}}{{job.breadcrumb_string}}{{/link-to}}</td>
+{{/if}}

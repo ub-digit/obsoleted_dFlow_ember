@@ -32,7 +32,7 @@
     <!-- Button trigger modal -->
     <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#unQuarantineModal">
       <span class="fa-stack fa-lg">
-      <i class="fa fa-exclamation-triangle fa-stack-1x"></i>
+        <i class="fa fa-exclamation-triangle fa-stack-1x"></i>
         <i class="fa fa-ban fa-stack-2x" style="color:black;"></i>
       </span>
     </a>
@@ -42,12 +42,7 @@
       <i class="fa fa-2x fa-exclamation-triangle" ></i>
     </a>
     {{/if}}
-    {{#if model.startable}}
-    <button class="btn btn-primary navbar-btn" {{action 'startJob' model.id}}>{{t 'jobs.start'}}</button>
-    {{/if}}
-    {{#if model.qualityControl}}
-    <button class="btn btn-primary navbar-btn" {{action 'qualityControlJob' model.id}}>{{t 'jobs.qualityControl'}}</button>
-    {{/if}}
+    
     {{/if}}
   </ul>
 </div>
@@ -65,11 +60,24 @@
     <div class="panel-title"><strong>{{model.id}}</strong> {{model.display}}</div>
   </div>
   <div class="panel-body">
-    <div class="col-xs-12">
-      <div class="alert alert-success">
+  <div class="row">
+    <div class="col-xs-6">
+      <div {{bind-attr class=":alert model.isDone:alert-success model.isError:alert-danger model.isProcessing:alert-info model.isWaitingForAction:alert-warning"}}>
         <strong>Status:</strong> {{model.status_string}}
       </div>
     </div>
+    <div class="col-xs-6">
+      {{#if session.can_manage_jobs}}
+      {{#if model.startable}}
+      <button class="btn btn-primary" {{action 'startJob' model.id}}>{{t 'jobs.start'}}</button>
+      {{/if}}
+      {{#if model.qualityControl}}
+      <button class="btn btn-primary" {{action 'qualityControlJob' model.id}}>{{t 'jobs.qualityControl'}}</button>
+      {{/if}}
+      {{/if}}
+    </div>
+    </div>
+    <div class="row">
     <div class="col-xs-6">
       <div class="row">
         <div class="col-xs-3">
@@ -163,6 +171,7 @@
   <div class="clearfix"></div>
   <strong>{{t 'jobs.comment'}}</strong> <pre>{{model.comment}}</pre>
   {{/if}}
+</div>
 </div>
 
 <div class="col-xs-12" style="margin-top:20px">

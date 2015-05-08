@@ -89,15 +89,7 @@
         </thead>
         <tbody>
           {{#each job in model.jobs}}
-            <tr>
-              <td>{{job.id}}</td>
-              <td>{{link-to job.display 'jobs.show' job.id}}</td>
-              <td>
-                {{#if session.can_manage_jobs}}
-                  {{print-link jobId=job.id type="icon"}}
-                {{/if}}
-                </td>
-            </tr>
+            {{job-row job=job showTree=false}}
           {{/each}}
         </tbody>
       </table>

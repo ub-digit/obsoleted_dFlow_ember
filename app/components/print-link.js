@@ -3,7 +3,7 @@ import ENV from 'd-flow-ember/config/environment';
 
 export default Ember.Component.extend({
   tagName: 'a',
-  attributeBindings: ['target', 'href'],
+  attributeBindings: ['target', 'href', 'title'],
   target: '_blank',
   classNameBindings: ['isButton:btn', 'isButton:navbar-btn'],
   isButton: function(){
@@ -14,5 +14,12 @@ export default Ember.Component.extend({
   }.property('type'),
   href: function(){
     return ENV.APP.serviceURL + '/assets/work_order/' + this.get('jobId') + '.pdf';
-  }.property('jobId')
+  }.property('jobId'),
+  title: function(){
+    if (this.get('titleKey')){
+      return Ember.I18n.t(this.get('titleKey'));
+    } else {
+      return '';
+    }
+  }.property('titleKey')
 });

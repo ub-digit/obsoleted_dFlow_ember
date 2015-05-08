@@ -32,7 +32,8 @@
   margin-left: 5px;
   margin-right: 5px;
 }
-#job-navbar .navbar-btn {
- margin-top:4px;
+.panel-heading .btn {
+ margin-top:0px;
  margin-bottom:0px;
+ padding-top:0px;
 }

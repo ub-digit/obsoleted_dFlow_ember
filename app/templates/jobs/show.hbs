@@ -11,42 +11,6 @@
 </ul>
 {{/if}}
 
-<div class="navbar navbar-default sub-navbar" id="job-navbar">
-  <div class="navbar-header">
-    <a href="javascript:void(0)" class="navbar-brand">{{model.id}}{{#if model.quarantined}} <span class="label label-danger"> {{t 'menu.quarantine'}}</span>{{/if}}</a>
-  </div>
-  <ul class="navbar-nav nav navbar-right">
-    {{#if session.can_manage_jobs}}
-    {{#if model.has_pdf}}
-    <a class="btn navbar-btn" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
-    {{/if}}
-    {{#link-to 'jobs.show.edit' model class="btn navbar-btn"}}<i class="fa fa-2x fa-pencil-square-o"></i>{{/link-to}}
-    <a class="btn navbar-btn" {{action 'deleteJob' model.id}}><i class="fa fa-2x fa-trash-o"></i></a>
-    {{print-link jobId=model.id type="button"}}
-
-    <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#restartModal">
-      <i class="fa fa-2x fa-recycle" ></i>
-    </a>
-
-    {{#if model.quarantined}}
-    <!-- Button trigger modal -->
-    <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#unQuarantineModal">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-exclamation-triangle fa-stack-1x"></i>
-        <i class="fa fa-ban fa-stack-2x" style="color:black;"></i>
-      </span>
-    </a>
-    {{else}}
-    <!-- Button trigger modal -->
-    <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#quarantineModal">
-      <i class="fa fa-2x fa-exclamation-triangle" ></i>
-    </a>
-    {{/if}}
-    
-    {{/if}}
-  </ul>
-</div>
-
 {{outlet}}
 
 {{#if model.error}}
@@ -56,122 +20,163 @@
 {{/if}}
 
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="panel-title"><strong>{{model.id}}</strong> {{model.display}}</div>
+  <div class="panel-heading" style="padding-top:8px;">
+    <span class="panel-title"><strong>{{model.id}}</strong> {{model.display}}</span>{{#if model.quarantined}} <span class="label label-danger"> {{t 'menu.quarantine'}}</span>{{/if}}
+    <span class="pull-right" style="margin-top:0px;padding-top:0px;">
+      {{#if session.can_manage_jobs}}
+
+      {{#link-to 'jobs.show.edit' model class="btn navbar-btn"}}{{icon-link titleKey='jobs.edit' classNames='fa fa-2x fa-pencil-square-o'}}{{/link-to}}
+      <a class="btn" {{action 'deleteJob' model.id}}>{{icon-link titleKey='jobs.delete' classNames='fa fa-2x fa-trash'}}</a>
+      {{print-link jobId=model.id type="button" titleKey='jobs.print'}}
+
+      <a type="button" class="btn" data-toggle="modal" data-target="#restartModal">
+        {{icon-link titleKey='jobs.restart' classNames='fa fa-2x fa-recycle'}}
+      </a>
+
+      {{#if model.quarantined}}
+      <!-- Button trigger modal -->
+      <a type="button" class="btn" data-toggle="modal" data-target="#unQuarantineModal">
+        {{icon-link titleKey='jobs.unQuarantine' classNames='fa fa-2x fa-exclamation-triangle'}}
+      </a>
+      {{else}}
+      <!-- Button trigger modal -->
+      <a type="button" class="btn" data-toggle="modal" data-target="#quarantineModal">
+        {{icon-link titleKey='jobs.quarantine' classNames='fa fa-2x fa-exclamation-triangle'}}
+      </a>
+      {{/if}}
+
+      {{/if}}
+    </span>
   </div>
   <div class="panel-body">
-  <div class="row">
-    <div class="col-xs-6">
-      <div {{bind-attr class=":alert model.isDone:alert-success model.isError:alert-danger model.isProcessing:alert-info model.isWaitingForAction:alert-warning"}}>
-        <strong>Status:</strong> {{model.status_string}}
+    <div class="row">
+      <div class="col-xs-6">
+        <div {{bind-attr class=":alert model.isDone:alert-success model.isError:alert-danger model.isProcessing:alert-info model.isWaitingForAction:alert-warning"}}>
+          <strong>Status:</strong> {{model.status_string}}
+        </div>
       </div>
-    </div>
-    <div class="col-xs-6">
-      {{#if session.can_manage_jobs}}
-      {{#if model.startable}}
-      <button class="btn btn-primary" {{action 'startJob' model.id}}>{{t 'jobs.start'}}</button>
-      {{/if}}
-      {{#if model.qualityControl}}
-      <button class="btn btn-primary" {{action 'qualityControlJob' model.id}}>{{t 'jobs.qualityControl'}}</button>
-      {{/if}}
-      {{/if}}
-    </div>
+      <div class="col-xs-6">
+        {{#if session.can_manage_jobs}}
+          {{#if model.quarantined}}
+          <!-- Button trigger modal -->
+          <a type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#unQuarantineModal">
+          <i class="fa fa-lg fa-exclamation-triangle"></i> {{t 'jobs.unQuarantine'}}
+          </a>
+          {{else}}
+            {{#if model.startable}}
+              <button class="btn btn-primary" {{action 'startJob' model.id}}>{{t 'jobs.start'}}</button>
+            {{/if}}
+            {{#if model.qualityControl}}
+              <button class="btn btn-primary" {{action 'qualityControlJob' model.id}}>{{t 'jobs.qualityControl'}}</button>
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      </div>
     </div>
     <div class="row">
-    <div class="col-xs-6">
-      <div class="row">
-        <div class="col-xs-3">
-          <strong>{{t 'jobs.source'}}</strong> 
+      <div class="col-xs-6">
+        <div class="row">
+          <div class="col-xs-3">
+            <strong>{{t 'jobs.source'}}</strong> 
+          </div>
+          <div class="col-xs-9">
+            {{model.source_label}} ( 
+            {{#if model.source_link}}
+            <a {{bind-attr href=model.source_link}} target="_blank">{{model.catalog_id}}</a>
+            {{else}}
+            {{model.catalog_id}}
+            {{/if}}
+            )
+          </div>
         </div>
-        <div class="col-xs-9">
-          {{model.source_label}} ( 
-          {{#if model.source_link}}
-          <a {{bind-attr href=model.source_link}} target="_blank">{{model.catalog_id}}</a>
-          {{else}}
-          {{model.catalog_id}}
-          {{/if}}
-          )
+
+        {{#if model.title}}
+        <div class="row">
+          <div class="col-xs-3">
+            <strong>{{t 'jobs.title'}}</strong>
+          </div>
+          <div class="col-xs-9">
+            {{model.title}}
+          </div>
         </div>
-      </div>
-      
-      {{#if model.title}}
-      <div class="row">
-        <div class="col-xs-3">
-          <strong>{{t 'jobs.title'}}</strong>
+        {{/if}}
+
+        {{#if model.author}}
+        <div class="row">
+          <div class="col-xs-3">
+            <strong>{{t 'jobs.author'}}</strong>
+          </div>
+          <div class="col-xs-9">
+            {{model.author}}
+          </div>
         </div>
-        <div class="col-xs-9">
-          {{model.title}}
+        {{/if}}
+
+        {{#if model.type_of_record_string}}
+        <div class="row">
+          <div class="col-xs-3">
+            <strong>{{t 'jobs.type_of_record.label'}}</strong>
+          </div>
+          <div class="col-xs-9">
+            {{type_of_record_string}}
+          </div>
         </div>
-      </div>
-      {{/if}}
-      
-      {{#if model.author}}
-      <div class="row">
-        <div class="col-xs-3">
-          <strong>{{t 'jobs.author'}}</strong>
-        </div>
-        <div class="col-xs-9">
-          {{model.author}}
-        </div>
-      </div>
-      {{/if}}
-      
-      {{#if model.type_of_record_string}}
-      <div class="row">
-        <div class="col-xs-3">
-          <strong>{{t 'jobs.type_of_record.label'}}</strong>
-        </div>
-        <div class="col-xs-9">
-          {{type_of_record_string}}
+        {{/if}}
+
+        {{#if model.chronology_string}}
+        <div class="row">
+          <div class="col-xs-3">
+           {{t 'jobs.chronology'}}
+         </div>
+         <div class="col-xs-9">
+          {{model.chronology_string}}
         </div>
       </div>
       {{/if}}
 
-      {{#if model.chronology_string}}
+      {{#if model.ordinality_string}}
       <div class="row">
         <div class="col-xs-3">
-         {{t 'jobs.chronology'}}
+         {{t 'jobs.ordinality'}}
        </div>
        <div class="col-xs-9">
-        {{model.chronology_string}}
+        {{model.ordinality_string}}
       </div>
     </div>
     {{/if}}
 
-    {{#if model.ordinality_string}}
     <div class="row">
       <div class="col-xs-3">
-       {{t 'jobs.ordinality'}}
-     </div>
-     <div class="col-xs-9">
-      {{model.ordinality_string}}
+        <strong>{{t 'jobs.copyright'}}</strong>
+      </div>
+      <div class="col-xs-9">
+        {{#if model.copyright}}
+        <div class="label label-danger active btn-xs">{{model.copyright_string}}</div>
+        {{else}}
+        <div class="label label-success active btn-xs">{{model.copyright_string}}</div>
+        {{/if}}
+      </div>
     </div>
+    {{#if session.can_manage_jobs}}
+    <div class="row">
+      <div class="col-xs-6">
+        {{#if model.has_pdf}}
+        <a class="btn navbar-btn" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+        {{/if}}
+      </div>
+    </div>
+    {{/if}}
   </div>
-  {{/if}}
-
-  <div class="row">
-    <div class="col-xs-3">
-      <strong>{{t 'jobs.copyright'}}</strong>
-    </div>
-    <div class="col-xs-9">
-      {{#if model.copyright}}
-      <div class="label label-danger active btn-xs">{{model.copyright_string}}</div>
-      {{else}}
-      <div class="label label-success active btn-xs">{{model.copyright_string}}</div>
-      {{/if}}
-    </div>
+  <div class="col-xs-6">
+    {{#if model.object_info}}
+    <div class="clearfix"></div>
+    <strong>{{t 'jobs.object_info'}}</strong> <pre>{{model.object_info}}</pre>
+    {{/if}}
+    {{#if model.comment}}
+    <div class="clearfix"></div>
+    <strong>{{t 'jobs.comment'}}</strong> <pre>{{model.comment}}</pre>
+    {{/if}}
   </div>
-</div>
-<div class="col-xs-6">
-  {{#if model.object_info}}
-  <div class="clearfix"></div>
-  <strong>{{t 'jobs.object_info'}}</strong> <pre>{{model.object_info}}</pre>
-  {{/if}}
-  {{#if model.comment}}
-  <div class="clearfix"></div>
-  <strong>{{t 'jobs.comment'}}</strong> <pre>{{model.comment}}</pre>
-  {{/if}}
-</div>
 </div>
 
 <div class="col-xs-12" style="margin-top:20px">

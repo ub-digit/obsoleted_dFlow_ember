@@ -32,7 +32,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{t 'jobs.quarantine'}}</h4>
+        <h4 class="modal-title" id="myModalLabel2">{{t 'jobs.quarantine'}}</h4>
       </div>
       <div class="modal-body">
         <div class="input-group">
@@ -43,6 +43,28 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'quarantineJob' model message}}>{{t 'jobs.quarantine'}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Restart Modal -->
+<div class="modal fade" id="restartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel3">{{t 'jobs.restart'}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+        <span class="input-group-addon" id="restart-message-text">{{t 'jobs.message'}}
+          </span>
+        {{input value=message classNames='form-control'}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'restartJob' model message}}>{{t 'jobs.restart'}}</button>
       </div>
     </div>
   </div>

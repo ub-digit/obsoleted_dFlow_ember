@@ -147,7 +147,8 @@ var TRANSLATIONS = {
       STATUS: 'Byte av status',
       CREATE: 'Jobb skapat',
       QUARANTINE: 'Satt i karantän',
-      UNQUARANTINE: 'Plockats ur karantän'
+      UNQUARANTINE: 'Plockats ur karantän',
+      RESTART: 'Startats om'
     },
     activitymessage: {
       UNQUARANTINED: '',

@@ -24,6 +24,10 @@
     <a class="btn navbar-btn" {{action 'deleteJob' model.id}}><i class="fa fa-2x fa-trash-o"></i></a>
     {{print-link jobId=model.id type="button"}}
 
+    <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#restartModal">
+      <i class="fa fa-2x fa-eject" ></i>
+    </a>
+
     {{#if model.quarantined}}
     <!-- Button trigger modal -->
     <a type="button" class="btn navbar-btn" data-toggle="modal" data-target="#unQuarantineModal">

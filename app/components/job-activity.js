@@ -23,6 +23,6 @@ export default Ember.Component.extend({
 
   // Formats date
   displayedDate: Ember.computed('activity.created_at', function(){
-    return moment(this.get('activity.created_at')).format("YYYY-MM-DD hh:mm:ss");
+    return moment(this.get('activity.created_at')).format("YYYY-MM-DD HH:mm:ss");
   })
 });

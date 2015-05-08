@@ -9,6 +9,8 @@ export default Ember.Route.extend({
     controller.set('model', Job.create(model));
   },
   actions: {
+    
+    // Sets job status to 'digitizing'
     startJob(id){
       this.store.find('job', id + '/digitizing_begin').then(
         () => {
@@ -19,6 +21,8 @@ export default Ember.Route.extend({
         }
       );
     },
+    
+    // Completes quality control step
     qualityControlJob(id){
       this.store.find('job', id + '/quality_control_end').then(
         () => {
@@ -29,6 +33,8 @@ export default Ember.Route.extend({
         }
       );
     },
+
+    // Deletes job from database
     deleteJob(id) {
       // Send confirmation box before delete
       var should_delete = confirm(Ember.I18n.t("jobs.confirm_delete"));
@@ -43,10 +49,11 @@ export default Ember.Route.extend({
           );
       }
     },
+
+    // Sets quarantine flag for job
     quarantineJob(job, message){
       job.set('quarantined', true);
       job.set('message', message);
-      console.log('message', message);
       this.store.save('job', job).then(
         () => {
           this.refresh(job.id); // Refresh children of current model
@@ -57,6 +64,8 @@ export default Ember.Route.extend({
         }
       );
     },
+
+    // Resets quarantine flag for job
     unQuarantineJob(job){
       job.set('quarantined', false);
       this.store.save('job', job).then(
@@ -65,6 +74,19 @@ export default Ember.Route.extend({
         },
         (errorObject) => {
           job.set('quarantined', true);
+          this.controller.set('error', errorObject.error);
+        }
+      );
+    },
+
+    // Restarts job, sets to first status and moves packagefiles to trash
+    restartJob(job, message){
+      job.set('message', message);
+      this.store.find('job', job.id + '/restart?message=' + message).then(
+        () => {
+          this.refresh(job.id); // Refresh children of current model
+        },
+        (errorObject) => {
           this.controller.set('error', errorObject.error);
         }
       );

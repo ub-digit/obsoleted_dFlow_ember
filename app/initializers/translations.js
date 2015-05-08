@@ -141,7 +141,8 @@ var TRANSLATIONS = {
       chronology: "Kronologi",
       quarantine: "Sätt i karantän",
       unQuarantine: "Ta ur karantän",
-      qualityControl: "Kvalitetskontroll OK"
+      qualityControl: "Kvalitetskontroll OK",
+      restart: "Starta om jobb"
     },
     activityevent: {
       STATUS: 'Byte av status',

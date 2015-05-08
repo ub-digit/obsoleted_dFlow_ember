@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title">{{t 'jobs.new'}}</div>
+    <div class="panel-title">{{#if isNew}}{{t 'jobs.new'}}{{else}}{{t 'jobs.edit'}}{{/if}}</div>
   </div>
   <div class="panel-body">
     <div class="form-group">
@@ -9,25 +9,24 @@
           {{error.msg}}
         </div>
       {{/if}}
-
+      {{#if isNew}}
+      <div class="alert alert-info">
+        <strong>{{t 'jobs.source'}}:</strong> {{model.source_label}}<br/>
+        <strong>{{t 'jobs.catalog_id'}}:</strong> {{model.catalog_id}}<br/>
+        <strong>{{t 'jobs.title'}}:</strong> {{model.title}}<br/>
+        <strong>{{t 'jobs.author'}}:</strong> {{model.author}}
+      </div>
+      {{/if}}
       <label class="col-xs-12">{{t 'jobs.name'}}
         {{input type="text" classBinding=":form-control :col-xs-6" value=model.name}}
       </label>
 
-      <label class="col-xs-12">{{t 'jobs.title'}}
-        {{input type="text" classBinding=":form-control :col-xs-6" value=model.title}}
-      </label>
-
-      <label class="col-xs-12">{{t 'jobs.author'}}
-        {{input type="text" classBinding=":form-control :col-xs-6" value=model.author}}
-      </label>
-
       <label class="col-xs-12">{{t 'jobs.comment'}}
-        {{input type="text" classBinding=":form-control :col-xs-6" value=model.comment}}
+        {{textarea cols="80" rows="3" classBinding=":form-control :col-xs-6" value=model.comment}}
       </label>
 
       <label class="col-xs-12">{{t 'jobs.object_info'}}
-        {{input type="text" classBinding=":form-control :col-xs-6" value=model.object_info}}
+        {{textarea cols="80" rows="3" classBinding=":form-control :col-xs-6" value=model.object_info}}
       </label>
 
       <label class="col-xs-12">{{t 'jobs.copyright'}}
@@ -35,6 +34,7 @@
         value=model.copyright
         optionValuePath="content.value"
         optionLabelPath="content.label"
+        class="form-control"
         }}
       </label>
 

@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+
+  isNew: Ember.computed('model.id', function(){
+    return !this.get('model.id');
+  }),
+
   actions: {
     create: function(model) {
       var that = this;

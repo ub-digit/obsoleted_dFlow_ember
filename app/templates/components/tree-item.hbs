@@ -1,20 +1,21 @@
 {{#if item.children}}
 <a href="" {{bindAttr class=":toggle-icon children.length::leaf"}} {{action 'toggle'}}>
   {{#if isExpanded}}
-  &#x25BC;
+  <i class="fa fa-folder-open-o"></i>
   {{else}}
-  &#x25B6;
+  <i class="fa fa-folder-o"></i>
   {{/if}}
+  {{item.name}} 
 </a>
-  {{item.name}}
+  
 {{else}}
-  <strong>{{item.name}}</strong> <span style="margin-left:20px;">{{byteString}}</span>
+  <a style="color:black;" {{bind-attr href=fileUrl}} target="_blank"><i {{bind-attr class=":fa isImage:fa-file-image-o isText:fa-file-text-o isPdf:fa-file-pdf-o isFile:fa-file-o"}}> </i> <strong>{{item.name}}</strong></a> <span style="margin-left:20px;">{{byteString}}</span>
 {{/if}}
 
 {{#if isExpanded}}
   <div style="padding-left:10px">
   {{#each child in item.children}}
-    {{tree-item item=child}}
+    {{tree-item item=child parentPath=path jobId=jobId}}
   {{/each}}
   </div>
 {{/if}}

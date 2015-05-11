@@ -225,7 +225,7 @@
       <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
         <div class="panel-body">
           {{#each file in model.files}}
-              {{tree-item item=file}}
+              {{tree-item item=file jobId=model.id}}
             {{/each}}
         </div>
       </div>

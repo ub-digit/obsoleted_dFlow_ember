@@ -110,6 +110,7 @@ var TRANSLATIONS = {
         'false': "Får publiceras"
       },
 			search: "Sök",
+      searchById: "Sök på jobb-ID",
       print: "Utskrift",
       start: "Starta digitalisering",
       delete: "Radera jobb",

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Job from 'd-flow-ember/models/job';
 
 export default Ember.Route.extend({
   queryParams: {
@@ -14,7 +15,11 @@ export default Ember.Route.extend({
     return this.store.find('job', params);
   },
   setupController: function(controller, model) {
-    controller.set('model', model);
+    var jobs = Ember.A([]);
+    model.forEach(function(job){
+      jobs.pushObject(Job.create(job));
+    });
+    controller.set('model', jobs);
 
     if(controller.get('page') > controller.get('model.meta.pagination.pages')) {
       controller.transitionToRoute('jobs.index', {queryParams: {page: 1}});

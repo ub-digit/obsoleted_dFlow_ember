@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Job from './../../models/job';
+import Job from 'd-flow-ember/models/job';
 
 export default Ember.Route.extend({
   model: function(params) {

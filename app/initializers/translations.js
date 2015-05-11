@@ -156,6 +156,13 @@ var TRANSLATIONS = {
     activitymessage: {
       UNQUARANTINED: '',
       ACTIVITY_CREATED: ''
+    },
+    paginator: {
+      showing: "Visar",
+      of: "av",
+      hit: "träff",
+      hits: "träffar",
+      noHits: "Sökningen gav inga träffar!"
     }
   }
 };

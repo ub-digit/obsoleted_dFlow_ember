@@ -20,6 +20,7 @@ export default Ember.Route.extend({
       jobs.pushObject(Job.create(job));
     });
     controller.set('model', jobs);
+    controller.set('model.meta', model.meta);
 
     if(controller.get('page') > controller.get('model.meta.pagination.pages')) {
       controller.transitionToRoute('jobs.index', {queryParams: {page: 1}});

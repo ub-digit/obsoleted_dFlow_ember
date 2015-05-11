@@ -115,6 +115,7 @@ var TRANSLATIONS = {
       start: "Starta digitalisering",
       delete: "Radera jobb",
       confirm_delete: "Är du säker på att du vill radera jobbet från systemet?",
+      pdfLink: "Öppna PDF",
       type_of_record: {
         label: "Typ",
         am: "Monografi",

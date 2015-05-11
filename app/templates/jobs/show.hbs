@@ -70,6 +70,9 @@
               <button class="btn btn-primary" {{action 'qualityControlJob' model.id}}>{{t 'jobs.qualityControl'}}</button>
             {{/if}}
           {{/if}}
+          {{#if model.has_pdf}}
+            <a class="btn btn-default btn-lg pull-right" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o" style="color:red"></i> {{t 'jobs.pdfLink'}}</a>
+          {{/if}}
         {{/if}}
       </div>
     </div>
@@ -157,15 +160,6 @@
         {{/if}}
       </div>
     </div>
-    {{#if session.can_manage_jobs}}
-    <div class="row">
-      <div class="col-xs-6">
-        {{#if model.has_pdf}}
-        <a class="btn navbar-btn" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
-        {{/if}}
-      </div>
-    </div>
-    {{/if}}
   </div>
   <div class="col-xs-6">
     {{#if model.object_info}}

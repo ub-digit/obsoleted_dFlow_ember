@@ -138,6 +138,7 @@ var TRANSLATIONS = {
       history: "Historik",
 			other: "Övrigt",
       xml: "XML",
+      files: "Filer",
       ordinality: "Ordinalitet",
       chronology: "Kronologi",
       quarantine: "Sätt i karantän",

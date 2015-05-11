@@ -1,0 +1,20 @@
+{{#if item.children}}
+<a href="" {{bindAttr class=":toggle-icon children.length::leaf"}} {{action 'toggle'}}>
+  {{#if isExpanded}}
+  &#x25BC;
+  {{else}}
+  &#x25B6;
+  {{/if}}
+</a>
+  {{item.name}}
+{{else}}
+  <strong>{{item.name}}</strong> <span style="margin-left:20px;">{{byteString}}</span>
+{{/if}}
+
+{{#if isExpanded}}
+  <div style="padding-left:10px">
+  {{#each child in item.children}}
+    {{tree-item item=child}}
+  {{/each}}
+  </div>
+{{/if}}

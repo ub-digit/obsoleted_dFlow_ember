@@ -22,23 +22,23 @@ export default Ember.Component.extend({
     return this.get('item.name').split('.').pop();
   }),
 
-  isImage: Ember.computed('item.name', function(){
+  isImage: Ember.computed('extension', function(){
     return ['jpg', 'jpeg','tif', 'tiff', 'png', 'jp2'].contains(this.get('extension'));
   }),
 
-  isPdf: Ember.computed('item.name', function(){
+  isPdf: Ember.computed('extension', function(){
     return ['pdf'].contains(this.get('extension'));
   }),
 
-  isText: Ember.computed('item.name', function(){
+  isText: Ember.computed('extension', function(){
     return ['xml', 'txt'].contains(this.get('extension'));
   }),
 
-  isFile: Ember.computed('item.name', function(){
+  isFile: Ember.computed('isImage', 'isPdf', 'isText', function(){
     return !this.isImage && !this.isPdf && !this.isText;
   }),
 
-  path: Ember.computed('parentPath', function(){
+  path: Ember.computed('parentPath', 'item.name', function(){
     return this.get('parentPath') + this.get('item.name') + '/';
   }),
 

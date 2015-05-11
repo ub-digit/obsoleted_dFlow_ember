@@ -47,6 +47,18 @@ export default Ember.Component.extend({
     return ENV.APP.serviceURL + '/assets/job_file/' + this.get('jobId') + '?file_dir=' + this.get('parentPath') + '&file_name=' + this.get('item.name') + '&token=' + token;
   }),
 
+  icon: Ember.computed('isImage', 'isPdf', 'isFile', 'isText', function(){
+    if (this.get('isImage')){
+      return 'fa-file-image-o';
+    } else if (this.get('isPdf')){
+      return 'fa-file-pdf-o';
+    } else if (this.get('isText')){
+      return 'fa-file-text-o';
+    } else if (this.get('isFile')){
+      return 'fa-file-o';
+    }
+  }),
+
   actions: {
     toggle: function(){
       this.toggleProperty('isExpanded');

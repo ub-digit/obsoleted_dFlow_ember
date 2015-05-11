@@ -9,7 +9,7 @@
 </a>
   
 {{else}}
-  <a style="color:black;" {{bind-attr href=fileUrl}} target="_blank"><i {{bind-attr class=":fa isImage:fa-file-image-o isText:fa-file-text-o isPdf:fa-file-pdf-o isFile:fa-file-o"}}> </i> <strong>{{item.name}}</strong></a> <span style="margin-left:20px;">{{byteString}}</span>
+  <a style="color:black;" {{bind-attr href=fileUrl}} target="_blank"><i {{bind-attr class=":fa icon" }}> </i> <strong>{{item.name}}</strong></a> <span style="margin-left:20px;">{{byteString}}</span>
 {{/if}}
 
 {{#if isExpanded}}

@@ -38,6 +38,69 @@
         }}
       </label>
 
+      
+      <div class="col-xs-12">
+      <h4>{{t 'jobs.ordinality'}}</h4>
+      <div class="row">
+      
+        <label class="col-xs-6 col-sm-3">{{t 'jobs.key'}}
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.ordinal_1_key placeHolderTranslation="jobs.ordOneKeyPH"}}
+        </label>
+
+        <label class="col-xs-6 col-sm-3">{{t 'jobs.value'}}
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.ordinal_1_value placeHolderTranslation="jobs.ordOneValuePH"}}
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.ordinal_2_key placeHolderTranslation="jobs.ordTwoKeyPH"}}
+        </label>
+
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.ordinal_2_value placeHolderTranslation="jobs.ordTwoValuePH"}}
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.ordinal_3_key placeHolderTranslation="jobs.ordThreeKeyPH"}}
+        </label>
+
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.ordinal_3_value placeHolderTranslation="jobs.ordThreeValuePH"}}
+        </label>
+      </div>
+
+      <h4>{{t 'jobs.chronology'}}</h4>
+      <div class="row">
+        <label class="col-xs-6 col-sm-3">{{t 'jobs.key'}}
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.chron_1_key placeHolderTranslation="jobs.chronOneKeyPH"}}
+        </label>
+
+        <label class="col-xs-6 col-sm-3">{{t 'jobs.value'}}
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.chron_1_value placeHolderTranslation="jobs.chronOneValuePH"}}
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.chron_2_key placeHolderTranslation="jobs.chronTwoKeyPH"}}
+        </label>
+
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.chron_2_value placeHolderTranslation="jobs.chronTwoValuePH"}}
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.chron_3_key placeHolderTranslation="jobs.chronThreeKeyPH"}}
+        </label>
+
+        <label class="col-xs-6 col-sm-3">
+          {{input type="text" classBinding=":form-control :col-xs-6" value=model.metadata.chron_3_value placeHolderTranslation="jobs.chronThreeValuePH"}}
+        </label>
+      </div>
+      </div>
+
+      <div class="row" style="margin-top:20px;">
       <div class="col-xs-12">
         <button class="btn btn-primary" {{action 'create' model}}>
           {{#if model.id}}
@@ -48,6 +111,7 @@
         </button>
         <button class="btn btn-default" {{action 'abort'}}>{{t 'jobs.cancel'}}</button>
       </div>
+    </div>
     </div>
   </div>
 </div>

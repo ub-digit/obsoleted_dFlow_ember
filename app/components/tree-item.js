@@ -18,16 +18,20 @@ export default Ember.Component.extend({
     return Math.max(size, 0.1).toFixed(1) + byteUnits[i];
   }),
 
+  extension: Ember.computed('item.name', function(){
+    return this.get('item.name').split('.').pop();
+  }),
+
   isImage: Ember.computed('item.name', function(){
-    return ['jpg', 'jpeg','tif', 'tiff', 'png', 'jp2'].contains(this.get('item.name').split('.').pop());
+    return ['jpg', 'jpeg','tif', 'tiff', 'png', 'jp2'].contains(this.get('extension'));
   }),
 
   isPdf: Ember.computed('item.name', function(){
-    return ['pdf'].contains(this.get('item.name').split('.').pop());
+    return ['pdf'].contains(this.get('extension'));
   }),
 
   isText: Ember.computed('item.name', function(){
-    return ['xml', 'txt'].contains(this.get('item.name').split('.').pop());
+    return ['xml', 'txt'].contains(this.get('extension'));
   }),
 
   isFile: Ember.computed('item.name', function(){

@@ -21,6 +21,7 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 app.import("bower_components/moment/moment.js");
 app.import('bower_components/moment/locale/sv.js');
+app.import('bower_components/markdown/lib/markdown.js');
 
 /*
 This example is more verbose than necessary for the sake of illustration.

@@ -3,6 +3,7 @@
     "document",
     "window",
     "moment",
+    "markdown",
     "-Promise"
   ],
   "browser": true,

@@ -164,11 +164,11 @@
   <div class="col-xs-6">
     {{#if model.object_info}}
     <div class="clearfix"></div>
-    <strong>{{t 'jobs.object_info'}}</strong> <pre>{{model.object_info}}</pre>
+    <strong>{{t 'jobs.object_info'}}</strong> {{markdown-text model.object_info}}
     {{/if}}
     {{#if model.comment}}
     <div class="clearfix"></div>
-    <strong>{{t 'jobs.comment'}}</strong> <pre>{{model.comment}}</pre>
+    <strong>{{t 'jobs.comment'}}</strong> {{markdown-text model.comment}}
     {{/if}}
   </div>
 </div>

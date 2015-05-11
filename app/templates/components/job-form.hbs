@@ -21,13 +21,25 @@
         {{input type="text" classBinding=":form-control :col-xs-6" value=model.name}}
       </label>
 
-      <label class="col-xs-12">{{t 'jobs.comment'}}
+      <div class="row">
+      <label class="col-xs-6">{{t 'jobs.comment'}}
         {{textarea cols="80" rows="3" classBinding=":form-control :col-xs-6" value=model.comment}}
       </label>
 
-      <label class="col-xs-12">{{t 'jobs.object_info'}}
+      <label class="col-xs-6">{{t 'jobs.preview'}}
+      <div style="background-color:#EEE">{{markdown-text model.comment}}</div>
+      </label>
+      </div>
+
+      <div class="row">
+      <label class="col-xs-6">{{t 'jobs.object_info'}}
         {{textarea cols="80" rows="3" classBinding=":form-control :col-xs-6" value=model.object_info}}
       </label>
+
+      <label class="col-xs-6">{{t 'jobs.preview'}}
+      <div style="background-color:#EEE">{{markdown-text model.object_info}}</div>
+      </label>
+      </div>
 
       <label class="col-xs-12">{{t 'jobs.copyright'}}
         {{view 'select' content=copyrightSelection

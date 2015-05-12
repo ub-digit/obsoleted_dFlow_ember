@@ -5,7 +5,6 @@ export default Ember.Component.extend({
   classNames: ['navbar-link'],
 
   inProgress: Ember.computed('stateGroups', function(){
-    console.log('sg', this.get('stateGroups'));
     var actionVal = 0;
     if (this.get('stateGroups.ACTION')) {
       actionVal = this.get('stateGroups.ACTION');

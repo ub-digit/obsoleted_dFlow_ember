@@ -46,7 +46,8 @@ var TRANSLATIONS = {
   	  move_confirm: "Är du säker på att du vill flytta noden till",
   	  move_parent_not_found: "Kunde inte hitta destinationsnoden",
       delete: "Radera nod",
-      confirm_delete: "Är du säker på att du vill radera noden och ALLA dess barn från systemet?"
+      confirm_delete: "Är du säker på att du vill radera noden och ALLA dess barn från systemet?",
+      hasActionStates: "Innehåller jobb som väntar på manuell åtgärd"
     },
     users: {
       id: "ID",
@@ -160,7 +161,12 @@ var TRANSLATIONS = {
       unQuarantine: "Ta ur karantän",
       qualityControl: "Kvalitetskontroll OK",
       restart: "Starta om jobb",
-      preview: "Förhandsgranskning"
+      preview: "Förhandsgranskning",
+      states: {
+        start: "Ej påbörjade",
+        inProgress: "Pågående",
+        done: "Klara"
+      }
     },
     activityevent: {
       STATUS: 'Byte av status',

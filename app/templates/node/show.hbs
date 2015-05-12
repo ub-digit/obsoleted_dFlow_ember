@@ -17,6 +17,7 @@
       <a href="javascript:void(0)" class="navbar-brand">{{t 'nodes.root'}}</a>
     {{else}}
       <a href="javascript:void(0)" class="navbar-brand">{{model.name}} (ID: {{model.id}})</a>
+      {{state-groups stateGroups=model.state_groups}}
     {{/if}}
   </div>
   <ul class="navbar-nav nav navbar-right">
@@ -54,7 +55,14 @@
           {{#each child in model.children}}
             <tr>
               <td>{{child.id}}</td>
-              <td>{{link-to child.name 'node.show' child.id}}</td>
+              <td>
+              {{link-to child.name 'node.show' child.id}}
+              {{#if session.can_manage_jobs}}
+                {{#if child.state_groups.ACTION}}
+                  {{icon-link classNames="fa-user" titleKey='nodes.hasActionStates'}}
+                {{/if}}
+              {{/if}}
+              </td>
               <td>
                 {{#if isRoot}}
                   {{#link-to 'node.show.edit' 'root' child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}

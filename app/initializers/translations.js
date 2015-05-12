@@ -12,7 +12,7 @@ var TRANSLATIONS = {
     other_lang: 'en',
     main: {
       title: "DFLOW",
-      description: "Flödeshantering för digitalisering - Göteborgs Unviersitetsbibliotek"
+      description: "Flödeshantering för digitalisering - Göteborgs Unviversitetsbibliotek"
     },
     menu: {
       login: "Logga in",
@@ -31,13 +31,13 @@ var TRANSLATIONS = {
     nodes: {
       id: "ID",
       name: "Namn",
-      new: "Skapa ny nod",
+      new: "Skapa ny katalog",
       create: "Skapa",
       edit: "Redigera",
       update: "Spara ändringar",
       cancel: "Avbryt",
       children: {
-        header: "Noder"
+        header: "Kataloger"
       },
       root: "Topp",
   	  new_parent_id: "ID på ny förälder",
@@ -123,6 +123,7 @@ var TRANSLATIONS = {
         as: "Periodika"
       },
       status: "Status",
+      state: "Läge",
       message: "Meddelande",
       statuses: {
         waiting_for_digitizing: "Väntar på digitalisering",
@@ -165,7 +166,11 @@ var TRANSLATIONS = {
       states: {
         start: "Ej påbörjade",
         inProgress: "Pågående",
-        done: "Klara"
+        done: "Klara",
+        START: "Ej påbörjad",
+        FINISH: "Klar",
+        PROCESS: "Under arbete",
+        ACTION: "Väntar på manuell hantering"
       }
     },
     activityevent: {

@@ -8,7 +8,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     return Ember.RSVP.hash({
       roles: that.store.find('role'),
       sources: that.store.find('source'),
-      statuses: that.store.find('status')
+      statuses: that.store.find('status'),
+      states: that.store.find('state')
     });
   },
   setupController: function(controller, model) {
@@ -29,6 +30,14 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       statusItems.pushObject(item);
     }
     controller.set('statusSelection', statusItems);
+
+    var stateItems = [];
+    for(var i = 0 ; i < model.states.length ; i++ ){
+      var state = model.states[i];
+      var item = {label: Ember.I18n.t('jobs.states.' + state), value: state};
+      stateItems.pushObject(item);
+    }
+    controller.set('stateSelection', stateItems);
   },
   actions: {
    sessionAuthenticationFailed: function(error) {

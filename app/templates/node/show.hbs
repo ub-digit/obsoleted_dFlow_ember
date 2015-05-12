@@ -1,36 +1,36 @@
 {{#if model.breadcrumb}}
-  <ul class="breadcrumb">
-    <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
-    {{#each parent in model.breadcrumb}}
-      {{#if parent.id}}
-        <li>{{link-to parent.name 'node.show' parent.id}}</li>
-      {{else}}
-        <li>{{parent.name}}</li>
-      {{/if}}
-    {{/each}}
-  </ul>
+<ul class="breadcrumb">
+  <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
+  {{#each parent in model.breadcrumb}}
+  {{#if parent.id}}
+  <li>{{link-to parent.name 'node.show' parent.id}}</li>
+  {{else}}
+  <li>{{parent.name}}</li>
+  {{/if}}
+  {{/each}}
+</ul>
 {{/if}}
 
 <div class="navbar navbar-default sub-navbar">
-  <div class="navbar-header">
+  <div class="navbar-header" style="width:50%">
     {{#if isRoot}}
-      <a href="javascript:void(0)" class="navbar-brand">{{t 'nodes.root'}}</a>
+    <a href="javascript:void(0)" class="navbar-brand">{{t 'nodes.root'}}</a>
     {{else}}
-      <a href="javascript:void(0)" class="navbar-brand">{{model.name}} (ID: {{model.id}})</a>
-      {{state-groups stateGroups=model.state_groups}}
+    <a href="javascript:void(0)" class="navbar-brand">{{model.name}} (ID: {{model.id}})</a>
+    {{state-groups stateGroups=model.state_groups}}
     {{/if}}
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#unless isRoot}}
-      {{#if session.can_manage_tree}}
-        {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
-        {{#link-to 'node.show.jobs.source' class="btn btn-default navbar-btn"}}{{t 'jobs.new'}}{{/link-to}}
-      {{/if}}
+    {{#if session.can_manage_tree}}
+    {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
+    {{#link-to 'node.show.jobs.source' class="btn btn-default navbar-btn"}}{{t 'jobs.new'}}{{/link-to}}
+    {{/if}}
     {{/unless}}
     {{#if isRoot}}
-      {{#if session.can_manage_tree_root}}
-        {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
-      {{/if}}
+    {{#if session.can_manage_tree_root}}
+    {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
+    {{/if}}
     {{/if}}
   </ul>
 </div>
@@ -38,70 +38,99 @@
 {{outlet}}
 
 {{#if model.children}}
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title">{{t 'nodes.children.header'}}</div>
-    </div>
-    <div class="panel-body">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>{{t 'nodes.id'}}</th>
-            <th>{{t 'nodes.name'}}</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each child in model.children}}
-            <tr>
-              <td>{{child.id}}</td>
-              <td>
-              {{link-to child.name 'node.show' child.id}}
-              {{#if session.can_manage_jobs}}
-                {{#if child.state_groups.ACTION}}
-                  {{icon-link classNames="fa-user" titleKey='nodes.hasActionStates'}}
-                {{/if}}
-              {{/if}}
-              </td>
-              <td>
-                {{#if isRoot}}
-                  {{#link-to 'node.show.edit' 'root' child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
-                {{else}}
-                  {{#link-to 'node.show.edit' model.id child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
-                {{/if}}
-              </td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'nodes.children.header'}}</div>
   </div>
+  <div class="panel-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>{{t 'nodes.id'}}</th>
+          <th>{{t 'nodes.name'}}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each child in model.children}}
+        <tr>
+          <td>{{child.id}}</td>
+          <td>
+            {{link-to child.name 'node.show' child.id}}
+            {{#if session.can_manage_jobs}}
+            {{#if child.state_groups.ACTION}}
+            {{icon-link classNames="fa-user" titleKey='nodes.hasActionStates'}}
+            {{/if}}
+            {{/if}}
+          </td>
+          <td>
+            {{#if isRoot}}
+            {{#link-to 'node.show.edit' 'root' child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
+            {{else}}
+            {{#link-to 'node.show.edit' model.id child.id}}<i class="fa fa-pencil-square-o"></i>{{/link-to}}
+            {{/if}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
 {{/if}}
 
-{{#if model.jobs}}
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <div class="panel-title">{{t 'jobs.header'}} ({{model.meta.query.total}})</div>
-    </div>
-    <div class="panel-body">
-      {{pagination-pager pagination=model.meta.pagination}}
-    </div>
-    <div class="panel-body">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>{{t 'jobs.id'}}</th>
-            <th>{{t 'jobs.name'}}</th>
-            <th></th>
-            <th>{{t 'jobs.status'}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each job in model.jobs}}
-            {{job-row job=job showTree=false}}
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
+{{#if model.jobs_count}}
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <div class="panel-title">{{t 'jobs.header'}} ({{model.jobs_count}})</div>
   </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <div class="input-group">
+          {{input value=query class="form-control"
+          placeholderTranslation="jobs.search"}}
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" {{action 'searchJobs' query}}>{{t 'jobs.search'}}</button>
+          </span>
+
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <div class="input-group">
+          <span class="input-group-addon" id="status-text">{{t 'jobs.state'}}
+          </span>
+          {{view "select"
+          classNames='form-control' 
+          content=stateSelection
+          optionValuePath="content.value"
+          optionLabelPath="content.label"
+          value=state
+          prompt="---"}}
+        </div>
+      </div>
+    </div>
+    {{pagination-pager-data pagination=model.jobs.meta.pagination total=model.jobs.meta.query.total}}
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>{{t 'jobs.id'}}</th>
+          <th>{{t 'jobs.name'}}</th>
+          <th></th>
+          <th>{{t 'jobs.status'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each job in model.jobs}}
+        {{job-row job=job showTree=false}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-body">
+    {{pagination-pager pagination=model.jobs.meta.pagination}}
+  </div>
+</div>
 {{/if}}

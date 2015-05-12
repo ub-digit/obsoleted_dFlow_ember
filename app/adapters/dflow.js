@@ -5,7 +5,8 @@ export default Ember.Object.extend({
     treenode:  { path: 'api/treenodes'  },
     user: { path: 'api/users'},
     role: { path: 'api/config/role_list'},
-    status: { path: 'api/config/status_list'},
+    status: { path: 'api/config/status_list', plural: 'statuses'},
+    state: { path: 'api/config/state_list'},
     source: { path: 'api/sources'},
     job: { path: 'api/jobs'}
   },

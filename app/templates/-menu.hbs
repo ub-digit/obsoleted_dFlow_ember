@@ -10,11 +10,9 @@
       <li>{{#link-to 'jobs.index' (query-params quarantined="true" query="")}}{{t 'menu.quarantine'}}{{/link-to}}</li>
       {{/if}}
     </ul>
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
+      <div class="form-group navbar-form navbar-left">
         {{input action="showJob" class="form-control" value=job_id placeholderTranslation="jobs.searchById"}}
       </div>
-    </form>
     <ul class="nav navbar-nav navbar-right">
       {{#if session.can_view_users}}
       <ul class="nav navbar-nav">

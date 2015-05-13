@@ -10,14 +10,18 @@ export default Ember.Component.extend({
 
   // Returns a translated message if message begins with '_' or 'STATUS'
   displayedMessage: Ember.computed('activity.message', function(){
-    if (this.get('activity.message').charAt(0) === '_') {
-      var string = this.get('activity.message').slice(1);
-      return Ember.I18n.t('activitymessage.'+string);
-    } else if (this.get('activity.message').indexOf('STATUS') === 0) {
-      var status = this.get('activity.message').slice(7);
-      return Ember.I18n.t('jobs.statuses.'+status);
+    if (this.get('activity.message')) {
+      if (this.get('activity.message').charAt(0) === '_') {
+        var string = this.get('activity.message').slice(1);
+        return Ember.I18n.t('activitymessage.'+string);
+      } else if (this.get('activity.message').indexOf('STATUS') === 0) {
+        var status = this.get('activity.message').slice(7);
+        return Ember.I18n.t('jobs.statuses.'+status);
+      } else {
+        return this.get('activity.message');
+      }
     } else {
-      return this.get('activity.message');
+      return "";
     }
   }),
 

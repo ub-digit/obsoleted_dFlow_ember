@@ -8,7 +8,8 @@ export default Ember.Object.extend({
     status: { path: 'api/config/status_list', plural: 'statuses'},
     state: { path: 'api/config/state_list'},
     source: { path: 'api/sources'},
-    job: { path: 'api/jobs'}
+    job: { path: 'api/jobs'},
+    status_change: { path: 'api/statuses'}
   },
   sessionHeaders: function() {
     var session = this.container.lookup('simple-auth-session:main');

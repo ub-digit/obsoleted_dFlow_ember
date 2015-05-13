@@ -12,7 +12,7 @@ export default Ember.Route.extend({
     
     // Sets job status to 'digitizing'
     startJob(id){
-      this.store.find('job', id + '/digitizing_begin').then(
+      this.store.find('status_change', id + '/new/digitizing').then(
         () => {
           this.refresh(id); // Refresh children of current model
         },
@@ -24,7 +24,7 @@ export default Ember.Route.extend({
     
     // Completes quality control step
     qualityControlJob(id){
-      this.store.find('job', id + '/quality_control_end').then(
+      this.store.find('status_change', id + '/complete/quality_control').then(
         () => {
           this.refresh(id); // Refresh children of current model
         },

@@ -102,6 +102,7 @@ var TRANSLATIONS = {
       comment: "Kommentarer",
       object_info: "Objektinformation",
       id: "ID",
+      idMissing: "Ogiltigt ID",
       edit: "Redigera",
       save: "Spara",
       breadcrumb: "Placering",

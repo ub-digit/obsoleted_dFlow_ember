@@ -44,8 +44,18 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     this.controllerFor('login').set('error', error);
   },
   showJob: function(job_id) {
-   this.controller.set('job_id', '');
-   this.transitionTo('jobs.show', job_id);
- }
+    var that = this;
+    this.controller.set('job_id', null);
+    this.controller.set('job_id_error', null);
+    
+    if (job_id) {
+      that.store.find('job', job_id).then(function() {
+        that.transitionTo('jobs.show', job_id);
+      },
+      function(){
+        that.controller.set('job_id_error', Ember.I18n.t('jobs.idMissing') + ': ' + job_id);
+      })
+    }
+  }
 }
 });

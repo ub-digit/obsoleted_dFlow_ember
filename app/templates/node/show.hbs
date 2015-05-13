@@ -59,7 +59,7 @@
             {{link-to child.name 'node.show' child.id (query-params state=null query='' page=1)}}
             {{#if session.can_manage_jobs}}
             {{#if child.state_groups.ACTION}}
-            {{icon-link classNames="fa-user" titleKey='nodes.hasActionStates'}}
+            {{icon-link classNames="fa-wrench" titleKey='nodes.hasActionStates'}}
             {{/if}}
             {{/if}}
           </td>

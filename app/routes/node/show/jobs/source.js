@@ -12,7 +12,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    var node = this.modelFor('node.show');
+    var node = this.modelFor('node.show').treenode;
     return {treenode_id: node.id}; // Beginning with this data
   },
   setupController: function(controller, model) {

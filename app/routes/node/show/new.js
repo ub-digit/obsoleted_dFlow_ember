@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    var parent = this.modelFor('node.show');
+    var parent = this.modelFor('node.show').treenode;
     return {parent_id: parent.id};
   },
   actions: {

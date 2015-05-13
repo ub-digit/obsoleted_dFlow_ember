@@ -17,7 +17,7 @@ var TRANSLATIONS = {
     menu: {
       login: "Logga in",
       logout: "Logga ut",
-      nodes: "Träd",
+      nodes: "Bläddra",
       logged_in_as: "Inloggad som:",
       users: "Användare",
       jobs: "Jobblista",
@@ -41,12 +41,12 @@ var TRANSLATIONS = {
       },
       root: "Topp",
   	  new_parent_id: "ID på ny förälder",
-  	  move_confirm_root: "Är du säker på att du vill flytta noden till toppnivå?",
-  	  move_root_denied: "Du har inte rätt att flytta noder till toppnivå!",
-  	  move_confirm: "Är du säker på att du vill flytta noden till",
-  	  move_parent_not_found: "Kunde inte hitta destinationsnoden",
-      delete: "Radera nod",
-      confirm_delete: "Är du säker på att du vill radera noden och ALLA dess barn från systemet?",
+  	  move_confirm_root: "Är du säker på att du vill flytta katalogen till toppnivå?",
+  	  move_root_denied: "Du har inte rätt att flytta kataloger till toppnivå!",
+  	  move_confirm: "Är du säker på att du vill flytta katalogen till",
+  	  move_parent_not_found: "Kunde inte hitta destinationskatalogen",
+      delete: "Radera katalogen",
+      confirm_delete: "Är du säker på att du vill radera katalogen och ALLA dess underliggande kataloger och jobb från systemet?",
       hasActionStates: "Innehåller jobb som väntar på manuell åtgärd"
     },
     users: {

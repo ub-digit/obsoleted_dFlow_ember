@@ -52,7 +52,8 @@
     <div class="row">
       <div class="col-xs-6">
         <div {{bind-attr class=":alert model.isDone:alert-success model.isError:alert-danger model.isProcessing:alert-info model.isWaitingForAction:alert-warning"}}>
-          <strong>Status:</strong> {{model.status_string}}
+          {{#unless model.isDone}}<strong>{{t 'jobs.flowStep'}}:</strong> {{model.status_string}}<br/>
+          {{model.sinceStarted}} {{#if model.flow_step.process_msg}}{{t 'flowStep.process_msg'}}: {{model.flow_step.process_msg}}{{/if}}{{else}}<strong>{{t 'jobs.states.FINISH'}}</strong>{{/unless}}
         </div>
       </div>
       <div class="col-xs-6">
@@ -63,8 +64,8 @@
           <i class="fa fa-lg fa-exclamation-triangle"></i> {{t 'jobs.unQuarantine'}}
           </a>
           {{else}}
-            {{#if model.startable}}
-              <button class="btn btn-primary" {{action 'startJob' model.id}}>{{t 'jobs.start'}}</button>
+            {{#if model.waitingForManualAction}}
+              <button class="btn btn-primary" {{action 'flowStepSuccess' model.id model.flow_step.step}}>{{model.flow_step.params.msg}}</button>
             {{/if}}
             {{#if model.qualityControl}}
               <button class="btn btn-primary" {{action 'qualityControlJob' model.id}}>{{t 'jobs.qualityControl'}}</button>
@@ -221,6 +222,20 @@
           {{#each file in model.files}}
               {{tree-item item=file jobId=model.id}}
             {{/each}}
+        </div>
+      </div>
+    </div>
+     <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingFour">
+        <h4 class="panel-title">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            {{t 'jobs.flow'}}: {{model.flow}}
+          </a>
+        </h4>
+      </div>
+      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+        <div class="panel-body">
+          {{flow-table flowSteps=model.flow_steps}}
         </div>
       </div>
     </div>

@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['application'],
-  statusSelectionBinding: 'controllers.application.statusSelection',
-  queryParams: ['page', 'query', 'quarantined', 'status'],
+  queryParams: ['page', 'query', 'quarantined', 'state'],
+  stateSelectionBinding: 'controllers.application.stateSelection',
   page: 1,
   query: "",
-  quarantined: "",
-  status: null
+  state: null,
+  quarantined: ""
 });

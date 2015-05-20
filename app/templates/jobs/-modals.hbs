@@ -12,11 +12,10 @@
           </span>
           {{view "select"
           classNames='form-control' 
-          content=statusSelection
+          content=flowStepItems
           optionValuePath="content.value"
           optionLabelPath="content.label"
-          value=model.status
-          }}
+          value=model.current_flow_step}}
         </div>
       </div>
       <div class="modal-footer">

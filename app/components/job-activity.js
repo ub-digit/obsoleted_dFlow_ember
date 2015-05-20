@@ -14,9 +14,6 @@ export default Ember.Component.extend({
       if (this.get('activity.message').charAt(0) === '_') {
         var string = this.get('activity.message').slice(1);
         return Ember.I18n.t('activitymessage.'+string);
-      } else if (this.get('activity.message').indexOf('STATUS') === 0) {
-        var status = this.get('activity.message').slice(7);
-        return Ember.I18n.t('jobs.statuses.'+status);
       } else {
         return this.get('activity.message');
       }

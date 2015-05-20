@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>{{t 'flowStep.step'}}</th>
+      <th>{{t 'flowStep.description'}}</th>
+      <th>{{t 'flowStep.process'}}</th>
+      <th>{{t 'flowStep.goto_true'}}</th>
+      <th>{{t 'flowStep.goto_false'}}</th>
+      <th>{{t 'flowStep.entered_at'}}</th>
+      <th>{{t 'flowStep.started_at'}}</th>
+      <th>{{t 'flowStep.finished_at'}}</th>
+      <th>{{t 'flowStep.params'}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each flowStep in flowStepsSorted}}
+    {{flow-step flowStep=flowStep}}
+    {{/each}}
+  </tbody>
+</table>

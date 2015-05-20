@@ -5,11 +5,10 @@ export default Ember.Object.extend({
     treenode:  { path: 'api/treenodes'  },
     user: { path: 'api/users'},
     role: { path: 'api/config/role_list'},
-    status: { path: 'api/config/status_list', plural: 'statuses'},
     state: { path: 'api/config/state_list'},
     source: { path: 'api/sources'},
     job: { path: 'api/jobs'},
-    status_change: { path: 'api/statuses'}
+    process: { path: 'api/process', singular: 'job'}
   },
   sessionHeaders: function() {
     var session = this.container.lookup('simple-auth-session:main');

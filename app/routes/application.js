@@ -8,7 +8,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     return Ember.RSVP.hash({
       roles: that.store.find('role'),
       sources: that.store.find('source'),
-      statuses: that.store.find('status'),
       states: that.store.find('state')
     });
   },
@@ -23,19 +22,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       {label: Ember.I18n.t('jobs.copyright_values.true'), value: true},
       {label: Ember.I18n.t('jobs.copyright_values.false'), value: false}
       ]);
-    var statusItems = [];
-    for(var i = 0 ; i < model.statuses.length ; i++ ){
-      var status = model.statuses[i];
-      var item = {label: Ember.I18n.t('jobs.statuses.' + status), value: status};
-      statusItems.pushObject(item);
-    }
-    controller.set('statusSelection', statusItems);
 
     var stateItems = [];
-    for(var i = 0 ; i < model.states.length ; i++ ){
-      var state = model.states[i];
-      var item = {label: Ember.I18n.t('jobs.states.' + state), value: state};
-      stateItems.pushObject(item);
+    for(var y = 0 ; y < model.states.length ; y++ ){
+      var state = model.states[y];
+      var item2 = {label: Ember.I18n.t('jobs.states.' + state), value: state};
+      stateItems.pushObject(item2);
     }
     controller.set('stateSelection', stateItems);
   },
@@ -54,7 +46,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       },
       function(){
         that.controller.set('job_id_error', Ember.I18n.t('jobs.idMissing') + ': ' + job_id);
-      })
+      });
     }
   }
 }

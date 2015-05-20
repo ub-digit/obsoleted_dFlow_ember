@@ -11,20 +11,8 @@ export default Ember.Route.extend({
   actions: {
     
     // Sets job status to 'digitizing'
-    startJob(id){
-      this.store.find('status_change', id + '/new/digitizing').then(
-        () => {
-          this.refresh(id); // Refresh children of current model
-        },
-        (errorObject) => {
-          this.controller.set('error', errorObject.error);
-        }
-      );
-    },
-    
-    // Completes quality control step
-    qualityControlJob(id){
-      this.store.find('status_change', id + '/complete/quality_control').then(
+    flowStepSuccess(id, step){
+      this.store.find('process', id, {status: 'success', step: step}).then(
         () => {
           this.refresh(id); // Refresh children of current model
         },

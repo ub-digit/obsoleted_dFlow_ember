@@ -6,16 +6,26 @@ export default Ember.Object.extend({
   }.property('metadata'),
 
   status_string: function() {
-    return Ember.I18n.t('jobs.statuses.' + this.get('status'));
+    if (this.get('main_status') === "DONE") {
+      return Ember.I18n.t('jobs.states.FINISH');
+    } else {
+      return this.get('status');
+    }
   }.property('status'),
 
-  startable: function(){
-    return this.get('status') === 'waiting_for_digitizing';
-  }.property('status'),
+  waitingForManualAction: function(){
+    return this.get('flow_step.params.manual');
+  }.property('flow_step'),
 
-  qualityControl: function(){
-    return this.get('status') === 'quality_control';
-  }.property('status'),
+  sinceStarted: Ember.computed('flow_step.entered_at', 'flow_step.started_at', function(){
+    if (this.get('flow_step.entered_at')) {
+      if (this.get('flow_step.started_at')) {
+        return Ember.I18n.t('flowStep.startedSince') + moment(this.get('flow_step.started_at')).fromNow();
+      } else {
+        return Ember.I18n.t('flowStep.waitingSince') + moment(this.get('flow_step.entered_at')).fromNow();
+      }
+    }
+  }),
 
   copyright_string: function() {
     return Ember.I18n.t('jobs.copyright_values.'+this.get('copyright'));

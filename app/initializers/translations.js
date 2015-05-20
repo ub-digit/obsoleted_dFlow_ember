@@ -164,6 +164,8 @@ var TRANSLATIONS = {
       qualityControl: "Kvalitetskontroll OK",
       restart: "Starta om jobb",
       preview: "Förhandsgranskning",
+      flow: "Flöde",
+      flowStep: "Flödessteg",
       states: {
         start: "Ej påbörjade",
         inProgress: "Pågående",
@@ -179,7 +181,9 @@ var TRANSLATIONS = {
       CREATE: 'Jobb skapat',
       QUARANTINE: 'Satt i karantän',
       UNQUARANTINE: 'Plockats ur karantän',
-      RESTART: 'Startats om'
+      RESTART: 'Startats om',
+      STARTED: 'Flödessteg aktiverat',
+      FINISHED: 'Flödessteg klart!'
     },
     activitymessage: {
       UNQUARANTINED: '',
@@ -191,6 +195,19 @@ var TRANSLATIONS = {
       hit: "träff",
       hits: "träffar",
       noHits: "Sökningen gav inga träffar!"
+    },
+    flowStep: {
+      startedSince: "Startad: ",
+      waitingSince: "Aktiverad: ",
+      step: "ID",
+      description: "Namn",
+      process: "Processtyp",
+      params: "Parametrar",
+      goto_true: "Gå till (sant)",
+      goto_false: "Gå till (falskt)",
+      entered_at: "Aktiverad",
+      started_at: "Startad",
+      finished_at: "Avslutad"
     }
   }
 };

@@ -6,7 +6,7 @@ export default Ember.Route.extend({
     page: { refreshModel: true },
 		query: { refreshModel: true },
     quarantined: {refreshModel: true},
-    status: {refreshModel: true}
+    state: {refreshModel: true}
   },
   model: function(params) {
     if(!params.page) {

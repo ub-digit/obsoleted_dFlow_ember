@@ -40,9 +40,7 @@ export default Ember.Route.extend({
 
     // Sets quarantine flag for job
     quarantineJob(job, message){
-      job.set('quarantined', true);
-      job.set('message', message);
-      this.store.save('job', job).then(
+      this.store.find('job', job.id + '/quarantine?message=' + message).then(
         () => {
           this.refresh(job.id); // Refresh children of current model
         },
@@ -55,8 +53,7 @@ export default Ember.Route.extend({
 
     // Resets quarantine flag for job
     unQuarantineJob(job){
-      job.set('quarantined', false);
-      this.store.save('job', job).then(
+      this.store.find('job', job.id + '/unquarantine?step=' + job.current_flow_step).then(
         () => {
           this.refresh(job.id); // Refresh children of current model
         },

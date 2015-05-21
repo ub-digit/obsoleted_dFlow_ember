@@ -121,7 +121,8 @@ var TRANSLATIONS = {
       type_of_record: {
         label: "Typ",
         am: "Monografi",
-        as: "Periodika"
+        as: "Periodika",
+        tm: "Handskrift"
       },
       status: "Status",
       state: "Läge",

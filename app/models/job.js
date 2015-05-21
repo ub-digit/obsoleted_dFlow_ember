@@ -5,6 +5,9 @@ export default Ember.Object.extend({
     return Ember.I18n.t('jobs.type_of_record.' + this.get('metadata.type_of_record'));
   }.property('metadata'),
 
+  hasTypeOfRecord: Ember.computed('metadata', function(){
+    return !!this.get('metadata.type_of_record');
+  }),
   status_string: function() {
     if (this.get('main_status') === "DONE") {
       return Ember.I18n.t('jobs.states.FINISH');

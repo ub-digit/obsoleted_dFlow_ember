@@ -23,7 +23,7 @@ export default Ember.Component.extend({
 
   enteredAt: Ember.computed('flowStep.entered_at', function(){
     if (this.get('flowStep.entered_at')) {
-      return moment(this.get('entered_at')).format("YYYY-MM-DD HH:mm:SS");
+      return moment(this.get('flowStep.entered_at')).format("YYYY-MM-DD HH:mm:SS");
     } else {
       return "";
     }
@@ -31,7 +31,7 @@ export default Ember.Component.extend({
 
   startedAt: Ember.computed('flowStep.started_at', function(){
     if (this.get('flowStep.started_at')) {
-      return moment(this.get('started_at')).format("YYYY-MM-DD HH:mm:SS");
+      return moment(this.get('flowStep.started_at')).format("YYYY-MM-DD HH:mm:SS");
     } else {
       return "";
     }
@@ -39,7 +39,7 @@ export default Ember.Component.extend({
 
   finishedAt: Ember.computed('flowStep.finished_at', function(){
     if (this.get('flowStep.finished_at')) {
-      return moment(this.get('finished_at')).format("YYYY-MM-DD HH:mm:SS");
+      return moment(this.get('flowStep.finished_at')).format("YYYY-MM-DD HH:mm:SS");
     } else {
       return "";
     }

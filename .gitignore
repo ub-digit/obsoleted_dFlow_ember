@@ -17,6 +17,7 @@ npm-debug.log
 testem.log
 
 deployscript.sh
+deployscript_production.sh
 
 config/environment.js
 

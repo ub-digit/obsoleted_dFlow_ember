@@ -6,6 +6,7 @@
   </div>
   <div class="panel-body">
     <div class="form-group">
+    <form {{action 'fetchSource' model on="submit"}}>
       {{#if error}}
         <div class="alert alert-danger">
           {{error.msg}}
@@ -81,6 +82,7 @@
         <button class="btn btn-primary" {{action 'fetchSource' model}}>{{t 'sources.fetch'}}</button>
         {{#link-to 'node.show' class="btn btn-default"}}{{t 'nodes.cancel'}}{{/link-to}}
       </div>
+      </form>
     </div>
   </div>
 </div>

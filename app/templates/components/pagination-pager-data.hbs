@@ -1,6 +1,7 @@
 {{#if noResult}}
 {{t 'paginator.noHits'}}
 {{else}}
-{{t 'paginator.showing'}} {{pageStart}} - {{pageEnd}} {{t 'paginator.of'}} {{total}}
-{{#if singleResult}}{{t 'paginator.hit'}}{{else}}{{t 'paginator.hits'}}{{/if}}
+{{t 'paginator.showing'}} {{pageStart}} - {{pageEnd}} {{t 'paginator.of'}} {{total}} {{#if singleResult}}{{t 'paginator.hit'}}{{else}}{{t 'paginator.hits'}}{{/if}}
+, {{t 'paginator.page' }} {{pagination.page}} {{t 'paginator.of'}} {{pagination.pages}}
+
 {{/if}}

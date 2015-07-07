@@ -195,7 +195,9 @@ var TRANSLATIONS = {
       of: "av",
       hit: "träff",
       hits: "träffar",
-      noHits: "Sökningen gav inga träffar!"
+      noHits: "Sökningen gav inga träffar!",
+      page: "sida",
+      pages: "sidor"
     },
     flowStep: {
       startedSince: "Startad: ",

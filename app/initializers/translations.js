@@ -167,6 +167,8 @@ var TRANSLATIONS = {
       preview: "Förhandsgranskning",
       flow: "Flöde",
       flowStep: "Flödessteg",
+      number_of_images: "Antal sidor",
+      metadata: "Metadata",
       states: {
         start: "Ej påbörjade",
         inProgress: "Pågående",

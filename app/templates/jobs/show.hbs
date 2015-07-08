@@ -201,13 +201,35 @@
       <div class="panel-heading" role="tab" id="headingTwo">
         <h4 class="panel-title">
           <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            {{t 'jobs.other'}}
+            {{t 'jobs.metadata'}}
           </a>
         </h4>
       </div>
       <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
         <div class="panel-body">
           {{xml-link jobId=model.id}}
+          <br/>
+          {{t 'jobs.number_of_images'}}: {{model.package_metadata.image_count}}
+        <table class="table table-hover table-condensed">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Page Type</th>
+            <th>Page Content</th>
+            <th>Group Name</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each image in model.package_metadata.images}}
+          <tr>
+            <td>{{image.num}}</td>
+            <td>{{image.page_type}}</td>
+            <td>{{image.page_content}}</td>
+            <td>{{image.group_name}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+        </table>
         </div>
       </div>
     </div>

@@ -263,6 +263,27 @@
         </div>
       </div>
     </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingFive">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+            {{t 'jobs.publicationLog'}}
+          </a>
+        </h4>
+      </div>
+      <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+        <div class="panel-body">
+          <table class="table">
+            <tr></tr>
+            {{#each publicationLog in model.publication_logs}}
+            <td>{{publicationLog.publication_type}}</td>
+            <td>{{publicationLog.comment}}</td>
+            <td>{{publicationLog.created_at}}</td>
+            {{/each}}
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -26,7 +26,8 @@ var TRANSLATIONS = {
     login: {
       password: "Lösenord",
       username: "Användarnamn",
-      login: "Logga in"
+      login: "Logga in",
+      casLogin: "Logga in med CAS"
     },
     nodes: {
       id: "ID",

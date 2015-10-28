@@ -10,15 +10,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   beforeModel: function(transition) {
     var that = this;
     var session = this.container.lookup('simple-auth-session:main');
-    console.log("application-beforeModel", transition);
     var ticket = transition.queryParams.ticket;
-    console.log("application-beforeModel.ticket", ticket);
     if(ticket) {
       session.authenticate('authenticator:custom', {
         cas_ticket: ticket,
         cas_service: this.casService()
       }).then(null, function(error){
-        console.log('Error !!!!!!', error);
         that.controllerFor('login').set('error', error);
         that.transitionTo('login');
       });

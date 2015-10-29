@@ -188,7 +188,8 @@ var TRANSLATIONS = {
       UNQUARANTINE: 'Plockats ur karantän',
       RESTART: 'Startats om',
       STARTED: 'Flödessteg aktiverat',
-      FINISHED: 'Flödessteg klart!'
+      FINISHED: 'Flödessteg klart!',
+      FLOW_STEP: 'Nytt flödessteg'
     },
     activitymessage: {
       UNQUARANTINED: '',
@@ -215,7 +216,8 @@ var TRANSLATIONS = {
       entered_at: "Aktiverad",
       started_at: "Startad",
       finished_at: "Avslutad",
-      manual_finish: "Avsluta manuellt"
+      manual_finish: "Avsluta manuellt",
+      set_new_flow_step: "Byt flödessteg"
     }
   }
 };

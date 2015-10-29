@@ -47,5 +47,13 @@ export default Ember.Component.extend({
 
   paramsString: Ember.computed('flowStep.params', function(){
     return JSON.stringify(this.get('flowStep.params'));
-  })
+  }),
+
+  flowStepSuccessAction: 'flowStepSuccess',
+
+  actions: {
+    flowStepSuccess(id, step) {
+      this.sendAction('flowStepSuccessAction', id, step);
+    }
+  }
 });

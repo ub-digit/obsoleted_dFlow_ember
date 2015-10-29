@@ -214,7 +214,8 @@ var TRANSLATIONS = {
       goto_false: "Gå till (falskt)",
       entered_at: "Aktiverad",
       started_at: "Startad",
-      finished_at: "Avslutad"
+      finished_at: "Avslutad",
+      manual_finish: "Avsluta manuellt"
     }
   }
 };

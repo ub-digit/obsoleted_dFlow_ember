@@ -5,5 +5,13 @@
 <td>{{flowStep.goto_false}}</td>
 <td>{{enteredAt}}</td>
 <td>{{startedAt}}</td>
-<td>{{finishedAt}}</td>
+<td>
+  {{#if finishedAt}}
+    {{finishedAt}}
+  {{else}}
+    {{#if enteredAt}}
+      <button class="btn btn-primary" {{action 'flowStepSuccess' flowStep.job_id flowStep.step}}>{{t 'flowStep.manual_finish'}}</button>
+    {{/if}}
+  {{/if}}
+</td>
 <td>{{paramsString}}</td>

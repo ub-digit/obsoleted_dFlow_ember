@@ -47,10 +47,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
     var flowSelectionArray = Ember.A([]);
     model.flows.forEach(function(flow){
-      console.log('flow', flow);
      flowSelectionArray.push({label: flow.name, value: flow.name}); 
     });
-    console.log('flowSelectionArray', flowSelectionArray);
     controller.set('flowSelection', flowSelectionArray);
 
     var stateItems = [];

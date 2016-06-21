@@ -53,7 +53,7 @@
       <div class="col-xs-6">
         <div {{bind-attr class=":alert model.isDone:alert-success model.isError:alert-danger model.isProcessing:alert-info model.isWaitingForAction:alert-warning"}}>
           {{#unless model.isDone}}<strong>{{t 'jobs.flowStep'}}:</strong> {{model.status_string}}<br/>
-          {{model.sinceStarted}} {{#if model.flow_step.process_msg}}{{t 'flowStep.process_msg'}}: {{model.flow_step.process_msg}}{{/if}}{{else}}<strong>{{t 'jobs.states.FINISH'}}</strong>{{/unless}}
+          {{model.sinceStarted}} {{#if model.flow_step.status}}{{t 'flowStep.process_msg'}}: {{model.flow_step.process_msg}}{{/if}}{{else}}<strong>{{t 'jobs.states.FINISH'}}</strong>{{/unless}}
         </div>
       </div>
       <div class="col-xs-6">

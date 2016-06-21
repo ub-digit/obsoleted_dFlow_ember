@@ -50,6 +50,14 @@
         }}
       </label>
 
+      <label class="col-xs-12">{{t 'jobs.flow'}}
+        {{view 'select' content=flowSelection
+          value=model.flow
+          optionValuePath="content.value"
+          optionLabelPath="content.label"
+          class="form-control"}}
+      </label>
+
       {{#if model.is_periodical}}
       <div class="col-xs-12">
       <h4>{{t 'jobs.ordinality'}}</h4>

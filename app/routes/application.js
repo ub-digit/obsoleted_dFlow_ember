@@ -29,7 +29,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       roles: that.store.find('config', 'roles'),
       sources: that.store.find('source'),
       states: that.store.find('config', 'states'),
-      casUrl: that.store.find('config', 'cas_url')
+      casUrl: that.store.find('config', 'cas_url'),
+      flows: that.store.find('flow')
     });
   },
   setupController: function(controller, model) {
@@ -43,6 +44,14 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       {label: Ember.I18n.t('jobs.copyright_values.true'), value: true},
       {label: Ember.I18n.t('jobs.copyright_values.false'), value: false}
       ]);
+
+    var flowSelectionArray = Ember.A([]);
+    model.flows.forEach(function(flow){
+      console.log('flow', flow);
+     flowSelectionArray.push({label: flow.name, value: flow.name}); 
+    });
+    console.log('flowSelectionArray', flowSelectionArray);
+    controller.set('flowSelection', flowSelectionArray);
 
     var stateItems = [];
     for(var y = 0 ; y < model.states.states.length ; y++ ){

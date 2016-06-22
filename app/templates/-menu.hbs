@@ -8,6 +8,7 @@
       <li>{{#link-to 'jobs.index' (query-params quarantined="" query="")}}{{t 'menu.jobs'}}{{/link-to}}</li>
       {{#if session.isAuthenticated}}
       <li>{{#link-to 'jobs.index' (query-params quarantined="true" query="")}}{{t 'menu.quarantine'}}{{/link-to}}</li>
+      <li>{{#link-to 'jobs.queue'}}Processkö{{/link-to}}</li>
       {{/if}}
     </ul>
       <div class="form-group navbar-form navbar-left">

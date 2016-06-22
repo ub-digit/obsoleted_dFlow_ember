@@ -27,8 +27,9 @@ Router.map(function() {
   });
   this.resource('jobs', function() {
     this.route('show', {path: '/:id'}, function() {
-			this.route('edit');
-		});
+            this.route('edit');
+        });
+    this.route('queue');
   });
 });
 

@@ -1,0 +1,25 @@
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Jobb ID</th>
+        <th>Process</th>
+        <th>Info</th>
+        <th>Aktiverad</th>
+        <th>Startad</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each step in model}}
+        <tr>
+          <td>{{step.job_id}}</td>
+          <td>{{step.id}}</td>
+          <td>{{step.description}}</td>
+          <td>{{step.entered_at}}</td>
+          <td>{{step.started_at}}</td>
+          <td>{{step.status}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  {{step.id}}
+</table>

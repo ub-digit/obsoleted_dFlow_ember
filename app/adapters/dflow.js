@@ -8,7 +8,8 @@ export default Ember.Object.extend({
     source: { path: 'api/sources'},
     job: { path: 'api/jobs'},
     process: { path: 'api/process', singular: 'job'},
-    flow: { path: 'api/flows'}
+    flow: { path: 'api/flows'},
+    queue: {path: 'api/queued_jobs', singular: 'flor_step', plural: 'flow_steps'}
   },
   sessionHeaders: function() {
     var session = this.container.lookup('simple-auth-session:main');

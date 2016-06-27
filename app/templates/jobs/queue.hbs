@@ -11,14 +11,7 @@
     </thead>
     <tbody>
       {{#each step in model}}
-        <tr>
-          <td>{{step.job_id}}</td>
-          <td>{{step.id}}</td>
-          <td>{{step.description}}</td>
-          <td>{{step.entered_at}}</td>
-          <td>{{step.started_at}}</td>
-          <td>{{step.status}}</td>
-        </tr>
+        {{step-row step=step}}
       {{/each}}
     </tbody>
   {{step.id}}

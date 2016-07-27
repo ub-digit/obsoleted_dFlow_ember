@@ -166,6 +166,20 @@
         {{/if}}
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>Flödesparameterar</h4>
+      </div>
+      {{#each parameter in model.flow_parameters_array}}
+        <div class="col-xs-3">
+          <strong>{{parameter.key}}</strong>
+        </div>
+        <div class="col-xs-9">
+          {{parameter.value}}
+        </div>
+      {{/each}}
+    </div>
   </div>
   <div class="col-xs-6">
   {{#if session.can_manage_jobs}}

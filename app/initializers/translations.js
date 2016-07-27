@@ -189,7 +189,8 @@ var TRANSLATIONS = {
       RESTART: 'Startats om',
       STARTED: 'Flödessteg aktiverat',
       FINISHED: 'Flödessteg klart!',
-      FLOW_STEP: 'Nytt flödessteg'
+      FLOW_STEP: 'Nytt flödessteg',
+      SKIPPED: 'Hoppat över steg!'
     },
     activitymessage: {
       UNQUARANTINED: '',

@@ -1,19 +1,25 @@
-<td>{{flowStep.step}}</td>
-<td>{{flowStep.description}}</td>
-<td>{{flowStep.process}}</td>
-<td>{{flowStep.goto_true}}</td>
-<td>{{flowStep.goto_false}}</td>
-<td>{{enteredAt}}</td>
-<td>{{startedAt}}</td>
 <td>
+  <strong>ID:</strong> {{flowStep.step}}<br/>
+  <strong>Namn:</strong> {{flowStep.description}}<br/>
+  <strong>Typ:</strong> {{flowStep.process}}<br/>
+  {{#if flowStep.goto_true}}<strong>Nästa steg:</strong> {{flowStep.goto_true}}<br/>{{/if}}
+    {{#if flowStep.goto_false}}<strong>Nästa steg (false):</strong> {{flowStep.goto_false}}{{/if}}
+</td>
+<td>
+  <strong>Aktiverad:</strong> {{enteredAt}}<br/>
+  <strong>Startad:</strong> {{startedAt}}<br/>
   {{#if finishedAt}}
-    {{finishedAt}}
+    <strong>Avslutad:</strong> {{finishedAt}}
   {{else}}
     {{#if enteredAt}}
       <button class="btn btn-primary" {{action 'flowStepSuccess' flowStep.job_id flowStep.step}}>{{t 'flowStep.manual_finish'}}</button>
     {{/if}}
   {{/if}}
 </td>
-<td>{{paramsString}}</td>
+<td>
+  {{#each param in flowStep.params_array}}
+    <strong>{{param.key}}</strong>: {{param.value}}<br/>
+  {{/each}}
+</td>
 <td>{{flowStep.condition}}</td>
 <td>{{flowStep.status}}</td>

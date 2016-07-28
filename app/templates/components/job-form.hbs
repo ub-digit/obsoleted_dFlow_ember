@@ -76,6 +76,7 @@
           <label class="col-xs-3 form-control-static">Villkor</label>
           <label class="col-xs-4 form-control-static">Parametrar</label>
           {{#each step in currentFlow.flow_steps}}
+            <div class="row">
             <label class="col-xs-1 control-label">{{step.step}}</label>
             <div class="col-xs-2 form-control-static">{{step.description}}</div>
             <div class="col-xs-2 form-control-static">{{step.process}}</div>
@@ -84,6 +85,7 @@
               {{#each param in step.params_array}}
                 <strong>{{param.key}}</strong>: {{param.value}}<br/>
               {{/each}}
+            </div>
             </div>
           {{/each}}
         </div>

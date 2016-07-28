@@ -11,14 +11,20 @@ export default Ember.Controller.extend({
 
   flowStepItems: Ember.computed('model.flow', 'model.flow_steps', function(){
     var flowStepItems = [];
-    for(var y = 0 ; y < this.get('model.flow_steps').length ; y++ ){
+    for(var y = 0 ; y < this.get('model.flow_steps').sortBy('step').length ; y++ ){
       var flowStep = this.get('model.flow_steps')[y];
-      if (!!flowStep.entered_at) {
-        var item = {label: flowStep.step + ". " + flowStep.description, value: flowStep.step};
-        flowStepItems.pushObject(item);
+      var prefix = '';
+      if (flowStep.finished_at) {
+        prefix = '-';
       }
+      if (flowStep.step === this.get('model.current_flow_step')){
+        prefix = '*';
+      }
+      var label = prefix + flowStep.step + ". " + flowStep.description;
+      var item = {label: label, value: flowStep.step};
+      flowStepItems.pushObject(item);
     }
-    return flowStepItems;
+    return flowStepItems.sortBy('value');
   })
   
 });

@@ -17,9 +17,15 @@
           optionLabelPath="content.label"
           value=model.current_flow_step}}
         </div>
+          <div class="checkbox">
+            <label>
+              {{input type="checkbox" name="recreateFlow" checked=recreateFlow}}
+              Återskapa flöde från konfiguration
+            </label>
+          </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'setFlowStep' model}}>{{t 'flowStep.set_new_flow_step'}}</button>
+        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'setFlowStep' model recreateFlow}}>{{t 'flowStep.set_new_flow_step'}}</button>
       </div>
     </div>
   </div>

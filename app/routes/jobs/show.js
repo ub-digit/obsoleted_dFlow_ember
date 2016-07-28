@@ -65,8 +65,8 @@ export default Ember.Route.extend({
     },
 
     // Resets quarantine flag for job
-    setFlowStep(job){
-      this.store.find('job', job.id + '/new_flow_step?step=' + job.current_flow_step).then(
+    setFlowStep(job, recreateFlow){
+      this.store.find('job', job.id + '/new_flow_step?step=' + job.current_flow_step + '&recreate_flow=' + recreateFlow).then(
         () => {
           this.refresh(job.id); // Refresh children of current model
         },

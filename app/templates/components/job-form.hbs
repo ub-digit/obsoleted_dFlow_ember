@@ -59,13 +59,34 @@
             class="form-control"}}
           </div> 
         </div>
-        <h3>Flödesparametrar för {{currentFlow.name}}</h3>
+        <h4>Flödesparametrar för {{currentFlow.name}}</h4>
 
         {{#each parameter in currentFlow.parameters}}
           {{parameter-input parameter=parameter values=model.flow_parameters}}
         {{else}}
             Inga flödesparametrar är definierade.
         {{/each}}
+
+        <h4>Flödessteg för {{currentFlow.name}}</h4>
+
+        <div class="form-group">
+          <label class="col-xs-1 control-label">Steg</label>
+          <label class="col-xs-2 form-control-static">Namn</label>
+          <label class="col-xs-2 form-control-static">Processtyp</label>
+          <label class="col-xs-3 form-control-static">Villkor</label>
+          <label class="col-xs-4 form-control-static">Parametrar</label>
+          {{#each step in currentFlow.flow_steps}}
+            <label class="col-xs-1 control-label">{{step.step}}</label>
+            <div class="col-xs-2 form-control-static">{{step.description}}</div>
+            <div class="col-xs-2 form-control-static">{{step.process}}</div>
+            <div class="col-xs-3 form-control-static">{{step.condition}}</div>
+            <div class="col-xs-4 form-control-static">
+              {{#each param in step.params_array}}
+                <strong>{{param.key}}</strong>: {{param.value}}<br/>
+              {{/each}}
+            </div>
+          {{/each}}
+        </div>
 
         {{#if model.is_periodical}}
           <div class="col-xs-12">

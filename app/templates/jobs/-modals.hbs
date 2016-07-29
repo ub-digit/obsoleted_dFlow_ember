@@ -94,9 +94,15 @@
           </span>
         {{input value=message classNames='form-control'}}
         </div>
+          <div class="checkbox">
+            <label>
+              {{input type="checkbox" name="recreateFlow" checked=recreateFlow}}
+              Återskapa flöde från konfiguration
+            </label>
+          </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'restartJob' model message}}>{{t 'jobs.restart'}}</button>
+        <button class="btn btn-primary navbar-btn" data-dismiss="modal" {{action 'restartJob' model message recreateFlow}}>{{t 'jobs.restart'}}</button>
       </div>
     </div>
   </div>

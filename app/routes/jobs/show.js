@@ -77,9 +77,9 @@ export default Ember.Route.extend({
     },
 
     // Restarts job, sets to first status and moves packagefiles to trash
-    restartJob(job, message){
+    restartJob(job, message, recreateFlow){
       job.set('message', message);
-      this.store.find('job', job.id + '/restart?message=' + message).then(
+      this.store.find('job', job.id + '/restart?message=' + message + "&recreate_flow=" + recreateFlow).then(
         () => {
           this.refresh(job.id); // Refresh children of current model
         },

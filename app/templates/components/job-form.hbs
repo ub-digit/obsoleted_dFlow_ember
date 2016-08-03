@@ -49,6 +49,15 @@
           </div>
         </div>
 
+        {{#if model.id}}
+        <div class="form-group">
+          <label class="col-xs-2 control-label">Katalog-id</label>
+          <div class="col-xs-4">
+            {{input value=model.treenode_id class="form-control" type="number"}}
+          </div>
+        </div>
+        {{/if}}
+
         <div class="form-group">
           <label class="col-xs-2 control-label">{{t 'jobs.flow'}}</label>
           <div class="col-xs-4">

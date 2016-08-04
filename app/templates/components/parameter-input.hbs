@@ -2,11 +2,11 @@
 <label class="col-xs-2 control-label">{{parameter.name}}</label>
 {{#if isRadio}}
   <div class="col-xs-5">
-  {{view 'select' content=parameter.options
-  value=value
-  optionValuePath="content"
-  optionLabelPath="content"
-  class="form-control"}}
+    {{#x-select value=value class="form-control"}}
+      {{#each parameter.options as |option|}}
+      {{#x-option value=option}}{{option}}{{/x-option}}
+    {{/each}}
+  {{/x-select}}
   <span id="helpBlock2" class="help-block">{{parameter.info}}</span>
   </div>
 {{/if}}

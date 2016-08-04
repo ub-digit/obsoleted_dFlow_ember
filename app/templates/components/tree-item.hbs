@@ -1,5 +1,5 @@
 {{#if item.children}}
-<a href="" {{bind-attr class=":toggle-icon children.length::leaf"}} {{action 'toggle'}}>
+  <a href="" class="toggle-icon {{unless children.length 'leaf'}}" {{action 'toggle'}}>
   {{#if isExpanded}}
   <i class="fa fa-folder-open-o"></i>
   {{else}}
@@ -9,12 +9,12 @@
 </a>
   
 {{else}}
-  <a style="color:black;" {{bind-attr href=fileUrl}} target="_blank"><i {{bind-attr class=":fa icon" }}> </i> <strong>{{item.name}}</strong></a> <span style="margin-left:20px;">{{byteString}}</span>
+  <a style="color:black;" href="{{fileUrl}}" target="_blank"><i class="fa {{icon}}"> </i> <strong>{{item.name}}</strong></a> <span style="margin-left:20px;">{{byteString}}</span>
 {{/if}}
 
 {{#if isExpanded}}
   <div style="padding-left:10px">
-  {{#each child in item.children}}
+  {{#each item.children as |child|}}
     {{tree-item item=child parentPath=path jobId=jobId}}
   {{/each}}
   </div>

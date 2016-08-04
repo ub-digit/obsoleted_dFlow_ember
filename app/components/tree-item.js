@@ -2,6 +2,7 @@ import Ember from 'ember';
 import ENV from 'd-flow-ember/config/environment';
 
 export default Ember.Component.extend({
+  session: Ember.inject.service(),
   tagName: 'div',
   isExpanded: false,
   parentPath: '/',
@@ -43,7 +44,7 @@ export default Ember.Component.extend({
   }),
 
   fileUrl: Ember.computed('item', function() {
-    var token =  this.container.lookup('simple-auth-session:main').get('token');
+    var token =  this.get('session.data.authenticated.token');
     return ENV.APP.serviceURL + '/assets/job_file/' + this.get('jobId') + '?file_dir=' + this.get('parentPath') + '&file_name=' + this.get('item.name') + '&token=' + token;
   }),
 

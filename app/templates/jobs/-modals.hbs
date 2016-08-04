@@ -10,12 +10,11 @@
         <div class="input-group">
         <span class="input-group-addon" id="status-text">{{t 'jobs.status'}}
           </span>
-          {{view "select"
-          classNames='form-control' 
-          content=flowStepItems
-          optionValuePath="content.value"
-          optionLabelPath="content.label"
-          value=model.current_flow_step}}
+          {{#x-select value=model.current_flow_step class="form-control"}}
+            {{#each flowStepItems as |option|}}
+              {{#x-option value=option.value}}{{option.label}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
         </div>
           <div class="checkbox">
             <label>
@@ -43,12 +42,11 @@
         <div class="input-group">
         <span class="input-group-addon" id="status-text">{{t 'jobs.status'}}
           </span>
-          {{view "select"
-          classNames='form-control' 
-          content=flowStepItems
-          optionValuePath="content.value"
-          optionLabelPath="content.label"
-          value=model.current_flow_step}}
+          {{#x-select value=model.current_flow_step class="form-control"}}
+            {{#each flowStepItems as |option|}}
+              {{#x-option value=option.value}}{{option.label}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
         </div>
       </div>
       <div class="modal-footer">

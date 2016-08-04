@@ -12,11 +12,11 @@
       {{/if}}
     </ul>
       <div class="form-group navbar-form navbar-left">
-        {{input action="showJob" class="form-control" value=job_id placeholderTranslation="jobs.searchById"}}
+        {{input enter="showJob" class="form-control" value=job_id placeholderTranslation="jobs.searchById"}}
         <span style="color:red">{{job_id_error}}</span>
       </div>
     <ul class="nav navbar-nav navbar-right">
-      {{#if session.can_view_users}}
+      {{#if session.data.authenticated.can_view_users}}
       <ul class="nav navbar-nav">
         <li>{{#link-to 'users.index'}}{{t 'menu.users'}}{{/link-to}}</li>
       </ul>

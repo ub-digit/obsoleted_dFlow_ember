@@ -1,7 +1,9 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
+  i18n: Ember.inject.service(),
+  session: Ember.inject.service(),
   casService: function() {
     var baseUrl = window.location.origin;
     var routeUrl = this.router.generate('application');
@@ -9,10 +11,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   },
   beforeModel: function(transition) {
     var that = this;
-    var session = this.container.lookup('simple-auth-session:main');
+    var session = this.get('session');
     var ticket = transition.queryParams.ticket;
     if(ticket) {
-      session.authenticate('authenticator:custom', {
+      session.authenticate('authenticator:gub', {
         cas_ticket: ticket,
         cas_service: this.casService()
       }).then(null, function(error){
@@ -36,13 +38,14 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   setupController: function(controller, model) {
     // To be able to access from specific controllers
     controller.set('model', {});
+    controller.set('ticket', null);
     //console.log(model.roles);
     controller.set('roleSelection', model.roles.roles);
     controller.set('sourceSelection', model.sources);
     controller.set('copyrightSelection', [
-      {label: Ember.I18n.t('jobs.copyright_values.unselected'), value: null},
-      {label: Ember.I18n.t('jobs.copyright_values.true'), value: true},
-      {label: Ember.I18n.t('jobs.copyright_values.false'), value: false}
+      {label: this.get('i18n').t('jobs.copyright_values.unselected'), value: null},
+      {label: this.get('i18n').t('jobs.copyright_values.true'), value: true},
+      {label: this.get('i18n').t('jobs.copyright_values.false'), value: false}
       ]);
 
     var flowSelectionArray = Ember.A([]);
@@ -55,7 +58,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     var stateItems = [];
     for(var y = 0 ; y < model.states.states.length ; y++ ){
       var state = model.states.states[y];
-      var item2 = {label: Ember.I18n.t('jobs.states.' + state), value: state};
+      var item2 = {label: this.get('i18n').t('jobs.states.' + state), value: state};
       stateItems.pushObject(item2);
     }
     controller.set('stateSelection', stateItems);
@@ -67,22 +70,25 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
   actions: {
-   sessionAuthenticationFailed: function(error) {
-    this.controllerFor('login').set('error', error);
-  },
-  showJob: function(job_id) {
-    var that = this;
-    this.controller.set('job_id', null);
-    this.controller.set('job_id_error', null);
-    
-    if (job_id) {
-      that.store.find('job', job_id).then(function() {
-        that.transitionTo('jobs.show', job_id);
-      },
-      function(){
-        that.controller.set('job_id_error', Ember.I18n.t('jobs.idMissing') + ': ' + job_id);
-      });
+    sessionAuthenticationFailed: function(error) {
+      this.controllerFor('login').set('error', error);
+    },
+    showJob: function(job_id) {
+      var that = this;
+      this.controller.set('job_id', null);
+      this.controller.set('job_id_error', null);
+
+      if (job_id) {
+        that.store.find('job', job_id).then(function() {
+          that.transitionTo('jobs.show', job_id);
+        },
+        function(){
+          that.controller.set('job_id_error', this.get('i18n').t('jobs.idMissing') + ': ' + job_id);
+        });
+      }
+    },
+    invalidateSession: function(){
+      this.get('session').invalidate();
     }
   }
-}
 });

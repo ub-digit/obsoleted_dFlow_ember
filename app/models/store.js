@@ -1,7 +1,8 @@
 import Ember from 'ember';
 export default Ember.Object.extend({
   adapter: function() {
-    return this.container.lookup('adapter:dflow');
+    //return this.container.lookup('adapter:dflow');
+    return Ember.getOwner(this).lookup('adapter:dflow');
   },
   id: function(id_or_params) {
     if(typeof(id_or_params) === "number" || typeof(id_or_params) === "string") {

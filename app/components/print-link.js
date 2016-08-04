@@ -2,6 +2,7 @@ import Ember from 'ember';
 import ENV from 'd-flow-ember/config/environment';
 
 export default Ember.Component.extend({
+  i18n: Ember.inject.service(),
   tagName: 'a',
   attributeBindings: ['target', 'href', 'title'],
   target: '_blank',
@@ -17,7 +18,7 @@ export default Ember.Component.extend({
   }.property('jobId'),
   title: function(){
     if (this.get('titleKey')){
-      return Ember.I18n.t(this.get('titleKey'));
+      return this.get('i18n').t(this.get('titleKey'));
     } else {
       return '';
     }

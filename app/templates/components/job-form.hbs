@@ -40,12 +40,11 @@
         <div class="form-group">
           <label class="col-xs-2 control-label">{{t 'jobs.copyright'}}</label>
           <div class="col-xs-4">
-            {{view 'select' content=copyrightSelection
-            value=model.copyright
-            optionValuePath="content.value"
-            optionLabelPath="content.label"
-            class="form-control"
-            }}
+            {{#x-select value=model.copyright class="form-control"}}
+              {{#each copyrightSelection as |option|}}
+                {{#x-option value=option.value}}{{option.label}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
           </div>
         </div>
 
@@ -61,16 +60,16 @@
         <div class="form-group">
           <label class="col-xs-2 control-label">{{t 'jobs.flow'}}</label>
           <div class="col-xs-4">
-            {{view 'select' content=flowSelection
-            value=model.flow_id
-            optionValuePath="content.value"
-            optionLabelPath="content.label"
-            class="form-control"}}
+            {{#x-select value=model.flow_id class="form-control"}}
+              {{#each flowSelection as |option|}}
+                {{#x-option value=option.value}}{{option.label}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
           </div> 
         </div>
         <h4>Flödesparametrar för {{currentFlow.name}}</h4>
 
-        {{#each parameter in currentFlow.parameters}}
+        {{#each currentFlow.parameters as |parameter|}}
           {{parameter-input parameter=parameter values=model.flow_parameters}}
         {{else}}
             Inga flödesparametrar är definierade.
@@ -84,14 +83,14 @@
           <label class="col-xs-2 form-control-static">Processtyp</label>
           <label class="col-xs-3 form-control-static">Villkor</label>
           <label class="col-xs-4 form-control-static">Parametrar</label>
-          {{#each step in currentFlow.flow_steps}}
+          {{#each currentFlow.flow_steps as |step|}}
             <div class="row">
             <label class="col-xs-1 control-label">{{step.step}}</label>
             <div class="col-xs-2 form-control-static">{{step.description}}</div>
             <div class="col-xs-2 form-control-static">{{step.process}}</div>
             <div class="col-xs-3 form-control-static">{{step.condition}}</div>
             <div class="col-xs-4 form-control-static">
-              {{#each param in step.params_array}}
+              {{#each step.params_array as |param|}}
                 <strong>{{param.key}}</strong>: {{param.value}}<br/>
               {{/each}}
             </div>

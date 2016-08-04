@@ -19,13 +19,14 @@ export default Ember.Route.extend({
      jobs: this.store.find('job', params)
    });
     },
-    setupController: function(controller, model) {
+  setupController: function(controller, model) {
+    var that = this;
       model.treenode.breadcrumb.push({name: model.treenode.name});
       controller.set('model', model.treenode);      
       if (model.treenode.id) {
         var jobs = Ember.A([]);
         model.jobs.forEach(function(job){
-          jobs.pushObject(Job.create(job));
+          jobs.pushObject(Job.create(Ember.$.extend(job, {container: Ember.getOwner(that)})));
         });
         controller.set('model.jobs', jobs);
         controller.set('model.jobs.meta', model.jobs.meta);

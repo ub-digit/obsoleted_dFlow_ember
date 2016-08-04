@@ -17,7 +17,7 @@
   {{/if}}
 </td>
 <td>
-  {{#each param in flowStep.params_array}}
+  {{#each flowStep.params_array as |param|}}
     <strong>{{param.key}}</strong>: {{param.value}}<br/>
   {{/each}}
 </td>

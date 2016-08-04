@@ -1,7 +1,7 @@
 {{#if model.breadcrumb}}
 <ul class="breadcrumb">
   <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
-  {{#each parent in model.breadcrumb}}
+  {{#each model.breadcrumb as |parent|}}
   {{#if parent.id}}
   <li>{{link-to parent.name 'node.show' parent.id}}</li>
   {{else}}
@@ -22,13 +22,13 @@
   </div>
   <ul class="navbar-nav nav navbar-right">
     {{#unless isRoot}}
-    {{#if session.can_manage_tree}}
+    {{#if session.data.authenticated.can_manage_tree}}
     {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
     {{#link-to 'node.show.jobs.source' class="btn btn-default navbar-btn"}}{{t 'jobs.new'}}{{/link-to}}
     {{/if}}
     {{/unless}}
     {{#if isRoot}}
-    {{#if session.can_manage_tree_root}}
+    {{#if session.data.authenticated.can_manage_tree_root}}
     {{#link-to 'node.show.new' class="btn btn-default navbar-btn"}}{{t 'nodes.new'}}{{/link-to}}
     {{/if}}
     {{/if}}
@@ -52,12 +52,12 @@
         </tr>
       </thead>
       <tbody>
-        {{#each child in model.children}}
+        {{#each model.children as |child|}}
         <tr>
           <td>{{child.id}}</td>
           <td>
             {{link-to child.name 'node.show' child.id (query-params state=null query='' page=1)}}
-            {{#if session.can_manage_jobs}}
+            {{#if session.data.authenticated.can_manage_jobs}}
             {{#if child.state_groups.ACTION}}
             {{icon-link classNames="fa-wrench" titleKey='nodes.hasActionStates'}}
             {{/if}}
@@ -99,13 +99,12 @@
         <div class="input-group">
           <span class="input-group-addon" id="status-text">{{t 'jobs.status'}}
           </span>
-          {{view "select"
-          classNames='form-control' 
-          content=stateSelection
-          optionValuePath="content.value"
-          optionLabelPath="content.label"
-          value=state
-          prompt="---"}}
+            {{#x-select value=state class="form-control"}}
+              {{#x-option}}---{{/x-option}}
+              {{#each stateSelection as |option|}}
+                {{#x-option value=option.value}}{{option.label}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
         </div>
       </div>
     </div>
@@ -123,7 +122,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each job in model.jobs}}
+        {{#each model.jobs as |job|}}
         {{job-row job=job showTree=false}}
         {{/each}}
       </tbody>

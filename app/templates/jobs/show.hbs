@@ -1,7 +1,7 @@
 {{#if model.breadcrumb}}
 <ul class="breadcrumb">
   <li>{{#link-to 'node.show' 'root'}}{{t 'nodes.root'}}{{/link-to}}</li>
-  {{#each parent in model.breadcrumb}}
+  {{#each model.breadcrumb as |parent|}}
   {{#if parent.id}}
   <li>{{link-to parent.name 'node.show' parent.id}}</li>
   {{else}}
@@ -23,7 +23,7 @@
   <div class="panel-heading" style="padding-top:8px;">
     <span class="panel-title"><strong>{{model.id}}</strong> {{model.display}}</span>{{#if model.quarantined}} <span class="label label-danger"> {{t 'menu.quarantine'}}</span>{{/if}}
     <span class="pull-right" style="margin-top:0px;padding-top:0px;">
-      {{#if session.can_manage_jobs}}
+      {{#if session.data.authenticated.can_manage_jobs}}
 
       {{#link-to 'jobs.show.edit' model class="btn navbar-btn"}}{{icon-link titleKey='jobs.edit' classNames='fa fa-2x fa-pencil-square-o'}}{{/link-to}}
       <a class="btn" {{action 'deleteJob' model.id}}>{{icon-link titleKey='jobs.delete' classNames='fa fa-2x fa-trash'}}</a>
@@ -51,7 +51,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-6">
-        <div {{bind-attr class=":alert model.isDone:alert-success model.isError:alert-danger model.isProcessing:alert-info model.isWaitingForAction:alert-warning"}}>
+          <div class="alert {{if model.isDone 'alert-success'}} {{if model.isError 'alert-danger'}} {{if model.isProcessing 'alert-info'}} {{if model.isWaitingForAction 'alert-warning'}}">
           {{#unless model.isDone}}<strong>{{t 'jobs.flowStep'}}:</strong> {{model.status_string}}<br/>
           {{model.sinceStarted}} 
             {{#if model.flow_step.status}} 
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="col-xs-6">
-        {{#if session.can_manage_jobs}}
+        {{#if session.data.authenticated.can_manage_jobs}}
           {{#if model.quarantined}}
           <!-- Button trigger modal -->
           <a type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#unQuarantineModal">
@@ -77,7 +77,7 @@
             {{/if}}
           {{/if}}
           {{#if model.has_pdf}}
-            <a class="btn btn-default btn-lg pull-right" {{bind-attr href=pdfUrl}} target="_blank"><i class="fa fa-file-pdf-o" style="color:red"></i> {{t 'jobs.pdfLink'}}</a>
+            <a class="btn btn-default btn-lg pull-right" href="{{pdfUrl}}" target="_blank"><i class="fa fa-file-pdf-o" style="color:red"></i> {{t 'jobs.pdfLink'}}</a>
           {{/if}}
         {{/if}}
       </div>
@@ -91,7 +91,7 @@
           <div class="col-xs-9">
             {{model.source_label}} ( 
             {{#if model.source_link}}
-            <a {{bind-attr href=model.source_link}} target="_blank">{{model.catalog_id}}</a>
+              <a href="{{model.source_link}}" target="_blank">{{model.catalog_id}}</a>
             {{else}}
             {{model.catalog_id}}
             {{/if}}
@@ -171,7 +171,7 @@
       <div class="col-xs-12">
         <h4>Flödesparameterar</h4>
       </div>
-      {{#each parameter in model.flow_parameters_array}}
+      {{#each model.flow_parameters_array as |parameter|}}
         <div class="col-xs-3">
           <strong>{{parameter.key}}</strong>
         </div>
@@ -182,7 +182,7 @@
     </div>
   </div>
   <div class="col-xs-6">
-  {{#if session.can_manage_jobs}}
+  {{#if session.data.authenticated.can_manage_jobs}}
     {{#if model.object_info}}
     <div class="clearfix"></div>
     <strong>{{t 'jobs.object_info'}}</strong> {{markdown-text model.object_info}}
@@ -209,7 +209,7 @@
         <div class="panel-body">
           <table class="table">
             <tr></tr>
-            {{#each activity in model.activities}}
+            {{#each model.activities as |activity|}}
             {{job-activity activity=activity}}
             {{/each}}
           </table>
@@ -239,7 +239,7 @@
           </tr>
         </thead>
         <tbody>
-        {{#each image in model.package_metadata.images}}
+        {{#each model.package_metadata.images as |image|}}
           <tr>
             <td>{{image.num}}</td>
             <td>{{image.page_type}}</td>
@@ -262,7 +262,7 @@
       </div>
       <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
         <div class="panel-body">
-          {{#each file in model.files}}
+          {{#each model.files as |file|}}
               {{tree-item item=file jobId=model.id}}
             {{/each}}
         </div>
@@ -295,7 +295,7 @@
         <div class="panel-body">
           <table class="table">
             <tr></tr>
-            {{#each publicationLog in model.publication_logs}}
+            {{#each model.publication_logs as |publicationLog|}}
             <td>{{publicationLog.publication_type}}</td>
             <td>{{publicationLog.comment}}</td>
             <td>{{publicationLog.created_at}}</td>

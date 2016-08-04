@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['application'],
-  stateSelectionBinding: 'controllers.application.stateSelection',
+  session: Ember.inject.service(),
+  application: Ember.inject.controller(),
+  stateSelection: Ember.computed.alias('application.stateSelection'),
   queryParams: ['page', 'query', 'quarantined', 'state'],
   page: 1,
   query: "",

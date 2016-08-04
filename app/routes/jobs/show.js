@@ -2,11 +2,13 @@ import Ember from 'ember';
 import Job from 'd-flow-ember/models/job';
 
 export default Ember.Route.extend({
+  i18n: Ember.inject.service(),
   model: function(params) {
     return this.store.find('job', params.id);
   },
   setupController: function(controller, model) {
-    controller.set('model', Job.create(model));
+    var that = this;
+    controller.set('model', Job.create(Ember.$.extend(model, {container: Ember.getOwner(that)})));
   },
   actions: {
     
@@ -25,7 +27,7 @@ export default Ember.Route.extend({
     // Deletes job from database
     deleteJob(id) {
       // Send confirmation box before delete
-      var should_delete = confirm(Ember.I18n.t("jobs.confirm_delete"));
+      var should_delete = confirm(this.get('i18n').t("jobs.confirm_delete"));
       if (should_delete){
         this.store.destroy('job', id).then(
           () => {

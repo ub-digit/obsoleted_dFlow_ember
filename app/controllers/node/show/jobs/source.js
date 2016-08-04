@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  needs: ['application'],
-  sourceSelectionBinding: 'controllers.application.sourceSelection',
+  application: Ember.inject.controller(),
+  sourceSelection: Ember.computed.alias('application.sourceSelection'),
 
   isDC: Ember.computed.equal('model.source', 'dc')
 });

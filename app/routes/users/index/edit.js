@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  i18n: Ember.inject.service(),
   model: function(params) {
     return this.store.find('user', params.id);
   },
@@ -22,7 +23,7 @@ export default Ember.Route.extend({
     deleteUser: function(id) {
       var that = this;
       // Send confirmation box before delete
-      var should_delete = confirm(Ember.I18n.t("users.confirm_delete"));
+      var should_delete = confirm(this.get('i18n').t("users.confirm_delete"));
       if (should_delete){
         this.store.destroy('user', id).then(
           function() {

@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
           <button class="btn btn-primary" type="submit">{{t 'login.login'}}</button>
-          {{#if controllers.application.casLoginUrl}}<a {{bind-attr href=controllers.application.casLoginUrl}}>{{t 'login.casLogin'}}</a>{{/if}}
+          {{#if application.casLoginUrl}}<a href="{{application.casLoginUrl}}">{{t 'login.casLogin'}}</a>{{/if}}
         </div>
       </div>
     </form>

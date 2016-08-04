@@ -1,9 +1,9 @@
 import Ember from 'ember';
-import Base from 'simple-auth/authenticators/base';
+import Base from 'ember-simple-auth/authenticators/base';
 import ENV from 'd-flow-ember/config/environment';
-import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-var CustomAuthenticator = Base.extend({
+export default Base.extend({
 	restore: function(properties) {
 		return new Ember.RSVP.Promise(function(resolve, reject) {
 			Ember.$.ajax({
@@ -17,7 +17,6 @@ var CustomAuthenticator = Base.extend({
 		});
 	},
 	authenticate: function(credentials) {
-    console.log("authenticate-credentials", credentials);
 
     var authCredentials = {};
     if(credentials.cas_ticket && credentials.cas_service) {
@@ -62,16 +61,13 @@ var CustomAuthenticator = Base.extend({
 	}
 });
 
-export var initialize = function(container) {
-	container.register('authenticator:custom', CustomAuthenticator);
-};
 
 AuthenticatedRouteMixin.reopen({
 	beforeModel: function(transition) {
 		var session = this.get('session');
 		var token = null;
 		if(session) {
-			token = session.get('token');
+			token = session.get('data.authenticated.token');
 		}
 		Ember.$.ajax({
 			type: 'GET',
@@ -83,8 +79,3 @@ AuthenticatedRouteMixin.reopen({
 	}
 });
 
-export default {
-	name: 'authentication',
-	before: 'simple-auth',
-	initialize: initialize
-};

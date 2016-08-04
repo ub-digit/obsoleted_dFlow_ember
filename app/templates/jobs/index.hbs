@@ -7,7 +7,7 @@
       <div class="col-md-6 col-xs-12">
         <div class="input-group">
           {{input value=query class="form-control"
-          action='searchJobs'
+          enter='searchJobs'
           placeholderTranslation="jobs.search"}}
           <span class="input-group-btn">
             <button class="btn btn-default" type="button" {{action 'searchJobs' query}}>{{t 'jobs.search'}}</button>
@@ -18,13 +18,12 @@
       <div class="col-md-6 col-xs-12">
         <div class="input-group">
         <span class="input-group-addon" id="status-text">{{t 'jobs.status'}}</span>
-          {{view "select"
-          classNames='form-control' 
-          content=stateSelection
-          optionValuePath="content.value"
-          optionLabelPath="content.label"
-          value=state
-          prompt="---"}}
+          {{#x-select value=state class="form-control"}}
+            {{#x-option}}---{{/x-option}}
+            {{#each stateSelection as |option|}}
+              {{#x-option value=option.value}}{{option.label}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
         </div>
       </div>
     </div>
@@ -42,7 +41,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each job in model}}
+        {{#each model as |job|}}
           {{job-row job=job showWorkOrder=false}}
         {{/each}}
       </tbody>

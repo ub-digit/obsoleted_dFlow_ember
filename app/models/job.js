@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
+  i18n: Ember.inject.service(),
   type_of_record_string: function() {
-    return Ember.I18n.t('jobs.type_of_record.' + this.get('metadata.type_of_record'));
+    return this.get('i18n').t('jobs.type_of_record.' + this.get('metadata.type_of_record'));
   }.property('metadata'),
 
   hasTypeOfRecord: Ember.computed('metadata', function(){
@@ -10,7 +11,7 @@ export default Ember.Object.extend({
   }),
   status_string: function() {
     if (this.get('main_status') === "DONE") {
-      return Ember.I18n.t('jobs.states.FINISH');
+      return this.get('i18n').t('jobs.states.FINISH');
     } else {
       return this.get('status');
     }
@@ -23,15 +24,15 @@ export default Ember.Object.extend({
   sinceStarted: Ember.computed('flow_step.entered_at', 'flow_step.started_at', function(){
     if (this.get('flow_step.entered_at')) {
       if (this.get('flow_step.started_at')) {
-        return Ember.I18n.t('flowStep.startedSince') + moment(this.get('flow_step.started_at')).fromNow();
+        return this.get('i18n').t('flowStep.startedSince') + moment(this.get('flow_step.started_at')).fromNow();
       } else {
-        return Ember.I18n.t('flowStep.waitingSince') + moment(this.get('flow_step.entered_at')).fromNow();
+        return this.get('i18n').t('flowStep.waitingSince') + moment(this.get('flow_step.entered_at')).fromNow();
       }
     }
   }),
 
   copyright_string: function() {
-    return Ember.I18n.t('jobs.copyright_values.'+this.get('copyright'));
+    return this.get('i18n').t('jobs.copyright_values.'+this.get('copyright'));
   }.property('copyright'),
 
   chronology_string: function() {

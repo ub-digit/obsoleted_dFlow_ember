@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import ENV from 'd-flow-ember/config/environment';
 export default Ember.Object.extend({
+  session: Ember.inject.service(),
   endpoints: {
     treenode:  { path: 'api/treenodes'  },
     user: { path: 'api/users'},
@@ -12,10 +13,10 @@ export default Ember.Object.extend({
     queue: {path: 'api/queued_jobs', singular: 'flor_step', plural: 'flow_steps'}
   },
   sessionHeaders: function() {
-    var session = this.container.lookup('simple-auth-session:main');
+    var session = this.get('session');
     var headers = {};
     if(session && session.get('isAuthenticated')) {
-      headers["Authorization"] = "Token " + session.get('token');
+      headers["Authorization"] = "Token " + session.get('data.authenticated.token');
     }
     return headers;
   },
@@ -45,6 +46,7 @@ export default Ember.Object.extend({
   },
   send: function(url, method, data) {
     var that = this;
+    console.log(data);
     return Ember.$.ajax({
       url: url,
       method: method,

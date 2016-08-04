@@ -14,11 +14,11 @@
       {{/if}}
 
       <label class="col-xs-12">{{t 'jobs.source'}}
-        {{view 'select' content=sourceSelection
-          value=model.source
-          optionValuePath="content.name"
-          optionLabelPath="content.label"
-        }}
+          {{#x-select value=model.source class="form-control"}}
+            {{#each sourceSelection as |option|}}
+              {{#x-option value=option.name}}{{option.label}}{{/x-option}}
+              {{/each}}
+            {{/x-select}}
       </label>
       {{#if isDC}}
         {{input type="hidden" classBinding=":form-control :col-xs-6" value=model.catalog_id}}

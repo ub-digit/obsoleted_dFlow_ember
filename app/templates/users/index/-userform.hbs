@@ -17,9 +17,9 @@
 </label>
 
 <label class="col-xs-12">{{t 'users.role'}}
-  {{view 'select' content=roleSelection
-  value=model.role
-  optionValuePath="content.name"
-  optionLabelPath="content.name"
-  }}
+  {{#x-select value=model.role class="form-control"}}
+    {{#each roleSelection as |option|}}
+      {{#x-option value=option.name}}{{option.name}}{{/x-option}}
+    {{/each}}
+  {{/x-select}}
 </label>

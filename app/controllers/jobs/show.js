@@ -2,10 +2,11 @@ import Ember from 'ember';
 import ENV from 'd-flow-ember/config/environment';
 
 export default Ember.Controller.extend({
-  needs: ['application'],
+  session: Ember.inject.service(),
+  application: Ember.inject.controller(),
 
   pdfUrl: Ember.computed('model', function() {
-    var token =  this.container.lookup('simple-auth-session:main').get('token');
+    var token =  this.get('session.data.authenticated.token');
     return ENV.APP.serviceURL + '/assets/job_pdf/' + this.get('model.id') + '.pdf?token=' + token;
   }),
 

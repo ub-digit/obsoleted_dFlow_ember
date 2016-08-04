@@ -1,6 +1,6 @@
 <div class="navbar navbar-default sub-navbar">
   <ul class="navbar-nav nav navbar-right">
-    {{#if session.can_view_users}}
+    {{#if session.data.authenticated.can_view_users}}
       {{#link-to 'users.index.new' class="btn btn-default navbar-btn pull-right"}}{{t 'users.new'}}{{/link-to}}
     {{/if}}
   </ul>
@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each user in model}}
+        {{#each model as |user|}}
           <tr>
             <td>{{user.id}}</td>
             <td>{{user.username}}</td>

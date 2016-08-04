@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
         prefix = '*';
       }
       var label = prefix + flowStep.step + ". " + flowStep.description;
-      var item = {label: label, value: flowStep.step};
+      var item = {label: label, value: parseInt(flowStep.step)};
       flowStepItems.pushObject(item);
     }
     return flowStepItems.sortBy('value');

@@ -6,8 +6,8 @@ export default Ember.Component.extend({
     return !this.get('model.id');
   }),
 
-  currentFlow: Ember.computed('model.flow', function(){
-    return this.get('flows').findBy('name', this.get('model.flow'));
+  currentFlow: Ember.computed('model.flow_id', function(){
+    return this.get('flows').findBy('id', this.get('model.flow_id'));
   }),
 
   actions: {

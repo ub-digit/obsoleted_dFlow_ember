@@ -31,6 +31,12 @@ Router.map(function() {
         });
     this.route('queue');
   });
+  this.resource('flows', function(){
+    this.route('show', {path: '/:id'}, function(){
+      this.route('edit');
+    });
+    this.route("new");
+  });
 });
 
 export default Router;

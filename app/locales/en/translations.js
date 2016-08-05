@@ -210,5 +210,5 @@ export default {
     manual_finish: "Avsluta manuellt",
     set_new_flow_step: "Byt flödessteg"
   }
-}
+};
 

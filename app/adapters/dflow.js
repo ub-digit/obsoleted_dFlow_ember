@@ -44,6 +44,15 @@ export default Ember.Object.extend({
       headers: that.sessionHeaders()
     });
   },
+  // Replacer to remove container from objects, if it exists, before running JSON.stringify
+  replacer: function(key, value) {
+    if (key==="container") {
+      return undefined;
+    }
+    else { 
+      return value;
+    }
+  },
   send: function(url, method, data) {
     var that = this;
     console.log(data);
@@ -52,7 +61,7 @@ export default Ember.Object.extend({
       method: method,
       crossDomain: true,
       type: 'json',
-      data: JSON.stringify(data),
+      data: JSON.stringify(data, that.replacer),
       headers: that.sessionHeaders(),
       contentType: 'application/json'
     });

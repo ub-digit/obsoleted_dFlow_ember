@@ -8,7 +8,13 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model) {
     var that = this;
-    controller.set('model', Job.create(Ember.$.extend(model, {container: Ember.getOwner(that)})));
+    var job_model;
+    if (!!model.container) {
+      job_model = model;
+    } else {
+      job_model = Job.create(Ember.$.extend(model, {container: Ember.getOwner(that)}));
+    }
+    controller.set('model', job_model);
   },
   actions: {
     

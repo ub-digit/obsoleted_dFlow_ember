@@ -32,6 +32,7 @@ export default Ember.Route.extend({
           that.controller.set('model.metadata', source_data.metadata);
           that.controller.set('model.is_periodical', source_data.is_periodical);
           that.controller.set('model.source_label', source_data.source_label);
+          that.controller.set('model.flow_parameters', {});
           that.controller.set('error', null);
           that.controller.set('hasFetchedData', true);
           that.transitionTo('node.show.jobs.source.new');

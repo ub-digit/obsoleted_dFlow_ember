@@ -38,3 +38,15 @@
  padding-top:0px;
  padding-bottom: 0px;
 }
+
+#jsoneditor3 {
+  height: 500px;
+}
+
+#jsoneditor2 {
+  height: 200px;
+}
+
+#jsoneditor1 {
+  height: 800px;
+}

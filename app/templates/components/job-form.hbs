@@ -69,7 +69,7 @@
         </div>
         <h4>Flödesparametrar för {{currentFlow.name}}</h4>
 
-        {{#each currentFlow.parameters as |parameter|}}
+        {{#each currentFlow.parameters.parameters as |parameter|}}
           {{parameter-input parameter=parameter values=model.flow_parameters}}
         {{else}}
             Inga flödesparametrar är definierade.
@@ -83,7 +83,7 @@
           <label class="col-xs-2 form-control-static">Processtyp</label>
           <label class="col-xs-3 form-control-static">Villkor</label>
           <label class="col-xs-4 form-control-static">Parametrar</label>
-          {{#each currentFlow.flow_steps as |step|}}
+          {{#each currentFlow.flow_steps.flow_steps as |step|}}
             <div class="row">
             <label class="col-xs-1 control-label">{{step.step}}</label>
             <div class="col-xs-2 form-control-static">{{step.description}}</div>

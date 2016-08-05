@@ -63,9 +63,7 @@ export default Ember.Object.extend({
     return string;
   }.property('metadata'),
 
-  isDone: Ember.computed('main_status', function(){
-    return this.get('main_status') === 'DONE';
-  }),
+  isDone: Ember.computed.equal('main_status', 'DONE'),
   isError: Ember.computed('main_status', function(){
     return this.get('main_status') === 'ERROR';
   }),

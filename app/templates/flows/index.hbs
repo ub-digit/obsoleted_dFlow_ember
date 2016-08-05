@@ -1,3 +1,15 @@
-{{#each model as |flow|}}
-  {{#link-to 'flows.show' flow.id}}{{flow.name}}{{/link-to}}
-{{/each}}
+<h2>Flöden</h2>
+<table class="table">
+  <thead>
+    <tr><th>Namn</th><th>Beskrivning</th></tr>
+  </thead>
+  <tbody>
+  {{#each model as |flow|}}
+    <tr>
+      <td>{{#link-to 'flows.show' flow.id}}{{flow.name}}{{/link-to}}</td>
+      <td>{{flow.description}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+<button {{action 'create'}} class="btn btn-primary">Skapa nytt flöde</button>

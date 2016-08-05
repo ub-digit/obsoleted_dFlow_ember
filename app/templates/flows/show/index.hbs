@@ -1,4 +1,24 @@
 
-{{#link-to 'flows'}} Flöden{{/link-to}}
-  {{model.name}} {{#link-to 'flows.show.edit'}}Redigera{{/link-to}}
+{{#link-to 'flows'}} Tillbaka till Flöden{{/link-to}}
+<hr/>
+<h2>{{model.name}}</h2> 
+{{#link-to 'flows.show.edit'}}Redigera{{/link-to}}
 
+  <p>{{model.description}}</p>
+
+  <h3>Parameterar</h3>
+  <pre>
+  {{parameters_json}}
+</pre>
+
+  <h3>Jobbkataloger</h3>
+  <pre>
+  {{folder_paths_json}}
+</pre>
+
+  <h3>Flödessteg</h3>
+  <pre>
+  {{flow_steps_json}}
+</pre>
+<hr/>
+<button {{action 'delete' model}} class="btn btn-danger">Radera flöde</button>

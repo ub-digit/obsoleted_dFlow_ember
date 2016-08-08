@@ -16,6 +16,7 @@
         <span style="color:red">{{job_id_error}}</span>
       </div>
     <ul class="nav navbar-nav navbar-right">
+      <li><a href="http://github.com/ub-digit/dFlow/commit/{{version_info.commit}}">Version: {{version_info.version}}</a></li>
       {{#if session.data.authenticated.can_view_users}}
       <ul class="nav navbar-nav">
         <li>{{#link-to 'flows.index'}}Flöden{{/link-to}}</li>

@@ -32,7 +32,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       sources: that.store.find('source'),
       states: that.store.find('config', 'states'),
       casUrl: that.store.find('config', 'cas_url'),
-      flows: that.store.find('flow')
+      flows: that.store.find('flow'),
+      version_info: that.store.find('config', 'version_info')
     });
   },
   setupController: function(controller, model) {
@@ -68,6 +69,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       var casLoginUrl = model.casUrl.cas_url + '/login?'+Ember.$.param({service: this.casService()});
       controller.set('casLoginUrl', casLoginUrl);
     }
+
+    controller.set('version_info', model.version_info);
   },
   actions: {
     sessionAuthenticationFailed: function(error) {
